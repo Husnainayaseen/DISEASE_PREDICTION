@@ -1,0 +1,39 @@
+﻿@model IEnumerable<DISEASE_PREDICTION.Models.TBL_DISEASECATEGORY>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a class="btn btn-primary glyphicon glyphicon-pencil" href="@Url.Action("Create","TBL_DISEASECATEGORY")">Create New</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+           DISEASE DISCRIPTION
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var disease in Model) {
+    <tr>
+        <td>
+           @disease.DISEASE_DESCRIPTION
+        </td>
+        <td>
+            <a class="btn btn-primary glyphicon glyphicon-edit" href="@Url.Action("Edit","TBL_DISEASECATEGORY",new{ id=disease.DISEASE_ID})">Edit</a>
+            <a class="btn btn-primary glyphicon glyphicon-expand" href="@Url.Action("Details","TBL_DISEASECATEGORY",new{ id=disease.DISEASE_ID})">Details</a>
+            <a class="btn btn-primary glyphicon glyphicon-trash" href="@Url.Action("Delete","TBL_DISEASECATEGORY",new{ id=disease.DISEASE_ID})">Delete</a>
+
+
+
+            @*@Html.ActionLink("Edit", "Edit", new { id = disease.DISEASE_ID }) |
+            @Html.ActionLink("Details", "Details", new { id = disease.DISEASE_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = disease.DISEASE_ID })*@
+        </td>
+    </tr>
+}
+
+</table>

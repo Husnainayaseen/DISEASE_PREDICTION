@@ -1,0 +1,74 @@
+﻿@model IEnumerable<DISEASE_PREDICTION.Models.TBL_PATIENT>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a class="btn btn-primary glyphicon glyphicon-pencil" href="@Url.Action("Create","TBL_PATIENT")">Create New</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            PATIENT AGE
+        </th>
+        <th>
+           PATIENT GENDER
+        </th>
+        <th>
+           PATIENT LOCATION
+        </th>
+        <th>
+           PATIENT NAME
+        </th>
+        <th>
+            PATIENT FATHERNAME
+        </th>
+        <th>
+           PATIENT DISEASE
+        </th>
+        <th>
+            PATIENT APPOINTMENTDATE
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var patient in Model) {
+    <tr>
+        <td>
+           @patient.PATIENT_AGE
+        </td>
+        <td>
+            @patient.PATIENT_GENDER
+        </td>
+        <td>
+            @patient.PATIENT_LOCATION
+        </td>
+        <td>
+            @patient.PATIENT_NAME
+        </td>
+        <td>
+            @patient.PATIENT_FATHERNAME
+        </td>
+        <td>
+            @patient.PATIENT_DISEASE
+        </td>
+        <td>
+            @patient.PATIENT_APPOINTMENTDATE
+        </td>
+        <td>
+            <a class="btn btn-primary glyphicon glyphicon-edit" href="@Url.Action("Edit","TBL_PATIENT",new{ id=patient.PATIENT_ID})">Edit</a>
+            <a class="btn btn-primary glyphicon glyphicon-expand" href="@Url.Action("Details","TBL_PATIENT",new{ id=patient.PATIENT_ID})">Details</a>
+            <a class="btn btn-primary glyphicon glyphicon-trash" href="@Url.Action("Delete","TBL_PATIENT",new{ id=patient.PATIENT_ID})">Delete</a>
+
+
+            @*@Html.ActionLink("Edit", "Edit", new { id = patient.PATIENT_ID }) |
+            @Html.ActionLink("Details", "Details", new { id = patient.PATIENT_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = patient.PATIENT_ID })*@
+        </td>
+    </tr>
+}
+
+</table>

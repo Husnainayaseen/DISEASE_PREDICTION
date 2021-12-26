@@ -1,0 +1,50 @@
+﻿@model DISEASE_PREDICTION.Models.TBL_MEDICINECOMPANY
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TBL_MEDICINECOMPANY</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.COMPANY_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMPANY_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COMPANY_LOGO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMPANY_LOGO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COMPANY_LOCATION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMPANY_LOCATION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COMPANY_LICENSE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMPANY_LICENSE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.COMPANY_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

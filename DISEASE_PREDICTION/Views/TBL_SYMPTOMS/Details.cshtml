@@ -1,0 +1,34 @@
+﻿@model DISEASE_PREDICTION.Models.TBL_SYMPTOMS
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TBL_SYMPTOMS</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TBL_MEDICINE.MED_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBL_MEDICINE.MED_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DISEASE_SYMPTOMS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DISEASE_SYMPTOMS)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SYMPTOM_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

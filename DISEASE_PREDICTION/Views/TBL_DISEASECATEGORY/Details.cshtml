@@ -1,0 +1,26 @@
+﻿@model DISEASE_PREDICTION.Models.TBL_DISEASECATEGORY
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TBL_DISEASECATEGORY</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DISEASE_DESCRIPTION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DISEASE_DESCRIPTION)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DISEASE_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
