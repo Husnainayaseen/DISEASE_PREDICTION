@@ -20,24 +20,24 @@
         <th>
             MEDICINE NAME      
         </th>
-        <th>
+        @*<th>
             MED MANUFACTURE DATE
         </th>
         <th>
             MED EXPIRY DATE
-        </th>
+        </th>*@
         <th>
             MED SALE PRICE
         </th>
-        <th>
+        @*<th>
            MED USAGE
-        </th>
+        </th>*@
         <th>
             MED PURCHASE PRICE
         </th>
-        <th>
+        @*<th>
            MEDICINE REACTION
-        </th>
+        </th>*@
         <th> MEDICINE IMAGE</th>
     </tr>
 
@@ -47,34 +47,35 @@
         @medicine.DISEASECATEGORY_FID
     </td>
     <td>
-        @medicine.TBL_MEDICINECOMPANY
+        @medicine.TBL_MEDICINECOMPANY.COMPANY_NAME
     </td>
     <td>
         @medicine.MED_NAME
     </td>
     <td>
-        <img src="@Url.Content(medicine.MED_IMAGE)" height="100"width="100" />
-    </td>
-    <td>
-        @medicine.MED_MANUFACTURE_DATE
-    </td>
-    <td>
-        @medicine.MED_EXPIRY_DATE
-    </td>
-    <td>
         @medicine.MED_SALE_PRICE
     </td>
-    <td>
+
+    @*<td>
+            @medicine.MED_MANUFACTURE_DATE
+        </td>
+        <td>
+            @medicine.MED_EXPIRY_DATE
+        </td>*@
+
+    @*<td>
         @medicine.MED_USAGE
-    </td>
+    </td>*@
     <td>
-        @medicine.MED_PURCHASE_PRICE
-    </td>
-    <td>
+            @medicine.MED_PURCHASE_PRICE
+        </td>
+    @*<td>
         @medicine.MEDICINE_REACTION
+    </td>*@
+    <td>
+        <img src="@Url.Content(medicine.MED_IMAGE)" height="100" width="100" />
     </td>
-    
-    
+
     <td>
         <a class="btn btn-primary glyphicon glyphicon-edit" href="@Url.Action("Edit","TBL_MEDICINE",new{ id=medicine.MED_ID})">Edit</a>
         <a class="btn btn-primary glyphicon glyphicon-expand" href="@Url.Action("Details","TBL_MEDICINE",new{ id=medicine.MED_ID})">Details</a>
@@ -83,8 +84,8 @@
 
 
         @*@Html.ActionLink("Edit", "Edit", new { id = medicine.MED_ID }) |
-        @Html.ActionLink("Details", "Details", new { id = medicine.MED_ID }) |
-        @Html.ActionLink("Delete", "Delete", new { id = medicine.MED_ID })*@
+            @Html.ActionLink("Details", "Details", new { id = medicine.MED_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = medicine.MED_ID })*@
     </td>
 </tr>
 }

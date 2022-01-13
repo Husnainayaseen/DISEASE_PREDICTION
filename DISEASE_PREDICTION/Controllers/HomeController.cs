@@ -10,17 +10,22 @@ namespace DISEASE_PREDICTION.Controllers
     public class HomeController : Controller
     {
         Model1 db = new Model1();
-        public ActionResult index()
+        public ActionResult index(int? id)
+        {
+            if (id != null)
+            {
+                TempData["catid"] = id;
+            }
+            return View();
+        }
+        public ActionResult login()
         {
             return View();
-        }   public ActionResult login()
-        {
-            return View();
-        }  
+        }
         [HttpPost]
-        public ActionResult login(string name,string email,string password)
+        public ActionResult login(string name, string email, string password)
         {
-          int v=  db.TBL_ADMIN.Where(x => x.ADMIN_NAME == name && x.ADMIN_EMAIL == email && x.ADMIN_PASSWORD == password).Count();
+            int v = db.TBL_ADMIN.Where(x => x.ADMIN_NAME == name && x.ADMIN_EMAIL == email && x.ADMIN_PASSWORD == password).Count();
             if (v > 0)
             {
                 return RedirectToAction("indexadmin");
@@ -31,30 +36,45 @@ namespace DISEASE_PREDICTION.Controllers
                 return View();
             }
 
-            
-        }  public ActionResult add_expense ()
-        {
-            return View();
-        }public ActionResult indexadmin()
+
+        }
+        public ActionResult add_expense()
         {
             return View();
         }
-        public ActionResult about ()
-        {
-            return View();
-        }  public ActionResult contact ()
-        {
-            return View();
-        }  public ActionResult portfolio ()
-        {
-            return View();
-        }  public ActionResult pricing ()
-        {
-            return View();
-        }  public ActionResult services ()
+        public ActionResult indexadmin()
         {
             return View();
         }
-     
+        public ActionResult about()
+        {
+            return View();
+        }
+        public ActionResult contact()
+        {
+            return View();
+        }
+        public ActionResult portfolio()
+        {
+            return View();
+        }
+        public ActionResult pricing()
+        {
+            return View();
+        }
+        public ActionResult services(int? id)
+        {
+            if (id != null)
+            {
+                TempData["catid"] = id;
+            }
+            return View();
+        }
+        public ActionResult medicine
+             ()
+        {
+            return View();
+        }
+
     }
 }

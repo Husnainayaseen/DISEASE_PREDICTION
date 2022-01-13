@@ -1,6 +1,8 @@
-
+@using DISEASE_PREDICTION.Models
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    Model1 db = new Model1();
+
 }
 
 
@@ -43,93 +45,33 @@
             </div>
         </div>
     </section>
-
-
+    <a href="@Url.Action("services","Home")"><h3 style="font-weight:bold;margin-left:500px">All Medicines<small class="text-muted">(@db.TBL_MEDICINE.Count())</small></h3></a>
     <section id="services">
-
-
         <div class="container">
             <div class="row">
                 <div class="features">
-                    <div class="col-md-4 col-sm-6 wow fadeInUp animated" data-wow-duration="300ms" data-wow-delay="0ms" style="visibility: visible; -webkit-animation-duration: 300ms; -webkit-animation-delay: 0ms;">
-                        <div class="media service-box">
-                            <div class="pull-left">
-                                <img src="~/content/img/1.png" alt="" />
-                            </div>
-                            <div class="media-body">
-                                <h4 class="media-heading">Child Care</h4>
-                                <p>Backed by some of the biggest names in the industry, Firefox OS is an open platform that fosters greater</p>
-                            </div>
-                        </div>
-                    </div><!--/.col-md-4-->
-
-                    <div class="col-md-4 col-sm-6 wow fadeInUp animated" data-wow-duration="300ms" data-wow-delay="100ms" style="visibility: visible; -webkit-animation-duration: 300ms; -webkit-animation-delay: 100ms;">
-                        <div class="media service-box">
-                            <div class="pull-left">
-                                <img src="~/content/img/2.png" alt="" />
-                            </div>
-                            <div class="media-body">
-                                <h4 class="media-heading">Women Care</h4>
-                                <p>Backed by some of the biggest names in the industry, Firefox OS is an open platform that fosters greater</p>
-                            </div>
-                        </div>
-                    </div><!--/.col-md-4-->
-
-                    <div class="col-md-4 col-sm-6 wow fadeInUp animated" data-wow-duration="300ms" data-wow-delay="200ms" style="visibility: visible; -webkit-animation-duration: 300ms; -webkit-animation-delay: 200ms;">
-                        <div class="media service-box">
-                            <div class="pull-left">
-                                <img src="~/content/img/3.png" alt="" />
-                            </div>
-                            <div class="media-body">
-                                <h4 class="media-heading">Family</h4>
-                                <p>Morbi vitae tortor tempus, placerat leo et, suscipit lectus. Phasellus ut euismod massa, eu eleifend ipsum.</p>
-                            </div>
-                        </div>
-                    </div><!--/.col-md-4-->
-
-                    <div class="col-md-4 col-sm-6 wow fadeInUp animated" data-wow-duration="300ms" data-wow-delay="300ms" style="visibility: visible; -webkit-animation-duration: 300ms; -webkit-animation-delay: 300ms;">
-                        <div class="media service-box">
-                            <div class="pull-left">
-                                <img src="~/content/img/4.png" alt="" />
-                            </div>
-                            <div class="media-body">
-                                <h4 class="media-heading">Heart</h4>
-                                <p>Morbi vitae tortor tempus, placerat leo et, suscipit lectus. Phasellus ut euismod massa, eu eleifend ipsum.</p>
-                            </div>
-                        </div>
-                    </div><!--/.col-md-4-->
-
-                    <div class="col-md-4 col-sm-6 wow fadeInUp animated" data-wow-duration="300ms" data-wow-delay="400ms" style="visibility: visible; -webkit-animation-duration: 300ms; -webkit-animation-delay: 400ms;">
-                        <div class="media service-box">
-                            <div class="pull-left">
-                                <img src="~/content/img/5.png" alt="" />
-                            </div>
-                            <div class="media-body">
-                                <h4 class="media-heading">Eye Care</h4>
-                                <p>Morbi vitae tortor tempus, placerat leo et, suscipit lectus. Phasellus ut euismod massa, eu eleifend ipsum.</p>
-                            </div>
-                        </div>
-                    </div><!--/.col-md-4-->
-
-                    <div class="col-md-4 col-sm-6 wow fadeInUp animated" data-wow-duration="300ms" data-wow-delay="500ms" style="visibility: visible; -webkit-animation-duration: 300ms; -webkit-animation-delay: 500ms;">
-                        <div class="media service-box">
-                            <div class="pull-left">
-                                <img src="~/content/img/7.png" alt="" />
-                            </div>
-                            <div class="media-body">
-                                <h4 class="media-heading">Testing</h4>
-                                <p>Morbi vitae tortor tempus, placerat leo et, suscipit lectus. Phasellus ut euismod massa, eu eleifend ipsum.</p>
-                            </div>
-                        </div>
-                    </div><!--/.col-md-4-->
                 </div>
             </div>
-
-
         </div>
-
     </section>
+    @foreach (var item in db.TBL_DISEASECATEGORY)
+    {
+       
+            <div class="col-md-4 col-sm-6 wow fadeInUp animated" data-wow-duration="300ms" data-wow-delay="0ms" style="visibility: visible; -webkit-animation-duration: 300ms; -webkit-animation-delay: 0ms;">
+                <div class="media service-box">
+                    <div class="pull-left">
+                        <img src="~/content/img/1.png" alt="" />
+                    </div>
+                    <span class="media-body">
+                        <a href="@Url.Action("services", "Home", new { id = item.DISEASE_ID })">@item.DISEASE_DESCRIPTION<small class="text-muted">(@item.TBL_MEDICINE.Count())</small></a>
+                        <p>Backed by some of the biggest names in the industry, Firefox OS is an open platform that fosters greater</p>
+                    </span>
+                </div>
+            </div><!--/.col-md-4-->}
 
+    }
+
+    
     <section class="aboutUs">
         <div class="container">
             <div class="row">
