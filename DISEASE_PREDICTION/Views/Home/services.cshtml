@@ -38,17 +38,31 @@
 
             @foreach (var item in db.TBL_MEDICINE)
             {
-                if(catid==null|| item.DISEASECATEGORY_FID == catid) { 
-                <div class="col-md-4 md-margin-bottom-40">
+                if (catid == null || item.DISEASECATEGORY_FID == catid) {
+            <div class="col-lg-3 design md-margin-bottom-40">
+                <div class="icon">
                     <img style="width:100%;height:200px;" class="btn btn-primary img-responsive" src="@Url.Content(item.MED_IMAGE)" alt="">
-                    <h4>@item.MED_NAME</h4>
-
-                    <div class="pricing-heading">
-                        <h3><span>RS:</span>@item.MED_SALE_PRICE</h3>
-                    </div>
+                    <ul>
+                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="view"><i class="fa fa-eye"></i></a></li>
+                        <li>
+                            <a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fa fa-asterisk"></i></a>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="tooltip" data-placement="right" title="Add to wishlist"><i class="fa fa-heart"></i></a>
+                        </li>
+                    </ul>
+                    <a class="fa-opencart" href="@Url.Action("addtocart", "cart", new { id = item.MED_ID })">Add to Cart</a>
                 </div>
+                <h4>@item.MED_NAME</h4>
+
+                <div class="pricing-heading">
+                    <h3><span>RS:</span>@item.MED_SALE_PRICE</h3>
+                </div>
+            </div>
 
             }
             }
         </div>
+
+</div>
 </section>

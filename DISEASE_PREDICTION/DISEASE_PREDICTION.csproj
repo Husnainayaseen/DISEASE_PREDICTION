@@ -128,6 +128,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\cartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TBL_ADMINController.cs" />
     <Compile Include="Controllers\TBL_DISEASECATEGORYController.cs" />
@@ -330,7 +331,7 @@
     <None Include="Views\Home\contact.cshtml" />
     <Content Include="Views\Home\login.cshtml" />
     <None Include="Views\Home\portfolio.cshtml" />
-    <None Include="Views\Home\pricing.cshtml" />
+    <None Include="Views\cart\displaycart.cshtml" />
     <None Include="Views\Home\services.cshtml" />
     <None Include="Views\Home\indexadmin.cshtml" />
     <None Include="Views\Home\add_expense.cshtml" />
