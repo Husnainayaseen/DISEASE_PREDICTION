@@ -7,6 +7,7 @@
         list =(List<TBL_MEDICINE>) Session["cart"];
     }
     int indexno = -1;
+    int total = 0;
     Model1 db = new Model1();
 }
 
@@ -26,14 +27,13 @@
         <div class="row">
             <div class="col-md-12">
                 <div>
-                    <h3>CART</h3>
-                    <p>Sed ut perspiciaatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas</p>
-                    <p>Sed ut perspiciaatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas</p>
+                    <center><h3>CART/SHOP</h3></center>
+
                 </div>
             </div>
         </div>
-        <table style="width: 100%; column-span:all; border:none; font-size: 20px;  padding:10px;margin:10px;height:70px;margin-left:auto;margin-right:auto">
-            <tr style=" background-color: aqua; color: white;">
+        <table style="width: 100%;height:100px; column-span:all; border:none; font-size: 20px;  padding:10px;margin:10px;height:70px;margin-left:auto;margin-right:auto">
+            <tr style=" background-color: darkslategrey; color: white;">
                 <th>Image</th>
                 <th>Med Name</th>
                 <th>Price</th>
@@ -41,133 +41,154 @@
                 <th>Total</th>
                 <th>Remove</th>
             </tr>
-            
-                @foreach (var item in list)
-                {
-                    indexno++;
-        <tbody>
-            <tr>
 
-                <td><a href="#"> <img style="width:100px;height:100px;" src="@Url.Content(item.MED_IMAGE)" /></a></td>
-                <td><a href="#">@item.MED_NAME</a></td>
-                <td>Rs:@item.MED_SALE_PRICE</td>-->
-                <td></td>
-                <td>@item.MED_SALE_PRICE</td>
-                <td class="glyphicon-remove-sign">
-                    <a href="@Url.Action("removefromcart", "cart", new {id=indexno})">
-                        <i class=" fa fa-remove "></i>
-                    </a>
-                </td>
-            </tr>
-        </tbody>
+            @foreach (var item in list)
+            {
+                indexno++;
+                total += item.MED_SALE_PRICE * item.Quantity;
+                <tbody>
+                    <tr>
+
+                        <td><a href="#"> <img style="width:100px;height:100px;" src="@Url.Content(item.MED_IMAGE)" /></a></td>
+                        <td><a href="#">@item.MED_NAME</a></td>
+                        <td>Rs:@item.MED_SALE_PRICE</td>-->
+                        <td>
+
+                            <a href="@Url.Action("plustocart", "cart", new {id=indexno})" class="btn btn-primary fa fa-plus "></a>
+                            <span style="margin:5px;font-size:22px;font-weight:bold">
+                                @item.Quantity
+                            </span>
+                            <a href="@Url.Action("minusfromcart", "cart", new {id=indexno})" class="btn btn-primary fa fa-minus"></a>
+
+                        </td>
+                        <td>@(item.MED_SALE_PRICE*item.Quantity)</td>
+                        <td>
+                            <a href="@Url.Action("removefromcart", "cart", new {id=indexno})">
+                                <i class="btn btn-danger fa fa-times"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
 
             }
 
-        </table>
+        </table><br /><br />
+        <div class="col-lg-6 col-sm-6"></div>
+        <a href="@Url.Action("services","Home")" class="btn btn-medium align-left icon-bolt"> Update Cart</a>
+    </div>
+    <div class="row my-5"></div>
+    <div class="col-lg-8 col-sm-12"></div>
+    <div class="col-lg-4 col-sm-12"></div>
+    <h3>Order Summary</h3>
+    <div class="d-flex"></div>
+    <h4>Sub Total</h4>
+    <div class="ml-auto font-weight-bold">Rs:@total</div>
+    <div class="d-flex"></div>
+    <h4>Shipping Cost</h4>
+    <div class="ml-auto font-weight-bold">Rs:250</div>
+    <div class="d-flex"></div>
+    <h4>Grand Total</h4>
+    <div class="ml-auto font-weight-bold">Rs:@(total+250)</div>
 
-</div>
+    <a href="@Url.Action("checkout","home")"class="btn btn-danger">Checkout</a>
 
 
 
 
 
 
-
-
-
-
-
-        @*<div class="row">
-                    <div class="col-lg-12">
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="pricing-box-item">
-                            <div class="pricing-heading">
-                                <h3><strong>Basic</strong></h3>
-                            </div>
-                            <div class="pricing-terms">
-                                <h6>&#36;15.00 / Year</h6>
-                            </div>
-                            <div class="pricing-container">
-                                <ul>
-                                    <li><i class="icon-ok"></i> Responsive Design</li>
-                                    <li><i class="icon-ok"></i> Bootstrap Design</li>
-                                    <li><i class="icon-ok"></i> Unlimited Support</li>
-                                    <li><i class="icon-ok"></i> Free Trial version</li>
-                                    <li><i class="icon-ok"></i> HTML5 CSS3 jQuery</li>
-                                </ul>
-                            </div>
-                            <div class="pricing-action">
-                                <a href="#" class="btn btn-medium"><i class="icon-bolt"></i> Get Now</a>
-                            </div>
+    @*<div class="row">
+                <div class="col-lg-12">
+                <div class="col-lg-12">
+                </div>
+                <div class="col-lg-3">
+                    <div class="pricing-box-item">
+                        <div class="pricing-heading">
+                            <h3><strong>Basic</strong></h3>
                         </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="pricing-box-item">
-                            <div class="pricing-heading">
-                                <h3><strong>Standard</strong></h3>
-                            </div>
-                            <div class="pricing-terms">
-                                <h6>&#36;20.00 / Year</h6>
-                            </div>
-                            <div class="pricing-container">
-                                <ul>
-                                    <li><i class="icon-ok"></i> Responsive Design</li>
-                                    <li><i class="icon-ok"></i> Bootstrap Design</li>
-                                    <li><i class="icon-ok"></i> Unlimited Support</li>
-                                    <li><i class="icon-ok"></i> Free Trial version</li>
-                                    <li><i class="icon-ok"></i> HTML5 CSS3 jQuery</li>
-                                </ul>
-                            </div>
-                            <div class="pricing-action">
-                                <a href="#" class="btn btn-medium"><i class="icon-bolt"></i> Get Now</a>
-                            </div>
+                        <div class="pricing-terms">
+                            <h6>&#36;15.00 / Year</h6>
                         </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="pricing-box-item activeItem">
-                            <div class="pricing-heading">
-                                <h3><strong>Advanced</strong></h3>
-                            </div>
-                            <div class="pricing-terms">
-                                <h6>&#36;15.00 / Year</h6>
-                            </div>
-                            <div class="pricing-container">
-                                <ul>
-                                    <li><i class="icon-ok"></i> Responsive Design</li>
-                                    <li><i class="icon-ok"></i> Bootstrap Design</li>
-                                    <li><i class="icon-ok"></i> Unlimited Support</li>
-                                    <li><i class="icon-ok"></i> Free Trial version</li>
-                                    <li><i class="icon-ok"></i> HTML5 CSS3 jQuery</li>
-                                </ul>
-                            </div>
-                            <div class="pricing-action">
-                                <a href="#" class="btn btn-medium"><i class="icon-bolt"></i> Get Now</a>
-                            </div>
+                        <div class="pricing-container">
+                            <ul>
+                                <li><i class="icon-ok"></i> Responsive Design</li>
+                                <li><i class="icon-ok"></i> Bootstrap Design</li>
+                                <li><i class="icon-ok"></i> Unlimited Support</li>
+                                <li><i class="icon-ok"></i> Free Trial version</li>
+                                <li><i class="icon-ok"></i> HTML5 CSS3 jQuery</li>
+                            </ul>
                         </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="pricing-box-item">
-                            <div class="pricing-heading">
-                                <h3><strong>Mighty</strong></h3>
-                            </div>
-                            <div class="pricing-terms">
-                                <h6>&#36;15.00 / Year</h6>
-                            </div>
-                            <div class="pricing-container">
-                                <ul>
-                                    <li><i class="icon-ok"></i> Responsive Design</li>
-                                    <li><i class="icon-ok"></i> Bootstrap Design</li>
-                                    <li><i class="icon-ok"></i> Unlimited Support</li>
-                                    <li><i class="icon-ok"></i> Free Trial version</li>
-                                    <li><i class="icon-ok"></i> HTML5 CSS3 jQuery</li>
-                                </ul>
-                            </div>
-                            <div class="pricing-action">
-                                <a href="#" class="btn btn-medium"><i class="icon-bolt"></i> Get Now</a>
-                            </div>
+                        <div class="pricing-action">
+
                         </div>
                     </div>
                 </div>
-            </div>*@
+                <div class="col-lg-3">
+                    <div class="pricing-box-item">
+                        <div class="pricing-heading">
+                            <h3><strong>Standard</strong></h3>
+                        </div>
+                        <div class="pricing-terms">
+                            <h6>&#36;20.00 / Year</h6>
+                        </div>
+                        <div class="pricing-container">
+                            <ul>
+                                <li><i class="icon-ok"></i> Responsive Design</li>
+                                <li><i class="icon-ok"></i> Bootstrap Design</li>
+                                <li><i class="icon-ok"></i> Unlimited Support</li>
+                                <li><i class="icon-ok"></i> Free Trial version</li>
+                                <li><i class="icon-ok"></i> HTML5 CSS3 jQuery</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-action">
+                            <a href="#" class="btn btn-medium"><i class="icon-bolt"></i> Get Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="pricing-box-item activeItem">
+                        <div class="pricing-heading">
+                            <h3><strong>Advanced</strong></h3>
+                        </div>
+                        <div class="pricing-terms">
+                            <h6>&#36;15.00 / Year</h6>
+                        </div>
+                        <div class="pricing-container">
+                            <ul>
+                                <li><i class="icon-ok"></i> Responsive Design</li>
+                                <li><i class="icon-ok"></i> Bootstrap Design</li>
+                                <li><i class="icon-ok"></i> Unlimited Support</li>
+                                <li><i class="icon-ok"></i> Free Trial version</li>
+                                <li><i class="icon-ok"></i> HTML5 CSS3 jQuery</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-action">
+                            <a href="#" class="btn btn-medium"><i class="icon-bolt"></i> Get Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="pricing-box-item">
+                        <div class="pricing-heading">
+                            <h3><strong>Mighty</strong></h3>
+                        </div>
+                        <div class="pricing-terms">
+                            <h6>&#36;15.00 / Year</h6>
+                        </div>
+                        <div class="pricing-container">
+                            <ul>
+                                <li><i class="icon-ok"></i> Responsive Design</li>
+                                <li><i class="icon-ok"></i> Bootstrap Design</li>
+                                <li><i class="icon-ok"></i> Unlimited Support</li>
+                                <li><i class="icon-ok"></i> Free Trial version</li>
+                                <li><i class="icon-ok"></i> HTML5 CSS3 jQuery</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-action">
+                            <a href="#" class="btn btn-medium"><i class="icon-bolt"></i> Get Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
 </section>

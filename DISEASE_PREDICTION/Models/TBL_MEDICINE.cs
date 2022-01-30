@@ -17,6 +17,8 @@ namespace DISEASE_PREDICTION.Models
 
         [Key]
         public int MED_ID { get; set; }
+         [NotMapped]
+        public int Quantity { get; set; }
 
         [Required]
         [StringLength(50)]

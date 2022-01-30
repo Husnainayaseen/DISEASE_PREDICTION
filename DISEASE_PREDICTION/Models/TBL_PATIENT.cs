@@ -34,7 +34,13 @@ namespace DISEASE_PREDICTION.Models
 
         [Required]
         [StringLength(50)]
-        public string PATIENT_FATHERNAME { get; set; }
+        public string PATIENT_PhoneNo { get; set; }
+            [Required]
+        [StringLength(50)]
+        public string PATIENT_Email { get; set; }
+            [Required]
+        [StringLength(50)]
+        public string Patient_EmailPassword { get; set; }
 
         [Required]
         [StringLength(100)]

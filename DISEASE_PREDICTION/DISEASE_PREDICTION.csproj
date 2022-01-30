@@ -151,6 +151,7 @@
     <Compile Include="Models\TBL_PATIENT.cs" />
     <Compile Include="Models\TBL_SYMPTOMS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utills\current user.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\admin\assets\css\bootstrap-datetimepicker.min.css" />
@@ -328,7 +329,8 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <None Include="Views\Home\index.cshtml" />
     <None Include="Views\Home\about.cshtml" />
-    <None Include="Views\Home\contact.cshtml" />
+    <None Include="Views\Home\checkout.cshtml" />
+    <None Include="Views\Home\customerlogin.cshtml" />
     <Content Include="Views\Home\login.cshtml" />
     <None Include="Views\Home\portfolio.cshtml" />
     <None Include="Views\cart\displaycart.cshtml" />
