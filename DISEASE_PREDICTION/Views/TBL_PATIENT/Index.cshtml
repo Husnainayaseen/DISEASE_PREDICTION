@@ -29,9 +29,9 @@
         <th>
            PATIENT DISEASE
         </th>
-        <th>
+        @*<th>
             PATIENT APPOINTMENTDATE
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -55,9 +55,9 @@
         <td>
             @patient.PATIENT_DISEASE
         </td>
-        <td>
+        @*<td>
             @patient.PATIENT_APPOINTMENTDATE
-        </td>
+        </td>*@
         <td>
             <a class="btn btn-primary glyphicon glyphicon-edit" href="@Url.Action("Edit","TBL_PATIENT",new{ id=patient.PATIENT_ID})">Edit</a>
             <a class="btn btn-primary glyphicon glyphicon-expand" href="@Url.Action("Details","TBL_PATIENT",new{ id=patient.PATIENT_ID})">Details</a>

@@ -46,7 +46,7 @@ namespace DISEASE_PREDICTION.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PATIENT_ID,PATIENT_AGE,PATIENT_GENDER,PATIENT_LOCATION,PATIENT_NAME,PATIENT_FATHERNAME,PATIENT_DISEASE,PATIENT_APPOINTMENTDATE")] TBL_PATIENT tBL_PATIENT)
+        public ActionResult Create([Bind(Include = "PATIENT_ID,PATIENT_AGE,PATIENT_GENDER,PATIENT_LOCATION,PATIENT_NAME,PATIENT_PhoneNo,PATIENT_Email,PATIENT_EmailPassword,PATIENT_DISEASE,PATIENT_APPOINTMENTDATE")] TBL_PATIENT tBL_PATIENT)
         {
             if (ModelState.IsValid)
             {

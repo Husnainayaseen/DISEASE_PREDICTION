@@ -45,6 +45,7 @@ namespace DISEASE_PREDICTION.Models
         public string ORDER_CONTACT { get; set; }
 
         public int PATIENT_FID { get; set; }
+        public int PAYMENTMODE { get; set; }
 
         [Required]
         [StringLength(50)]

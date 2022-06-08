@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "codeverify";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section id="inner-headline">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="pageTitle">Code Verify</h2>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="content">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+            </div>
+        </div>
+        <div class="row">
+
+
+            <div class="contact-form col-lg-6">
+                <h3>Verify Code</h3>
+                <form method="post" action="/home/codeverify" id="contactform" class="contact">
+
+                    <div class="form-group has-feedback">
+                        <label for="email">Enter Verification Code</label>
+                        <input required type="number" class="form-control" name="code" placeholder="">
+                        <i class="fa fa-envelope form-control-feedback"></i>
+                    </div>
+
+                    
+                    <input type="submit" value="Submit" id="submit" class="submit btn btn-primary">
+                    <hr /><hr /><hr />
+                    
+                </form>
+            </div>
+        </div></div></section>
+
+        <br />
+       

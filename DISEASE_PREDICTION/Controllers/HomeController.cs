@@ -42,6 +42,51 @@ namespace DISEASE_PREDICTION.Controllers
         public ActionResult add_expense()
         {
             return View();
+
+        } public ActionResult Newpassword()
+        {
+            return View();
+
+        } [HttpPost]
+                
+     public ActionResult Newpassword(string password)
+        {
+            int user = (TBL_PATIENT)Session["userforgetpassword"];
+            user.
+            return View();
+
+        } public ActionResult codeverify()
+        {
+            return View();
+
+        }[HttpPost]
+        public ActionResult codeverify(int code)
+        {
+            int sendcode = (int)Session["code"];
+            if (sendcode == code)
+            {
+                return RedirectToAction("Newpassword");
+            }
+            TempData["error"] = "invalid code";
+            return View();
+
+        } public ActionResult ForgetPassword(string email)
+        {
+        var patient= db.TBL_PATIENT.Where(x => x.PATIENT_Email == email).FirstOrDefault();
+            if (patient == null)
+            {
+                TempData["error"] = "Invalid Email";
+                return RedirectToAction("customerlogin");
+            }
+            string receiverEmail = "husnainyaseen820@gmail.com";
+            Random random = new Random();
+            int code = random.Next(1001, 9990);
+            string Emailsubject = "subject";
+            string Emailbody = "your code is" +code;         
+            Session["code"] = code;
+            Session["userforgetpassword"] = patient;
+            EmailProvider.Email(receiverEmail,Emailsubject,Emailbody);
+            return RedirectToAction("codeverify");
         }
         public ActionResult indexadmin()
         {
@@ -53,12 +98,18 @@ namespace DISEASE_PREDICTION.Controllers
         }
         public ActionResult checkout()
         {
+            if (current_user.currentpatient == null)
+            {
+                return RedirectToAction("customerlogin", "home");
+            }
             return View();
-        } public ActionResult customerlogin()
+        }
+        public ActionResult customerlogin()
         {
             return View();
         }
-        [HttpPost] public ActionResult customerlogin(TBL_PATIENT patient)
+        [HttpPost] 
+        public ActionResult customerlogin(TBL_PATIENT patient)
         {
             if (patient.PATIENT_NAME == null || patient.PATIENT_LOCATION == null || patient.PATIENT_PhoneNo == null)
             {
@@ -67,7 +118,11 @@ namespace DISEASE_PREDICTION.Controllers
                 if (p != null)
                 {
                     current_user.currentpatient = p;
-                    return RedirectToAction("index");
+                    if (Session["cart"]!=null)
+                    {
+                        return RedirectToAction("displaycart","cart");
+                    }
+                    return RedirectToAction("checkout");
 
                 }
                 else

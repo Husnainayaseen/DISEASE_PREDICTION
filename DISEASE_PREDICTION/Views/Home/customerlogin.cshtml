@@ -15,55 +15,86 @@
 </section>
 <section id="content">
 
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-			
-			</div>
-		</div>
-		<div class="row">
-		
-				
-				<div class="contact-form col-lg-6">
-					<h3>Account Login</h3>
-					<form method="post" action="/home/customerlogin" id="contactform" class="contact">
-						
-						<div class="form-group has-feedback">
-							<label for="email">Email*</label>
-							<input type="email" class="form-control" name="email" placeholder="">
-							<i class="fa fa-envelope form-control-feedback"></i>
-						</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
 
-						<div class="form-group has-feedback">
-							<label for="message">Password*</label>
-							<input type="password" class="form-control" name="comment" placeholder="password">
-							<i class="fa fa-lock form-control-feedback"></i>
-						</div>
-						<input type="submit" value="Login" id="submit" class="submit btn btn-default">
-					</form>
+            </div>
+        </div>
+        <div class="row">
 
 
-				</div>
-			</div>
+            <div class="contact-form col-lg-6">
+                <h3>Account Login</h3>
+                <form method="post" action="/home/customerlogin" id="contactform" class="contact">
+
+                    <div class="form-group has-feedback">
+                        <label for="email">Email*</label>
+                        <input required type="email"  class="form-control" name="PATIENT_Email" placeholder="">
+                        <i class="fa fa-envelope form-control-feedback"></i>
+                    </div>
+
+                    <div class="form-group has-feedback">
+                        <label for="message">Password*</label>
+                        <input required type="password" class="form-control" name="PATIENT_EmailPassword" placeholder="password">
+                        <i class="fa fa-lock form-control-feedback"></i>
+                    </div>
+                    <input type="submit" value="Login" id="submit" class="submit btn btn-primary">
+                    <hr /><hr /><hr />
+                    <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal" >ForgetPassword</button>
+                </form>
+            </div>
+        </div>
+
+        <br />
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/home/ForgetPassword">
+                            <div class="form-group">
+                                <label for="recipient-name" class="control-label">Email:</label>
+                                <input type="email" name="email" class="form-control" id="email">
+                            </div>
+                           
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Send message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
         <div class="contact-form col-lg-6">
             <h3>Register New Account </h3>
             <form method="post" action="/home/customerlogin" id="contactform" class="contact">
                 <div class="form-group has-feedback">
                     <label for="name">Name*</label>
-                    <input type="text" class="form-control" name=" PATIENT_NAME " placeholder="Enter Name">
+                    <input required type="text" class="form-control" name=" PATIENT_NAME " placeholder="Enter Name">
                     <i class="fa fa-user form-control-feedback"></i>
                 </div> <div class="form-group has-feedback">
                     <label for="name">Phone No*</label>
-                    <input type="text" class="form-control" name="PATIENT_PhoneNo" placeholder="Phone No">
+                    <input required type="text" class="form-control" name="PATIENT_PhoneNo" placeholder="Phone No">
                     <i class="fa fa-user form-control-feedback"></i>
                 </div>
-                 <div class="form-group has-feedback">
+                <div class="form-group has-feedback">
                     <label for="email">Email*</label>
-                    <input type="email" class="form-control" name="PATIENT_Email" placeholder="Email Address">
+                    <input required type="email" class="form-control" name="PATIENT_Email" placeholder="Email Address">
                     <i class="fa fa-envelope form-control-feedback"></i>
                 </div> <div class="form-group has-feedback">
                     <label for="email">Password*</label>
-                    <input type="password" class="form-control" name=" Patient_EmailPassword" placeholder="Email password">
+                    <input required type="password" class="form-control" name=" Patient_EmailPassword" placeholder="Email password">
                     <i class="fa fa-lock form-control-feedback"></i>
                 </div>
 
@@ -78,7 +109,7 @@
 
 
         </div>
-		</div>
+    </div>
     
 
 </section>

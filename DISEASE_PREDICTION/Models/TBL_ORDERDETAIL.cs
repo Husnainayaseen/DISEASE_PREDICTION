@@ -22,10 +22,15 @@ namespace DISEASE_PREDICTION.Models
         [Required]
         [StringLength(100)]
         public string ORDERDETAIL_ADDRESS { get; set; }
+        public int MED_QUANTITY { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string ORDERDETAIL_PAYMENT { get; set; }
+        public string ORDERDETAIL_PAYMENT { get; set; } [Required]
+        
+        public int MED_PURCHASE_PRICE { get; set; } [Required]
+       
+        public int MED_SALE_PRICE { get; set; }
 
         public int ORDER_FID { get; set; }
 
