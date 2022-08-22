@@ -128,8 +128,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminsideController.cs" />
     <Compile Include="Controllers\cartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PurchaseController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\TBL_ADMINController.cs" />
     <Compile Include="Controllers\TBL_DISEASECATEGORYController.cs" />
     <Compile Include="Controllers\TBL_FEEDBACKController.cs" />
@@ -141,6 +144,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Model1.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\TBL_ADMIN.cs" />
     <Compile Include="Models\TBL_DISEASECATEGORY.cs" />
     <Compile Include="Models\TBL_FEEDBACK.cs" />
@@ -440,6 +444,20 @@
     <Content Include="Content\img\works\6.jpg" />
     <Content Include="Content\img\works\7.jpg" />
     <Content Include="Content\img\works\8.jpg" />
+    <Content Include="Content\img\works\bleeding.jpg" />
+    <Content Include="Content\img\works\burn.jpg" />
+    <Content Include="Content\img\works\burns.jpg" />
+    <Content Include="Content\img\works\incident.jpg" />
+    <Content Include="Content\img\works\infection.jpg" />
+    <Content Include="Content\img\works\main.jpg" />
+    <Content Include="Content\img\works\scalds.jpg" />
+    <Content Include="Content\img\works\scaldss.png" />
+    <Content Include="Content\img\works\shock.jpg" />
+    <Content Include="Content\img\works\shock1.jpg" />
+    <Content Include="Content\img\works\shock2.jpg" />
+    <Content Include="Content\img\works\un.jpg" />
+    <Content Include="Content\img\works\unc.jpg" />
+    <Content Include="Content\img\works\unconcious.jpg" />
     <Content Include="Content\js\animate.js" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\custom.js" />
@@ -497,9 +515,13 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\Adminside\deliveredorders.cshtml" />
+    <None Include="Views\Adminside\invoice.cshtml" />
     <Content Include="Views\Home\checkout.cshtml" />
     <Content Include="Views\cart\orderbooked.cshtml" />
     <Content Include="Views\Home\codeverify.cshtml" />
+    <Content Include="Views\Adminside\NewOrders.cshtml" />
+    <Content Include="Views\Adminside\Proceedorders.cshtml" />
     <None Include="Views\Home\index.cshtml" />
     <None Include="Views\Home\about.cshtml" />
     <None Include="Views\Home\customerlogin.cshtml" />
@@ -557,6 +579,14 @@
     <Content Include="Views\TBL_SYMPTOMS\Details.cshtml" />
     <Content Include="Views\TBL_SYMPTOMS\Edit.cshtml" />
     <Content Include="Views\TBL_SYMPTOMS\Index.cshtml" />
+    <Content Include="Views\Report\SalesReport.cshtml" />
+    <Content Include="Views\Purchase\AllMedicine.cshtml" />
+    <Content Include="Views\Purchase\displaycart.cshtml" />
+    <Content Include="Views\Purchase\OrderComplete.cshtml" />
+    <Content Include="Views\Report\PurchaseReport.cshtml" />
+    <Content Include="Views\Report\StockReport.cshtml" />
+    <Content Include="Views\Report\profit.cshtml" />
+    <Content Include="Views\Purchase\Newpurchase.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

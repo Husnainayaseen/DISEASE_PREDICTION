@@ -33,10 +33,10 @@
 </head>
 <body>
     <header>
-        <div >
-            @if (current_user.currentpatient!=null)
-            { <a href="#">@current_user.currentpatient.PATIENT_NAME</a>}
-        </div>
+        
+               
+                
+        
         <div class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
@@ -45,24 +45,33 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
+
                     <a class="navbar-brand" href="index-2.html"><img src="~/content/img/logo.png" alt="logo" /></a>
                 </div>
                 <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">
+
+                        <ul>
+                            @if (current_user.currentpatient != null)
+                            {
+                                <li><a href="#">@current_user.currentpatient.PATIENT_NAME</a> </li>
+                            }
+
+                        </ul>
                         <li class="active"><a href="@Url.Action("index","Home")">Home</a></li>
                         <li><a href="@Url.Action("About","Home")">About Us</a></li>
                         <li><a href="@Url.Action("Services","Home")">Services</a></li>
                         <li><a href="@Url.Action("portfolio","Home")">Portfolio</a></li>
                         <li><a href="@Url.Action("pricing","Home")">Pricing</a></li>
-                        <li><a href="@Url.Action("contact","Home")">Contact</a></li>                       
-                            
-                                <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-                                <li class="side-menu">
-                                    <a href="/cart/displaycart">
-                                        <i class="fa fa-shopping-cart"></i>
-                                        <span class="badge">@cartlist.Count()</span>
-                                    </a>
-                                </li>
+                        <li><a href="@Url.Action("contact","Home")">Contact</a></li>
+
+                        <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+                        <li class="side-menu">
+                            <a href="/cart/displaycart">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span class="badge">@cartlist.Count()</span>
+                            </a>
+                        </li>
 
                     </ul>
                 </div>

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<DISEASE_PREDICTION.Models.TBL_MEDICINE>
+
+@{
+    ViewBag.Title = "displaycart";
+}
+
+<h2>displaycart</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TBL_DISEASECATEGORY.DISEASE_DESCRIPTION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TBL_MEDICINECOMPANY.COMPANY_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MED_NAME)
+        </th>
+
+        <th> QUANTITY</th>
+        <th>
+            @Html.DisplayNameFor(model => model.MED_PURCHASE_PRICE)
+        </th>
+        <th>
+            TOTAL
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TBL_DISEASECATEGORY.DISEASE_DESCRIPTION)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TBL_MEDICINECOMPANY.COMPANY_NAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MED_NAME)
+            </td>
+            <td>
+                @item.Quantity
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MED_PURCHASE_PRICE)
+            </td>
+            <td>
+                @(item.Quantity*item.MED_PURCHASE_PRICE)
+            </td>
+        </tr>
+    }
+    <tr>
+    <td colspan="2">Wants To Add More?</td>
+    <td colspan="2"><a href="/purchase/AllMedicine" class="btn btn-primary">Go to Medicine </a></td>
+    </tr>
+    <tr>
+    <td colspan="2">Wants To Save?</td>
+    <td colspan="2"><a href="/purchase/SavePurchase" class="btn btn-primary">Go to SavePurchase </a></td>
+    </tr>
+</table>

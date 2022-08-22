@@ -1,0 +1,96 @@
+﻿@model IEnumerable<DISEASE_PREDICTION.Models.TBL_ORDER>
+
+@{
+    ViewBag.Title = "NewOrders";
+}
+
+<h2>Sales Report</h2>
+<form action="/Report/SalesReport" method="post">
+    <table class="table">
+        <tr>
+            <td>Date From:</td>
+            <td><input type="datetime-local" class="form-control"value="@ViewBag.Datefrom " name="Datefrom" /></td>
+            <td>Date To:</td>
+            <td><input type="datetime-local" class="form-control" value="@ViewBag.Datetoname"name="Dateto" /></td>
+        </tr>
+        <tr>
+            <td>Disease Category:</td>
+            <td> @Html.DropDownList("DISEASECATEGORY", null,"---------Select DISEASECATEGORY--------", htmlAttributes: new { @class = "form-control" })</td>
+            <td>Medicine:</td>
+            <td> @Html.DropDownList("MEDICINE", null, "---------Select MEDICINE--------", htmlAttributes: new { @class = "form-control" })</td>
+        </tr>
+        
+        <tr>
+            <td colspan="4"><input type="submit"  class="btn btn-danger btn-block" /></td>
+        </tr>
+    </table>
+</form>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TBL_PATIENT.PATIENT_GENDER)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ORDER_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ORDER_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ORDER_STATUS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ORDER_TYPE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ORDER_EMAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ORDER_ADDRESS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ORDER_CONTACT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PAYMENTMODE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TBL_PATIENT.PATIENT_GENDER)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ORDER_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ORDER_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ORDER_STATUS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ORDER_TYPE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ORDER_EMAIL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ORDER_ADDRESS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ORDER_CONTACT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PAYMENTMODE)
+        </td>
+        <td>
+            <a href="@Url.Action("invoice","Adminside",new{id=item.ORDER_ID})" class="btn btn-primary">Invoice </a>
+            
+        </td>
+    </tr>
+}
+
+</table>

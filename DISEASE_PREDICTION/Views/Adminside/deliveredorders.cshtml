@@ -1,0 +1,80 @@
+﻿
+
+@model IEnumerable<DISEASE_PREDICTION.Models.TBL_ORDER>
+
+@{
+    ViewBag.Title = "deliveredorders";
+}
+@Html.Raw(TempData["msg"])
+
+<h2>Delivered Orders</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TBL_PATIENT.PATIENT_GENDER)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ORDER_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ORDER_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ORDER_STATUS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ORDER_TYPE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ORDER_EMAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ORDER_ADDRESS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ORDER_CONTACT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PAYMENTMODE)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TBL_PATIENT.PATIENT_GENDER)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ORDER_NAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ORDER_DATE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ORDER_STATUS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ORDER_TYPE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ORDER_EMAIL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ORDER_ADDRESS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ORDER_CONTACT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PAYMENTMODE)
+            </td>
+
+        </tr>
+    }
+
+</table>
+

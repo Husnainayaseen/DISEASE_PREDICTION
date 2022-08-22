@@ -9,5 +9,6 @@ namespace DISEASE_PREDICTION.Utills
     public static class current_user
     {
         public static TBL_PATIENT currentpatient { get; set;    }
+        public static TBL_ADMIN currentadmin { get; set;    }
     }
 }

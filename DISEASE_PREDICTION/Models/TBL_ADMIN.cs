@@ -8,6 +8,12 @@ namespace DISEASE_PREDICTION.Models
 
     public partial class TBL_ADMIN
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TBL_ADMIN()
+        {
+            TBL_ORDER = new HashSet<TBL_ORDER>();
+        }
+
         [Key]
         public int ADMIN_ID { get; set; }
 
@@ -28,5 +34,8 @@ namespace DISEASE_PREDICTION.Models
 
         [StringLength(100)]
         public string ADMIN_ADDRESS { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TBL_ORDER> TBL_ORDER { get; set; }
     }
 }

@@ -1,0 +1,348 @@
+@model DISEASE_PREDICTION.Models.TBL_ORDER
+        
+        
+
+
+@{ decimal total = 0; }
+<div class="content">
+    <div class="row">
+        <div class="col-sm-5 col-4">
+            <h4 class="page-title">Invoice</h4>
+        </div>
+        <div class="col-sm-7 col-8 text-right m-b-30">
+            <div class="btn-group btn-group-sm">
+                <button class="btn btn-white">CSV</button>
+                <button class="btn btn-white">PDF</button>
+                <button class="btn btn-white"><i class="fa fa-print fa-lg"></i> Print</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row custom-invoice">
+                        <div class="col-6 col-sm-6 m-b-20">
+                            <img src="~/content/admin/assets/img/logo-dark.png" class="inv-logo" alt="">
+                            <ul class="list-unstyled">
+                                <li>PreClinic</li>
+                                <li>3864 Quiet Valley Lane,</li>
+                                <li>Sherman Oaks, CA, 91403</li>
+                                <li>GST No:</li>
+                            </ul>
+                        </div>
+                        <div class="col-6 col-sm-6 m-b-20">
+                            <div class="invoice-details">
+
+                                <ul class="list-unstyled">
+                                    <li class="text-uppercase">Invoice no:<span>@Model.ORDER_ID</span></li>
+                                    <li class="text-uppercase">Invoice Date: <span>@Model.ORDER_DATE.ToLongDateString()</span></li>class="text-uppercase">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-lg-6 m-b-20">
+
+                            <h5 class="text-uppercase"><strong>Invoice to:</strong></h5>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <h5>@Model.ORDER_NAME</h5>
+                                </li>
+                                <li><span>@Model.ORDER_ADDRESS</span></li>
+                                <li>@Model.ORDER_CONTACT</li>
+                                <li><a href="#">@Model.ORDER_EMAIL</a></li>
+                            </ul>
+
+                        </div>
+                        <div class="col-sm-6 col-lg-6 m-b-20">
+                            <div class="invoices-view">
+                                <span class="text-muted">Payment Details:</span>
+                                <ul class="list-unstyled invoice-payment-details">
+                                    <li>
+                                        <h5>Total Due: <span class="text-right">@total</span></h5>
+                                    </li>
+                                    <li>Bank name: <span>Profit Bank Pakistan</span></li>
+                                    <li>Country: <span>Pakistan</span></li>
+                                    <li>City: <span>Gujranwala</span></li>
+                                    <li>Address: <span>3 Goodman Street</span></li>
+                                    <li>IBAN: <span>KFH37784028476740</span></li>
+                                    <li>SWIFT code: <span>BPT4E</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>ITEM</th>
+                                    <th>DESCRIPTION</th>
+                                    <th>UNIT COST</th>
+                                    <th>QUANTITY</th>
+                                    <th>TOTAL</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.TBL_ORDERDETAIL)
+                                {
+                                    total += (item.MED_SALE_PRICE * item.MED_QUANTITY);
+                    <tr>
+                        <td></td>
+                        <td>@item.TBL_MEDICINE.MED_NAME</td>
+                        <td>@item.TBL_MEDICINE.MED_USAGE</td>
+                        <td>@item.MED_SALE_PRICE</td>
+                        <td>@item.MED_QUANTITY</td>
+                        <td>@(item.MED_SALE_PRICE*(-item.MED_QUANTITY))</td>
+                    </tr>}
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <div class="row invoice-payment">
+                            <div class="col-sm-7">
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="m-b-20">
+                                    <h6>Total due</h6>
+                                    <div class="table-responsive no-border">
+                                        <table class="table mb-0">
+                                            <tbody>
+                                                <tr>
+                                                    <th>Subtotal:</th>
+                                                    <td class="text-right">@total</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Tax: <span class="text-regular">(10%)</span></th>
+                                                    <td class="text-right">Rs:250</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Total:</th>
+                                                    <td class="text-right text-primary">
+                                                        <h5>@(total+250)</h5>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="invoice-info">
+                            <h5>Other information</h5>
+                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed dictum ligula, cursus blandit risus. Maecenas eget metus non tellus dignissim aliquam ut a ex. Maecenas sed vehicula dui, ac suscipit lacus. Sed finibus leo vitae lorem interdum, eu scelerisque tellus fermentum. Curabitur sit amet lacinia lorem. Nullam finibus pellentesque libero, eu finibus sapien interdum vel</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="notification-box">
+    <div class="msg-sidebar notifications msg-noti">
+        <div class="topnav-dropdown-header">
+            <span>Messages</span>
+        </div>
+        <div class="drop-scroll msg-list-scroll" id="msg_list">
+            <ul class="list-box">
+                <li>
+                    <a href="chat.html">
+                        <div class="list-item">
+                            <div class="list-left">
+                                <span class="avatar">R</span>
+                            </div>
+                            <div class="list-body">
+                                <span class="message-author">Richard Miles </span>
+                                <span class="message-time">12:28 AM</span>
+                                <div class="clearfix"></div>
+                                <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="chat.html">
+                        <div class="list-item new-message">
+                            <div class="list-left">
+                                <span class="avatar">J</span>
+                            </div>
+                            <div class="list-body">
+                                <span class="message-author">John Doe</span>
+                                <span class="message-time">1 Aug</span>
+                                <div class="clearfix"></div>
+                                <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="chat.html">
+                        <div class="list-item">
+                            <div class="list-left">
+                                <span class="avatar">T</span>
+                            </div>
+                            <div class="list-body">
+                                <span class="message-author"> Tarah Shropshire </span>
+                                <span class="message-time">12:28 AM</span>
+                                <div class="clearfix"></div>
+                                <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="chat.html">
+                        <div class="list-item">
+                            <div class="list-left">
+                                <span class="avatar">M</span>
+                            </div>
+                            <div class="list-body">
+                                <span class="message-author">Mike Litorus</span>
+                                <span class="message-time">12:28 AM</span>
+                                <div class="clearfix"></div>
+                                <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="chat.html">
+                        <div class="list-item">
+                            <div class="list-left">
+                                <span class="avatar">C</span>
+                            </div>
+                            <div class="list-body">
+                                <span class="message-author"> Catherine Manseau </span>
+                                <span class="message-time">12:28 AM</span>
+                                <div class="clearfix"></div>
+                                <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="chat.html">
+                        <div class="list-item">
+                            <div class="list-left">
+                                <span class="avatar">D</span>
+                            </div>
+                            <div class="list-body">
+                                <span class="message-author"> Domenic Houston </span>
+                                <span class="message-time">12:28 AM</span>
+                                <div class="clearfix"></div>
+                                <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="chat.html">
+                        <div class="list-item">
+                            <div class="list-left">
+                                <span class="avatar">B</span>
+                            </div>
+                            <div class="list-body">
+                                <span class="message-author"> Buster Wigton </span>
+                                <span class="message-time">12:28 AM</span>
+                                <div class="clearfix"></div>
+                                <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="chat.html">
+                        <div class="list-item">
+                            <div class="list-left">
+                                <span class="avatar">R</span>
+                            </div>
+                            <div class="list-body">
+                                <span class="message-author"> Rolland Webber </span>
+                                <span class="message-time">12:28 AM</span>
+                                <div class="clearfix"></div>
+                                <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="chat.html">
+                        <div class="list-item">
+                            <div class="list-left">
+                                <span class="avatar">C</span>
+                            </div>
+                            <div class="list-body">
+                                <span class="message-author"> Claire Mapes </span>
+                                <span class="message-time">12:28 AM</span>
+                                <div class="clearfix"></div>
+                                <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="chat.html">
+                        <div class="list-item">
+                            <div class="list-left">
+                                <span class="avatar">M</span>
+                            </div>
+                            <div class="list-body">
+                                <span class="message-author">Melita Faucher</span>
+                                <span class="message-time">12:28 AM</span>
+                                <div class="clearfix"></div>
+                                <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="chat.html">
+                        <div class="list-item">
+                            <div class="list-left">
+                                <span class="avatar">J</span>
+                            </div>
+                            <div class="list-body">
+                                <span class="message-author">Jeffery Lalor</span>
+                                <span class="message-time">12:28 AM</span>
+                                <div class="clearfix"></div>
+                                <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="chat.html">
+                        <div class="list-item">
+                            <div class="list-left">
+                                <span class="avatar">L</span>
+                            </div>
+                            <div class="list-body">
+                                <span class="message-author">Loren Gatlin</span>
+                                <span class="message-time">12:28 AM</span>
+                                <div class="clearfix"></div>
+                                <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="chat.html">
+                        <div class="list-item">
+                            <div class="list-left">
+                                <span class="avatar">T</span>
+                            </div>
+                            <div class="list-body">
+                                <span class="message-author">Tarah Shropshire</span>
+                                <span class="message-time">12:28 AM</span>
+                                <div class="clearfix"></div>
+                                <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+

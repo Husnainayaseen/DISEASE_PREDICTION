@@ -1,0 +1,74 @@
+﻿@model IEnumerable<DISEASE_PREDICTION.Models.TBL_ORDER>
+
+@{
+    ViewBag.Title = "profit";
+}
+
+<h2>profit & Loss</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TBL_ADMIN.ADMIN_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TBL_PATIENT.PATIENT_GENDER)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ORDER_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ORDER_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ORDER_STATUS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ORDER_TYPE)
+        </th>
+        <th>
+           Total Sale
+        </th>       
+        <th>Total Purchase</th>
+        <th> Profit</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TBL_ADMIN.ADMIN_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TBL_PATIENT.PATIENT_GENDER)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ORDER_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ORDER_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ORDER_STATUS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ORDER_TYPE)
+        </td>
+        <td>
+           @item.TBL_ORDERDETAIL.Sum(x=>x.MED_SALE_PRICE)
+        </td>
+        <td>
+           @item.TBL_ORDERDETAIL.Sum(x=>x.MED_PURCHASE_PRICE)
+        </td> 
+        <td>
+           @(item.TBL_ORDERDETAIL.Sum(x=>x.MED_SALE_PRICE)- item.TBL_ORDERDETAIL.Sum(x => x.MED_PURCHASE_PRICE))
+        </td>
+       
+        
+        <td>
+           
+        </td>
+    </tr>
+}
+
+</table>

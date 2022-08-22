@@ -21,8 +21,8 @@ namespace DISEASE_PREDICTION.Models
         [StringLength(50)]
         public string COMPANY_NAME { get; set; }
 
-        //[Column(TypeName = "image")]
-        //public byte[] COMPANY_LOGO { get; set; }
+        [Column(TypeName = "image")]
+        public byte[] COMPANY_LOGO { get; set; }
 
         [StringLength(50)]
         public string COMPANY_LOCATION { get; set; }

@@ -11,6 +11,7 @@ namespace DISEASE_PREDICTION.Controllers
     public class cartController : Controller
     {
         Model1 db = new Model1();
+        int Quantity;
         // GET: cart
         public ActionResult addtocart(int id)
         {
@@ -40,11 +41,14 @@ namespace DISEASE_PREDICTION.Controllers
         {
             order.ORDER_DATE = System.DateTime.Now;
             order.ORDER_STATUS = "booked";
+            order.ORDER_TYPE = "Sale";
+            order.PAYMENTMODE = "COD";
             order.PATIENT_FID = current_user.currentpatient.PATIENT_ID;         
                 db.TBL_ORDER.Add(order);
                 db.SaveChanges();
-                
-            foreach(var item in (List<TBL_MEDICINE>)Session["cart"])
+             
+
+            foreach (var item in (List<TBL_MEDICINE>)Session["cart"])
             {
                 TBL_ORDERDETAIL od = new TBL_ORDERDETAIL();
                 od.MEDICINE_FID = item.MED_ID;

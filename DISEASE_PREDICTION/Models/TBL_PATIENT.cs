@@ -20,8 +20,8 @@ namespace DISEASE_PREDICTION.Models
 
         public int PATIENT_AGE { get; set; }
 
-        [Required]
-        [StringLength(10)]
+        //[Required]
+        [StringLength(50)]
         public string PATIENT_GENDER { get; set; }
 
         [Required]
@@ -35,19 +35,21 @@ namespace DISEASE_PREDICTION.Models
         [Required]
         [StringLength(50)]
         public string PATIENT_PhoneNo { get; set; }
-            [Required]
-        [StringLength(50)]
-        public string PATIENT_Email { get; set; }
-            [Required]
-        [StringLength(50)]
-        public string Patient_EmailPassword { get; set; }
 
         [Required]
+        [StringLength(50)]
+        public string PATIENT_Email { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string PATIENT_EmailPassword { get; set; }
+
+        //[Required]
         [StringLength(100)]
         public string PATIENT_DISEASE { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime PATIENT_APPOINTMENTDATE { get; set; }
+        public DateTime? PATIENT_APPOINTMENTDATE { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBL_FEEDBACK> TBL_FEEDBACK { get; set; }

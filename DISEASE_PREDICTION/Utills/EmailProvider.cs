@@ -24,7 +24,7 @@ namespace DISEASE_PREDICTION.Utills
                 smtp.Host = "smtp.gmail.com"; //for gmail host  
                 smtp.EnableSsl = true;
                 smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential("husnainyaseen820@gmail.com", "manojani@21");
+                smtp.Credentials = new NetworkCredential("husnainyaseen820@gmail.com", "gpenyuljihwoknsn");
                 smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                 smtp.Send(message);
             }

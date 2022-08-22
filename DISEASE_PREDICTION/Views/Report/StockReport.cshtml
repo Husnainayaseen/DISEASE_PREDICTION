@@ -1,0 +1,112 @@
+﻿@model IEnumerable<DISEASE_PREDICTION.Models.TBL_MEDICINE>
+
+@{
+    ViewBag.Title = "AllMedicine";
+}
+
+<h2>AllMedicine</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TBL_DISEASECATEGORY.DISEASE_DESCRIPTION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TBL_MEDICINECOMPANY.COMPANY_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MED_NAME)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.MED_MANUFACTURE_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MED_EXPIRY_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MED_SALE_PRICE)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.MED_PURCHASE_PRICE)
+        </th>
+        
+        <th>Stock</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TBL_DISEASECATEGORY.DISEASE_DESCRIPTION)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TBL_MEDICINECOMPANY.COMPANY_NAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MED_NAME)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.MED_MANUFACTURE_DATE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MED_EXPIRY_DATE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MED_SALE_PRICE)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.MED_PURCHASE_PRICE)
+            </td>
+            <td>
+                @item.TBL_ORDERDETAIL.Sum(x=>x.MED_QUANTITY)
+            </td>
+           
+        </tr>
+    }
+
+</table>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close " data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+            </div>
+            <div class="modal-body">
+                <form action="/Purchase/AddToCart">
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label">Recipient:</label>
+                        <input type="text" readonly class="form-control" id="proname">
+                        <input type="hidden" name="id" class="form-control" id="proid">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">Message:</label>
+                        <input type="number" class="form-control" name="qty" min="1">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send message</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+               
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    function Addtocart(obj) {
+        var id = obj.id;
+        var name = obj.name;
+       /* to get value except id and name in javascript we will use this code*/
+       /* alert($(obj).attr("data-extra"));*/
+        $("#proname").val(name);
+        $("#proid").val(id);
+        $("#exampleModal").modal();
+    }
+</script>

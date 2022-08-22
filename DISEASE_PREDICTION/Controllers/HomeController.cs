@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace DISEASE_PREDICTION.Controllers
 {
@@ -26,9 +27,10 @@ namespace DISEASE_PREDICTION.Controllers
         [HttpPost]
         public ActionResult login(string name, string email, string password)
         {
-            int v = db.TBL_ADMIN.Where(x => x.ADMIN_NAME == name && x.ADMIN_EMAIL == email && x.ADMIN_PASSWORD == password).Count();
-            if (v > 0)
+            TBL_ADMIN v = db.TBL_ADMIN.Where(x => x.ADMIN_NAME == name && x.ADMIN_EMAIL == email && x.ADMIN_PASSWORD == password).FirstOrDefault();
+            if (v !=null)
             {
+                current_user.currentadmin = v;
                 return RedirectToAction("indexadmin");
             }
             else
@@ -51,9 +53,12 @@ namespace DISEASE_PREDICTION.Controllers
                 
      public ActionResult Newpassword(string password)
         {
-            int user = (TBL_PATIENT)Session["userforgetpassword"];
-            user.
-            return View();
+            var user = (TBL_PATIENT)Session["userforgetpassword"];
+            user.PATIENT_EmailPassword = password;
+            db.Entry(user).State =EntityState.Modified;
+            db.SaveChanges();
+            TempData["msg"] = "Password Updated successfully";
+            return RedirectToAction("customerlogin");
 
         } public ActionResult codeverify()
         {
@@ -78,7 +83,7 @@ namespace DISEASE_PREDICTION.Controllers
                 TempData["error"] = "Invalid Email";
                 return RedirectToAction("customerlogin");
             }
-            string receiverEmail = "husnainyaseen820@gmail.com";
+            string receiverEmail = "mazeenbilla0@gmail.com";
             Random random = new Random();
             int code = random.Next(1001, 9990);
             string Emailsubject = "subject";
@@ -109,18 +114,24 @@ namespace DISEASE_PREDICTION.Controllers
             return View();
         }
         [HttpPost] 
-        public ActionResult customerlogin(TBL_PATIENT patient)
+        public ActionResult customerlogin(string PATIENT_NAME,string PATIENT_PhoneNo, string PATIENT_Email, string PATIENT_EmailPassword,string PATIENT_LOCATION)
         {
-            if (patient.PATIENT_NAME == null || patient.PATIENT_LOCATION == null || patient.PATIENT_PhoneNo == null)
+            TBL_PATIENT p=new TBL_PATIENT();
+            p.PATIENT_NAME = PATIENT_NAME;
+            p.PATIENT_PhoneNo = PATIENT_PhoneNo;
+            p.PATIENT_Email = PATIENT_Email;
+            p.PATIENT_EmailPassword = PATIENT_EmailPassword;
+            p.PATIENT_LOCATION = PATIENT_LOCATION;
+            if (p.PATIENT_NAME == null || p.PATIENT_LOCATION == null || p.PATIENT_PhoneNo == null)
             {
-                TBL_PATIENT p = db.TBL_PATIENT.Where(x => x.PATIENT_Email == patient.PATIENT_Email && x.Patient_EmailPassword == patient.Patient_EmailPassword).FirstOrDefault();
+                TBL_PATIENT patient = db.TBL_PATIENT.Where(x => x.PATIENT_Email == p.PATIENT_Email && x.PATIENT_EmailPassword == p.PATIENT_EmailPassword).FirstOrDefault();
 
-                if (p != null)
+                if (patient != null)
                 {
-                    current_user.currentpatient = p;
-                    if (Session["cart"]!=null)
+                    current_user.currentpatient = patient;
+                    if (Session["cart"] != null)
                     {
-                        return RedirectToAction("displaycart","cart");
+                        return RedirectToAction("displaycart", "cart");
                     }
                     return RedirectToAction("checkout");
 
@@ -129,10 +140,11 @@ namespace DISEASE_PREDICTION.Controllers
                 {
                     ViewBag.msg = "<script> alert('Invalid Email And Password')</script>";
                 }
-                    }
+            }
+
             if (ModelState.IsValid)
             {
-                db.TBL_PATIENT.Add(patient);
+                db.TBL_PATIENT.Add(p);
                 db.SaveChanges();
                 ViewBag.msg = "<script> alert('Account Is Created Successfully')</script>";
             }

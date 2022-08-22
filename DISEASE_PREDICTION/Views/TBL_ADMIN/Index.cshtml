@@ -7,53 +7,49 @@
 <h2>Index</h2>
 
 <p>
-    <a class="btn btn-primary glyphicon glyphicon-pencil" href="@Url.Action("Create","TBL_ADMIN")">Create New</a>
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-           ADMIN NAME
+            @Html.DisplayNameFor(model => model.ADMIN_NAME)
         </th>
         <th>
-           ADMIN EMAIL
+            @Html.DisplayNameFor(model => model.ADMIN_EMAIL)
         </th>
         <th>
-           ADMIN PASSWORD
+            @Html.DisplayNameFor(model => model.ADMIN_PASSWORD)
         </th>
         <th>
-            ADMIN CONTACT
+            @Html.DisplayNameFor(model => model.ADMIN_CONTACT)
         </th>
         <th>
-           ADMIN ADDRESS
+            @Html.DisplayNameFor(model => model.ADMIN_ADDRESS)
         </th>
         <th></th>
     </tr>
 
-@foreach (var admin in Model) {
+@foreach (var item in Model) {
     <tr>
         <td>
-            @admin.ADMIN_NAME
+            @Html.DisplayFor(modelItem => item.ADMIN_NAME)
         </td>
         <td>
-           @admin.ADMIN_EMAIL
+            @Html.DisplayFor(modelItem => item.ADMIN_EMAIL)
         </td>
         <td>
-            @admin.ADMIN_PASSWORD
+            @Html.DisplayFor(modelItem => item.ADMIN_PASSWORD)
         </td>
         <td>
-           @admin.ADMIN_CONTACT
+            @Html.DisplayFor(modelItem => item.ADMIN_CONTACT)
         </td>
         <td>
-           @admin.ADMIN_ADDRESS
+            @Html.DisplayFor(modelItem => item.ADMIN_ADDRESS)
+        </td>
         <td>
-            <a class="btn btn-primary glyphicon glyphicon-edit" href="@Url.Action("Edit","TBL_ADMIN",new{ id=admin.ADMIN_ID})">Edit</a>
-            <a class="btn btn-primary glyphicon glyphicon-expand" href="@Url.Action("Details","TBL_ADMIN",new{ id=admin.ADMIN_ID})">Details</a>
-            <a class="btn btn-primary glyphicon glyphicon-trash" href="@Url.Action("Delete","TBL_ADMIN",new{ id=admin.ADMIN_ID})">Delete</a>
-
-
-            @*@Html.ActionLink("Edit", "Edit", new { id = admin.ADMIN_ID }) |
-            @Html.ActionLink("Details", "Details", new { id = admin.ADMIN_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = admin.ADMIN_ID })*@
+            @Html.ActionLink("Edit", "Edit", new { id=item.ADMIN_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ADMIN_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ADMIN_ID })
         </td>
     </tr>
 }

@@ -153,30 +153,34 @@
         </li>*@
                         <li>
                             <a href="@Url.Action("Index","TBL_MEDICINE")"><i class="fa fa-pencil"></i> <span>Manage Medicine</span></a>
+                        </li> 
+                        <li>
+                            <a href="@Url.Action("NewOrders","Adminside")"><i class="fa fa-pencil"></i> <span>New Orders</span></a>
+                            <a href="@Url.Action("proceedOrders","Adminside")"><i class="fa fa-pencil"></i> <span>Proceed Orders</span></a>
                         </li>
                         <li>
-                            <a href="@Url.Action("Index","#")"><i class="fa fa-money"></i> <span>Profit</span></a>
+                            <a href="@Url.Action("profit","report")"><i class="fa fa-money"></i> <span>Profit & Loss</span></a>
                         </li>
-                        <li>
-                            <a href="@Url.Action("Index","#")"><i class="fa fa-money"></i> <span>Loss</span></a>
-                        </li>
+                        
                         <li class="submenu">
+                          
                             <a href="#"><i class="fa fa-expand"></i> <span> Reports </span> <span class="menu-arrow"></span></a>
-                            @*<ul style="display: none;">
-                    <li><a href="employees.html">Cash on Delivery</a></li>
-                    <li><a href="leaves.html">Online</a></li>
+                            <ul style="display: none;">
+                    <li><a href="@Url.Action("purchaseReport","report")">Purchase Report</a></li>
+                    <li><a href="@Url.Action("salesReport","report")">Sale Report</a></li>
+                    <li><a href="@Url.Action("stockReport","report")">Stock Report</a></li>
+                    @*<li><a href="leaves.html">Online</a></li>
                     <li><a href="holidays.html"></a></li>
-                    <li><a href="attendance.html">Attendance</a></li>
+                    <li><a href="attendance.html">Attendance</a></li>*@
                 </ul>
-            </li>*@
+            </li>
                         <li class="submenu">
                             <a href="#"><i class="fa fa-first-order"></i> <span>Manage purchases</span> <span class="menu-arrow"></span></a>
                             <ul style="display: none;">
-                                <li><a href="invoices.html">Add</a></li>
-                                <li><a href="payments.html">Cancel</a></li>
-                                <li><a href="expenses.html">postpone</a></li>
-                                @*<li><a href="taxes.html">Taxes</a></li>
-            <li><a href="provident-fund.html">Provident Fund</a></li>*@
+                                <li><a href="/purchase/AllMedicine">Add</a></li>
+                                <li><a href="/purchase/newpurchase">New Purchase</a></li>
+                                @*<li><a href="expenses.html">postpone</a></li>*@
+                           
                             </ul>
                             <a href="#"><i class="fa fa-list-alt"></i> <span>View Feedback</span> <span class="menu-arrow"></span></a>
                         </li>

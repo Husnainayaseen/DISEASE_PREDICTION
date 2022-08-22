@@ -17,7 +17,6 @@ namespace DISEASE_PREDICTION.Models
         [Key]
         public int ORDER_ID { get; set; }
 
-        [Required]
         [StringLength(50)]
         public string ORDER_NAME { get; set; }
 
@@ -32,24 +31,24 @@ namespace DISEASE_PREDICTION.Models
         [StringLength(50)]
         public string ORDER_TYPE { get; set; }
 
-        [Required]
         [StringLength(50)]
         public string ORDER_EMAIL { get; set; }
 
-        [Required]
         [StringLength(50)]
         public string ORDER_ADDRESS { get; set; }
 
-        [Required]
         [StringLength(50)]
         public string ORDER_CONTACT { get; set; }
 
-        public int PATIENT_FID { get; set; }
-        public int PAYMENTMODE { get; set; }
+        public int? PATIENT_FID { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string STATUS { get; set; }
+        public string PAYMENTMODE { get; set; }
+
+        public int? ADMIN_FID { get; set; }
+
+        public virtual TBL_ADMIN TBL_ADMIN { get; set; }
 
         public virtual TBL_PATIENT TBL_PATIENT { get; set; }
 

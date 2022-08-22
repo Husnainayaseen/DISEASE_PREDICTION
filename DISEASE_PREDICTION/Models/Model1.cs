@@ -8,10 +8,11 @@ namespace DISEASE_PREDICTION.Models
     public partial class Model1 : DbContext
     {
         public Model1()
-            : base("name=Model1")
+            : base("name=Model11")
         {
         }
 
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TBL_ADMIN> TBL_ADMIN { get; set; }
         public virtual DbSet<TBL_DISEASECATEGORY> TBL_DISEASECATEGORY { get; set; }
         public virtual DbSet<TBL_FEEDBACK> TBL_FEEDBACK { get; set; }
@@ -24,6 +25,11 @@ namespace DISEASE_PREDICTION.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<TBL_ADMIN>()
+                .HasMany(e => e.TBL_ORDER)
+                .WithOptional(e => e.TBL_ADMIN)
+                .HasForeignKey(e => e.ADMIN_FID);
+
             modelBuilder.Entity<TBL_DISEASECATEGORY>()
                 .HasMany(e => e.TBL_MEDICINE)
                 .WithRequired(e => e.TBL_DISEASECATEGORY)
@@ -47,10 +53,6 @@ namespace DISEASE_PREDICTION.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TBL_MEDICINECOMPANY>()
-                .Property(e => e.COMPANY_NAME)
-                .IsFixedLength();
-
-            modelBuilder.Entity<TBL_MEDICINECOMPANY>()
                 .HasMany(e => e.TBL_MEDICINE)
                 .WithRequired(e => e.TBL_MEDICINECOMPANY)
                 .HasForeignKey(e => e.MED_COMPANY_FID)
@@ -63,19 +65,14 @@ namespace DISEASE_PREDICTION.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TBL_PATIENT>()
-                .Property(e => e.PATIENT_GENDER)
-                .IsFixedLength();
-
-            modelBuilder.Entity<TBL_PATIENT>()
                 .HasMany(e => e.TBL_FEEDBACK)
                 .WithOptional(e => e.TBL_PATIENT)
                 .HasForeignKey(e => e.PATIENT_FID);
 
             modelBuilder.Entity<TBL_PATIENT>()
                 .HasMany(e => e.TBL_ORDER)
-                .WithRequired(e => e.TBL_PATIENT)
-                .HasForeignKey(e => e.PATIENT_FID)
-                .WillCascadeOnDelete(false);
+                .WithOptional(e => e.TBL_PATIENT)
+                .HasForeignKey(e => e.PATIENT_FID);
         }
     }
 }
