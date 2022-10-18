@@ -7,19 +7,21 @@
 <h2>Index</h2>
 
 <p>
-    <a class="btn btn-primary glyphicon glyphicon-pencil" href="@Url.Action("Create","TBL_MEDICINE")">Create New</a>
+    <a class="btn btn-primary fa fa-pencil-square" href="@Url.Action("Create","TBL_MEDICINE")">Create New</a>
 </p>
 <table class="table">
     <tr>
+        <th> MEDICINE IMAGE</th>
+        <th>
+            MEDICINE NAME
+        </th>
         <th>
             DISEASE DESCRIPTION
         </th>
         <th>
             COMPANY NAME
         </th>
-        <th>
-            MEDICINE NAME      
-        </th>
+
         @*<th>
             MED MANUFACTURE DATE
         </th>
@@ -38,20 +40,23 @@
         @*<th>
            MEDICINE REACTION
         </th>*@
-        <th> MEDICINE IMAGE</th>
     </tr>
 
 @foreach (var medicine in Model) {
 <tr>
+    <td>
+        <img src="@Url.Content(medicine.MED_IMAGE)" height="50px" width="50px" />
+    </td>
+    <td>
+        @medicine.MED_NAME
+    </td>
     <td>
         @medicine.MED_USAGE
     </td>
     <td>
         @medicine.TBL_MEDICINECOMPANY.COMPANY_NAME
     </td>
-    <td>
-        @medicine.MED_NAME
-    </td>
+
     <td>
         @medicine.MED_SALE_PRICE
     </td>
@@ -64,22 +69,20 @@
         </td>*@
 
     @*<td>
-        @medicine.MED_USAGE
-    </td>*@
+            @medicine.MED_USAGE
+        </td>*@
     <td>
-            @medicine.MED_PURCHASE_PRICE
-        </td>
-    @*<td>
-        @medicine.MEDICINE_REACTION
-    </td>*@
-    <td>
-        <img src="@Url.Content(medicine.MED_IMAGE)" height="100" width="100" />
+        @medicine.MED_PURCHASE_PRICE
     </td>
+    @*<td>
+            @medicine.MEDICINE_REACTION
+        </td>*@
+
 
     <td>
-        <a class="btn btn-primary glyphicon glyphicon-edit" href="@Url.Action("Edit","TBL_MEDICINE",new{ id=medicine.MED_ID})">Edit</a>
-        <a class="btn btn-primary glyphicon glyphicon-expand" href="@Url.Action("Details","TBL_MEDICINE",new{ id=medicine.MED_ID})">Details</a>
-        <a class="btn btn-primary glyphicon glyphicon-trash" href="@Url.Action("Delete","TBL_MEDICINE",new{ id=medicine.MED_ID})">Delete</a>
+        <a class="btn btn-success  fa fa-edit " href="@Url.Action("Edit","TBL_MEDICINE",new{ id=medicine.MED_ID})"></a>
+        <a class="btn btn-grey fa fa-book" href="@Url.Action("Details","TBL_MEDICINE",new{ id=medicine.MED_ID})"></a>
+        <a class="btn btn-danger fa fa-trash" href="@Url.Action("Delete","TBL_MEDICINE",new{ id=medicine.MED_ID})"></a>
 
 
 

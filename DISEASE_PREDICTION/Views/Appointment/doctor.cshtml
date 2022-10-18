@@ -1,0 +1,87 @@
+﻿@using DISEASE_PREDICTION.Models;
+@{
+    ViewBag.Title = "doctor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Model1 db = new Model1();
+    //int? spID = null;
+    //if (ViewData["spID"] != null)
+    //{
+
+    //    spID = (int)TempData.Peek("spID");
+    //}
+}
+
+<section id="inner-headline">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="pageTitle">Our Doctors</h2>
+            </div>
+        </div>
+    </div>
+</section>
+<br />
+<section>
+<div class="col-xs-3">
+<div class="sidebar-title " style="float:left;width:300px ">
+    <h3 class="wow zoomIn">Specializations</h3>
+    <div class="list-group list-group-sm wow slideInLeft">
+        @foreach (var s in db.TBL_SPECIALIZATION)
+        {
+           
+            <a href="@Url.Action("Doctor","appointment",new { id=s.SP_ID })" class=" list-group-item list-group-item-action">@s.SPECIALIZATION<small class="text-muted">(@s.TBL_DOCTOR.Count())</small></a>
+        }
+    <a href="@Url.Action("Doctor","appointment")" class=" list-group-item list-group-item-action">All Specialist<small class="text-muted">(@db.TBL_DOCTOR.Count())</small></a>
+
+        
+    </div>
+    <h3 class="wow zoomIn">Doctors by Gender</h3>
+    <div class="list-group list-group-sm wow slideInLeft">
+
+        <a href="@Url.Action("Doctor","appointment",new { gender=1})" class=" list-group-item list-group-item-action">Male</a>
+        <a href="@Url.Action("Doctor","appointment",new { gender=2})" class=" list-group-item list-group-item-action">Female</a>
+
+        </div>
+    </div>
+</div>
+@*</div>*@
+@*<section>*@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-8">
+            <div class="section-title">
+
+                <h2 class="wow   zoomIn" style="margin-left:150px;">A <span>Professional</span> & Care Provider</h2>
+            </div>
+        </div>
+    </div>
+    @*<div class="row wow slideInUp">*@
+    @foreach (var item in db.TBL_DOCTOR)
+    {
+        if (ViewData["spID"] == null || item.SP_FID ==(int)ViewData["spID"])
+        {
+            <div class="col-md-3 col-sm-6 col-xs-6  " style="margin-right:50px">
+                <div class="special-main">
+                    <div class="special-item">
+                        <div class="special-image">
+                            <img src="@Url.Content(item.DOC_PIC)" style="height:200px;width:200px " class=" img-circle" alt="image">
+                            <div class=" hover hover-img">
+                                <a href="@Url.Action("doctor_detail","appointment" ,new { id=item.DOC_ID })"><p style="color:white;font:300px">View profile</p></a>
+                            </div>
+
+                            <div class="color-overlay"></div>
+                        </div>
+                        <div class="special-content">
+                            <h4 style="text-align:center">@item.DOC_NAME</h4>
+                            <p style="text-align:center">@item.TBL_SPECIALIZATION.SPECIALIZATION</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+       
+    }
+
+</div>
+    @*</div>*@
+</section>

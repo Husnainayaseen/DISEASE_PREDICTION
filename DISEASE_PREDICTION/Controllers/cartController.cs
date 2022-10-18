@@ -59,7 +59,7 @@ namespace DISEASE_PREDICTION.Controllers
                 db.TBL_ORDERDETAIL.Add(od);
                 db.SaveChanges();
             }
-            string mailBody = "Your order has been conformend.your order will be delivered in 3 days.";
+            string mailBody = "Your order has been confirmend.Your order will be delivered in 3 days.";
             EmailProvider.Email(order.ORDER_EMAIL, "order Conformation",mailBody);
             TempData["order"] = Session["cart"];
             Session["cart"] = null;

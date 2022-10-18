@@ -11,6 +11,7 @@ namespace DISEASE_PREDICTION.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TBL_DISEASECATEGORY()
         {
+            TBL_DISEASE_SYMPTOM = new HashSet<TBL_DISEASE_SYMPTOM>();
             TBL_MEDICINE = new HashSet<TBL_MEDICINE>();
         }
 
@@ -19,6 +20,9 @@ namespace DISEASE_PREDICTION.Models
 
         [StringLength(50)]
         public string DISEASE_DESCRIPTION { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TBL_DISEASE_SYMPTOM> TBL_DISEASE_SYMPTOM { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBL_MEDICINE> TBL_MEDICINE { get; set; }

@@ -1,0 +1,82 @@
+﻿@model DISEASE_PREDICTION.Models.TBL_DOCTOR
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TBL_DOCTOR</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TBL_SPECIALIZATION.SPECIALIZATION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBL_SPECIALIZATION.SPECIALIZATION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOC_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOC_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOC_EMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOC_EMAIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOC_PASSWORD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOC_PASSWORD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOC_GENDER)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOC_GENDER)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOC_ADDRESS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOC_ADDRESS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOC_PIC)
+        </dt>
+
+        <dd>
+        <img src="@Url.Content(Model.DOC_PIC)" height="100" width="100"/>  
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AVAILABLE_STATUS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AVAILABLE_STATUS)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DOC_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

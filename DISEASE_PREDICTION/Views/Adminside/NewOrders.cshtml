@@ -69,7 +69,7 @@
             @Html.DisplayFor(modelItem => item.PAYMENTMODE)
         </td>
         <td>
-            <a href="@Url.Action("invoice","Adminside",new{id=item.ORDER_ID})" class="btn btn-primary">Invoice </a>
+            <a href="@Url.Action("invoice","Adminside",new{id=item.ORDER_ID})" class="btn btn-primary ">Invoice </a>
             <a href="@Url.Action("AddToProceed","Adminside",new{id=item.ORDER_ID})" class="btn btn-primary">Accept</a>
         </td>
     </tr>

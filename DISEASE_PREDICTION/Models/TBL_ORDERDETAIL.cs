@@ -21,8 +21,6 @@ namespace DISEASE_PREDICTION.Models
         [Column(TypeName = "numeric")]
         public decimal MED_SALE_PRICE { get; set; }
 
-        [Required]
-        //[StringLength(50)]
         public int MED_QUANTITY { get; set; }
 
         public virtual TBL_MEDICINE TBL_MEDICINE { get; set; }

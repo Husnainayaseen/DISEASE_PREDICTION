@@ -8,19 +8,15 @@ namespace DISEASE_PREDICTION.Models
 
     public partial class TBL_MEDICINE
     {
-       
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TBL_MEDICINE()
         {
-           
             TBL_ORDERDETAIL = new HashSet<TBL_ORDERDETAIL>();
             TBL_SYMPTOMS = new HashSet<TBL_SYMPTOMS>();
         }
 
         [Key]
         public int MED_ID { get; set; }
-        [NotMapped]
-        public int Quantity { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -33,6 +29,8 @@ namespace DISEASE_PREDICTION.Models
         public DateTime MED_EXPIRY_DATE { get; set; }
 
         public int MED_SALE_PRICE { get; set; }
+        [NotMapped]
+        public int Quantity{ get; set; }
 
         [Required]
         [StringLength(100)]
@@ -60,6 +58,5 @@ namespace DISEASE_PREDICTION.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBL_SYMPTOMS> TBL_SYMPTOMS { get; set; }
-       
     }
 }

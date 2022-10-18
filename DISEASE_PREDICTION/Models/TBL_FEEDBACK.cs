@@ -19,6 +19,9 @@ namespace DISEASE_PREDICTION.Models
         [StringLength(100)]
         public string FEEDBACK_EMAIL { get; set; }
 
+        [StringLength(50)]
+        public string FEEDBACK_NAME { get; set; }
+
         public virtual TBL_PATIENT TBL_PATIENT { get; set; }
     }
 }

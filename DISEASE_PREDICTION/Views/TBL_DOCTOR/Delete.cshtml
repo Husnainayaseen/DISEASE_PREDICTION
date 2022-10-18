@@ -1,0 +1,88 @@
+﻿@model DISEASE_PREDICTION.Models.TBL_DOCTOR
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TBL_DOCTOR</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TBL_SPECIALIZATION.SPECIALIZATION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBL_SPECIALIZATION.SPECIALIZATION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOC_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOC_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOC_EMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOC_EMAIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOC_PASSWORD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOC_PASSWORD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOC_GENDER)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOC_GENDER)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOC_ADDRESS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOC_ADDRESS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOC_PIC)
+        </dt>
+
+        <dd>
+         <img src="@Url.Content(Model.DOC_PIC)" height="100" width="100"/>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AVAILABLE_STATUS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AVAILABLE_STATUS)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

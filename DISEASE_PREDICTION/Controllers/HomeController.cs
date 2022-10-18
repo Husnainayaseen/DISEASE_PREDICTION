@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using System.Web.Security;
 
 namespace DISEASE_PREDICTION.Controllers
 {
@@ -22,6 +23,32 @@ namespace DISEASE_PREDICTION.Controllers
         }
         public ActionResult login()
         {
+            return View();
+        }public ActionResult feedback()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult feedback(string FEEDBACK_NAME, string FEEDBACK_EMAIL, string comment)
+        {
+            TBL_FEEDBACK feedback = new TBL_FEEDBACK(); 
+            if (current_user.currentpatient != null)
+            {
+                
+                feedback.FEEDBACK_DETAIL = comment;
+                
+                feedback.PATIENT_FID = current_user.currentpatient.PATIENT_ID;
+                ViewBag.msg1 = "<script>alert('Thanks For Giving Your Feedback')</script>";
+            }
+            else
+            {
+                feedback.FEEDBACK_EMAIL = FEEDBACK_EMAIL;
+                feedback.PATIENT_FID =null;
+                feedback.FEEDBACK_NAME = FEEDBACK_NAME;
+                ViewBag.msg = "<script>alert('Thanks for giving feedback.It would be very precious for us')</script>";
+            }
+            db.TBL_FEEDBACK.Add(feedback);
+            db.SaveChanges();
             return View();
         }
         [HttpPost]
@@ -95,6 +122,10 @@ namespace DISEASE_PREDICTION.Controllers
         }
         public ActionResult indexadmin()
         {
+            if (current_user.currentadmin == null)
+            {
+                return RedirectToAction("login");
+            }
             return View();
         }
         public ActionResult about()
@@ -133,8 +164,13 @@ namespace DISEASE_PREDICTION.Controllers
                     {
                         return RedirectToAction("displaycart", "cart");
                     }
-                    return RedirectToAction("checkout");
-
+                    else if(Session["cart"]==null)
+                    {
+                        return RedirectToAction("Index");
+                    }
+                    else{
+                        return RedirectToAction("checkout");
+                    }
                 }
                 else
                 {
@@ -147,6 +183,10 @@ namespace DISEASE_PREDICTION.Controllers
                 db.TBL_PATIENT.Add(p);
                 db.SaveChanges();
                 ViewBag.msg = "<script> alert('Account Is Created Successfully')</script>";
+            }
+            if (Session["cart"] == null)
+            {
+                return View("index");
             }
             return View();
         }
@@ -166,11 +206,19 @@ namespace DISEASE_PREDICTION.Controllers
             }
             return View();
         }
-        public ActionResult medicine
-             ()
+        public ActionResult medicine ()
         {
             return View();
+        } public ActionResult Logout ()
+        {
+            current_user.currentadmin = null;
+                //FormsAuthentication.SignOut();
+                return RedirectToAction("login");           
+        } public ActionResult PatientLogout ()
+        {
+            current_user.currentpatient = null;
+                FormsAuthentication.SignOut();
+                return RedirectToAction("customerlogin");
         }
-
     }
 }

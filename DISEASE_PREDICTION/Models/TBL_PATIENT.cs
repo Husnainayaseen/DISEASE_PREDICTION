@@ -18,9 +18,8 @@ namespace DISEASE_PREDICTION.Models
         [Key]
         public int PATIENT_ID { get; set; }
 
-        public int PATIENT_AGE { get; set; }
+        public int? PATIENT_AGE { get; set; }
 
-        //[Required]
         [StringLength(50)]
         public string PATIENT_GENDER { get; set; }
 
@@ -44,7 +43,6 @@ namespace DISEASE_PREDICTION.Models
         [StringLength(50)]
         public string PATIENT_EmailPassword { get; set; }
 
-        //[Required]
         [StringLength(100)]
         public string PATIENT_DISEASE { get; set; }
 

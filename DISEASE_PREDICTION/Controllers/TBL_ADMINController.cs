@@ -1,4 +1,5 @@
 ﻿using System;
+using DISEASE_PREDICTION.Utills;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -17,6 +18,7 @@ namespace DISEASE_PREDICTION.Controllers
         // GET: TBL_ADMIN
         public ActionResult Index()
         {
+            
             return View(db.TBL_ADMIN.ToList());
         }
 

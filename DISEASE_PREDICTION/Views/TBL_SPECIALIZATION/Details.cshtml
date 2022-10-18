@@ -1,0 +1,26 @@
+﻿@model DISEASE_PREDICTION.Models.TBL_SPECIALIZATION
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TBL_SPECIALIZATION</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SPECIALIZATION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SPECIALIZATION)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SP_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

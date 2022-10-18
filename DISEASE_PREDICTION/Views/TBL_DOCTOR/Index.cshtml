@@ -1,0 +1,73 @@
+﻿@model IEnumerable<DISEASE_PREDICTION.Models.TBL_DOCTOR>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a class="btn btn-primary fa fa-pencil-square" href="@Url.Action("Create","TBL_DOCTOR")">Create New</a>
+
+</p>
+<table class="table table-bordered" align="center">
+    <tr class="table table-secondary">
+        <th>
+            DOC_PIC
+        </th>
+        <th>
+            DOC_NAME
+        </th>
+        <th>
+            DOC_EMAIL
+        </th>
+        <th>
+            DOC_PASSWORD
+        </th>
+        <th>
+            DOC_SPECIALIZATION
+        </th>
+
+        <th>
+            DOC_ADDRESS
+        </th>
+
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="@Url.Content(item.DOC_PIC)" height="50px" width="50px" />
+            </td>
+            <td>
+                @item.DOC_NAME
+            </td>
+            <td>
+                @item.DOC_EMAIL
+            </td>
+            <td>
+                @item.DOC_PASSWORD
+            </td>
+            <td>
+                @item.TBL_SPECIALIZATION.SPECIALIZATION
+            </td>
+
+            <td>
+                @item.DOC_ADDRESS
+            </td>
+
+
+            <td>
+                <a class="btn btn-success  fa fa-edit " href="@Url.Action("Edit","TBL_DOCTOR",new{ id=item.DOC_ID})"></a>
+                <a class="btn btn-grey fa fa-book" href="@Url.Action("Details","TBL_DOCTOR",new{ id=item.DOC_ID})"></a>
+                <a class="btn btn-danger fa fa-trash" href="@Url.Action("Delete","TBL_DOCTOR",new{ id=item.DOC_ID})"></a>
+
+            </td>
+        </tr>
+    }
+
+</table>
+

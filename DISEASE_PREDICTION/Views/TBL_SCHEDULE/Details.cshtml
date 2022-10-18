@@ -1,0 +1,66 @@
+﻿@model DISEASE_PREDICTION.Models.TBL_SCHEDULE
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TBL_SCHEDULE</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TBL_DOCTOR.DOC_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBL_DOCTOR.DOC_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SCH_DAY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SCH_DAY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FEE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FEE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.START_TIME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.START_TIME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.END_TIME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.END_TIME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MAX_APP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MAX_APP)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SCH_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
