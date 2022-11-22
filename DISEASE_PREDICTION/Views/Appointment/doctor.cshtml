@@ -1,87 +1,112 @@
-﻿@using DISEASE_PREDICTION.Models;
+﻿@using DISEASE_PREDICTION.Models
+@*@model IEnumerable<DISEASE_PREDICTION.Models.Class1>*@
+
 @{
-    ViewBag.Title = "doctor";
     Layout = "~/Views/Shared/_Layout.cshtml";
     Model1 db = new Model1();
-    //int? spID = null;
-    //if (ViewData["spID"] != null)
-    //{
-
-    //    spID = (int)TempData.Peek("spID");
-    //}
+}
+@if (TempData["Alreadyappoint"] != null)
+{
+    <div class="alert alert-dismissable"></div>
+    <h3> @Html.Raw(TempData["Alreadyappoint"])</h3>
 }
 
 <section id="inner-headline">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="pageTitle">Our Doctors</h2>
+                <h2 class="pageTitle">Doctor</h2>
             </div>
         </div>
     </div>
 </section>
-<br />
-<section>
-<div class="col-xs-3">
-<div class="sidebar-title " style="float:left;width:300px ">
-    <h3 class="wow zoomIn">Specializations</h3>
-    <div class="list-group list-group-sm wow slideInLeft">
-        @foreach (var s in db.TBL_SPECIALIZATION)
-        {
-           
-            <a href="@Url.Action("Doctor","appointment",new { id=s.SP_ID })" class=" list-group-item list-group-item-action">@s.SPECIALIZATION<small class="text-muted">(@s.TBL_DOCTOR.Count())</small></a>
-        }
-    <a href="@Url.Action("Doctor","appointment")" class=" list-group-item list-group-item-action">All Specialist<small class="text-muted">(@db.TBL_DOCTOR.Count())</small></a>
-
-        
-    </div>
-    <h3 class="wow zoomIn">Doctors by Gender</h3>
-    <div class="list-group list-group-sm wow slideInLeft">
-
-        <a href="@Url.Action("Doctor","appointment",new { gender=1})" class=" list-group-item list-group-item-action">Male</a>
-        <a href="@Url.Action("Doctor","appointment",new { gender=2})" class=" list-group-item list-group-item-action">Female</a>
-
-        </div>
-    </div>
-</div>
-@*</div>*@
-@*<section>*@
-<div class="container">
-    <div class="row">
-        <div class="col-xs-8">
-            <div class="section-title">
-
-                <h2 class="wow   zoomIn" style="margin-left:150px;">A <span>Professional</span> & Care Provider</h2>
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="about-logo">
+                    <h3>Our Doctors</h3>
+                    <p>Sed ut perspiciaatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas</p>
+                    <p>Sed ut perspiciaatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas</p>
+                </div>
+                <a href="#" class="btn btn-color">Read more</a>
             </div>
         </div>
     </div>
-    @*<div class="row wow slideInUp">*@
-    @foreach (var item in db.TBL_DOCTOR)
-    {
-        if (ViewData["spID"] == null || item.SP_FID ==(int)ViewData["spID"])
-        {
-            <div class="col-md-3 col-sm-6 col-xs-6  " style="margin-right:50px">
-                <div class="special-main">
-                    <div class="special-item">
-                        <div class="special-image">
-                            <img src="@Url.Content(item.DOC_PIC)" style="height:200px;width:200px " class=" img-circle" alt="image">
-                            <div class=" hover hover-img">
-                                <a href="@Url.Action("doctor_detail","appointment" ,new { id=item.DOC_ID })"><p style="color:white;font:300px">View profile</p></a>
-                            </div>
+    <br />
+    <br />
+    <div class="col-xs-3">
+        <div class="sidebar-title " style="float:left;width:300px ">
+            <h3 class="wow zoomIn">Our Doctors</h3>
+            <div class="list-group list-group-sm wow slideInLeft">
+                @foreach (var s in db.TBL_SPECIALIZATION)
+                {
+                    <a href="@Url.Action("Doctor","appointment",new { id=s.SP_ID })" class=" list-group-item list-group-item-action">@s.SPECIALIZATION<small class="text-muted">(@s.TBL_DOCTOR.Count())</small></a>
+                }
 
-                            <div class="color-overlay"></div>
-                        </div>
+                <a href="@Url.Action("Doctor","appointment")" class=" list-group-item list-group-item-action">All Specialist<small class="text-muted">(@db.TBL_DOCTOR.Count())</small></a>
+                <h3 class="wow zoomIn">Doctors by Gender</h3>
+                <div class="list-group list-group-sm wow slideInLeft">
+
+                    <a href="@Url.Action("Doctor","appointment",new { gender="1"})" class=" list-group-item list-group-item-action">Male</a>
+                    <a href="@Url.Action("Doctor","appointment",new { gender="2"})" class=" list-group-item list-group-item-action">Female</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row service-v1 margin-bottom-40">
+        @foreach (var item in db.TBL_DOCTOR)
+        {
+            if (ViewData["gender"] == null && ViewData["spID"] == null)
+            {
+                <div class="col-md-2 design md-margin-bottom-40">
+                    <img style="width:100%;height:200px;" class="btn btn-primary img-responsive img-fluid" src="@Url.Content(item.DOC_PIC)" alt="">
+                    <div class="mask-icon">
+
                         <div class="special-content">
                             <h4 style="text-align:center">@item.DOC_NAME</h4>
                             <p style="text-align:center">@item.TBL_SPECIALIZATION.SPECIALIZATION</p>
+
+                            <a href="@Url.Action("doctor_detail", "appointment", new { ID = item.DOC_ID })"><p style="color:darkcyan;font:300px;text-align:center"><strong>View profile</strong></p></a>
                         </div>
                     </div>
                 </div>
-            </div>
-        }
-       
-    }
+            }
+            else if (ViewData["spID"] != null && item.SP_FID == (int)ViewData["spID"])
+            {
+                <div class="col-md-2 design md-margin-bottom-40">
+                    <img style="width:100%;height:200px;" class="btn btn-primary img-responsive img-fluid" src="@Url.Content(item.DOC_PIC)" alt="">
+                    <div class="mask-icon">
+                        <div class="special-content">
+                            <h4 style="text-align:center">@item.DOC_NAME</h4>
+                            <p style="text-align:center">@item.TBL_SPECIALIZATION.SPECIALIZATION</p>
+                            <a href="@Url.Action("doctor_detail", "appointment", new { id = item.DOC_ID })" class="hover-wrap fancybox" data-fancybox-group="gallary">
+                                <p style="color:aqua;font:300px;text-align:center;">View profile</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
 
-</div>
-    @*</div>*@
+            else if (ViewData["gender"] != null)
+            {
+                if ((ViewData["gender1"] != null && item.DOC_GENDER == "Male") || (ViewData["gender2"] != null) && item.DOC_GENDER == "Female")
+                {
+                    <div class="col-md-2 design md-margin-bottom-40">
+                        <img style="width:100%;height:200px;" class="btn btn-primary img-responsive img-fluid" src="@Url.Content(item.DOC_PIC)" alt="">
+                        <div class="mask-icon">
+                            <a href="@Url.Action("doctor_detail", "appointment", new { id = item.DOC_ID })"><p style="color:aqua;font:300px;text-align:center">View profile</p></a>
+
+                            <div class="special-content">
+                                <h4 style="text-align:center">@item.DOC_NAME</h4>
+                                <p style="text-align:center">@item.TBL_SPECIALIZATION.SPECIALIZATION</p>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            }
+        }
+    </div>
 </section>

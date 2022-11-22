@@ -143,11 +143,13 @@
     <Compile Include="Controllers\TBL_MEDICINECOMPANYController.cs" />
     <Compile Include="Controllers\TBL_MEDICINEController.cs" />
     <Compile Include="Controllers\TBL_PATIENTController.cs" />
+    <Compile Include="Controllers\TBL_SCHEDULEController.cs" />
     <Compile Include="Controllers\TBL_SPECIALIZATIONController.cs" />
     <Compile Include="Controllers\TBL_SYMPTOMSController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Class1.cs" />
     <Compile Include="Models\Model1.cs" />
     <Compile Include="Models\TBL_ADMIN.cs" />
     <Compile Include="Models\TBL_APPOINTMENT.cs" />
@@ -563,6 +565,7 @@
     <Content Include="Views\firstaid\Drowing.cshtml" />
     <Content Include="Views\Appointment\doctor.cshtml" />
     <Content Include="Views\Appointment\doctor_detail.cshtml" />
+    <Content Include="Views\Appointment\book_Appointment.cshtml" />
     <None Include="Views\Home\index.cshtml" />
     <None Include="Views\Home\about.cshtml" />
     <None Include="Views\Home\customerlogin.cshtml" />

@@ -19,8 +19,10 @@ namespace DISEASE_PREDICTION.Models
 
         [Required]
         [StringLength(50)]
-        public string DOC_NAME { get; set; }
-
+        public string DOC_NAME { get; set; } 
+        [StringLength(50)]
+        public string QUALIFICATION { get; set; }
+       
         [Required]
         [StringLength(50)]
         public string DOC_EMAIL { get; set; }
