@@ -2,7 +2,14 @@
 @{
     ViewBag.Title = "book_Appointment";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    
 }
+        @Html.Raw(TempData["msg"])
+<div class="alert alert-dismissable">
+    <h3>@Html.Raw(TempData["data"])</h3> 
+</div>
+    
+
 
 <section id="inner-headline">
     <div class="container">
@@ -23,8 +30,10 @@
             {
                 foreach(var item in (List < TBL_SCHEDULE >) Session["schlist"])
                 {
-        <center>
-            <table class="table table-borderless" style="height:auto;width:500px;text-align:center;">
+                    
+        <center> 
+            
+            <table class="table table-borderless"  style="height:auto;width:500px;text-align:center;">
                 <tr>
                     <td colspan="6" align="center" style="font-size:large;color: white;background-color:mediumturquoise">Detail of Appointment</td>
                 </tr>
@@ -43,7 +52,7 @@
                 </tr>
                 <tr>
                     <th>Appointment Date</th>
-                    @*@<td>@DateTime.Parse(Session["AppDate"].ToString()).ToLongDateString()</td>*@
+                    <td>@DateTime.Parse(Session["AppDate"].ToString()).ToLongDateString()</td>
                 </tr>
                 <tr>
                     <th>Appointment Day</th>
@@ -51,6 +60,7 @@
                 </tr>
                 <tr>
                     <th>Timming</th>
+                    
                     <td>@item.START_TIME - @item.END_TIME</td>
                 </tr>
                 <tr>
@@ -63,17 +73,18 @@
                 </tr>
             </table>
             <br />
-            <h5 >Payment Method</h5>&nbsp;&nbsp; 
-            ByHand &nbsp;<input type="radio" name="method" value="By Hand" />
-            &nbsp;&nbsp;
-            
-              PayPal&nbsp;  <input type="radio" name="method" value="PayPal" />
-                <br /><br />
-                <span><a href="#" class="btn btn-success">Booked</a></span>
-                &nbsp;            &nbsp;           &nbsp;&nbsp;&nbsp;
-                <span><a href="#" class="btn btn-danger">Cancel</a></span>
-                <br />
+            <form action="@Url.Action("Save_Appointment","Appointment")" method="post">
+                <h5>Payment Method</h5>&nbsp;&nbsp;
+                ByHand &nbsp;<input type="radio" name="method" value="By Hand" />
+                &nbsp;&nbsp;
 
+                PayPal&nbsp;  <input type="radio" name="method" value="PayPal" />
+                <br /><br />
+                <span><input type="submit"class="btn btn-success"value="Booked"/>@*<a href="@Url.Action("Save_Appointment","appointment")" class="btn btn-success">Booked</a>*@</span>
+                &nbsp;            &nbsp;           &nbsp;&nbsp;&nbsp;
+           
+                <br />
+            </form>
         </center>
                 }
 

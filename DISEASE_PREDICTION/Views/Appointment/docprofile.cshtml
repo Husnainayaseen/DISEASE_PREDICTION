@@ -1,0 +1,97 @@
+﻿@using DISEASE_PREDICTION.Utills;
+@{
+    ViewBag.Title = "docprofile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Model1 db = new Model1();
+}
+
+
+<section id="inner-headline">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="pageTitle">Doctor_Profile</h2>
+            </div>
+        </div>
+    </div>
+</section>
+<br />
+<br />
+<h3>Welcome DR @current_user.currentdoctor.DOC_NAME</h3>
+<section>
+    <div class="container">
+
+        @if (current_user.currentdoctor != null)
+        {
+            <div class="row">
+                <div class="col-lg-6">
+
+
+                    <div class="doctor-title">
+                        <div class="doctor-image wow zoomIn">
+                            <img src="@Url.Content(current_user.currentdoctor.DOC_PIC)" @*class="col-md-6"*@ style="height:500px;width:400px" />
+                            <br />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="white-space:nowrap">
+                    <div class="col-lg-6">
+
+                        <div class="dt-outer wow slideInUp">
+                            <h2 style="text-align:center">DR @current_user.currentdoctor.DOC_NAME</h2><hr /><br />
+                            <ul style="list-style-type:none;text-align:center" @*class="col-md-8"*@>
+                                <br />
+                                <li><strong>SPECIALIZATION:@current_user.currentdoctor.TBL_SPECIALIZATION.SPECIALIZATION</strong></li>
+                                <br />
+                                <li><strong>ADDRESS :    @current_user.currentdoctor.DOC_ADDRESS</strong></li>
+                                <br />
+                                <li><strong>QUALIFICATION:@current_user.currentdoctor.QUALIFICATION</strong></li>
+                                <br />
+                                <li><strong>GENDER :    @current_user.currentdoctor.DOC_GENDER</strong></li>
+                                <br />
+                                <li><strong>EMAIL:@current_user.currentdoctor.DOC_EMAIL</strong></li>
+                                <br />
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+        </section>
+<section>
+        <h2> My Appointments Record</h2><br />
+        <table class="table table-bordered" style="text-align:center">
+            <tr style="text-align:center;background-color:#257f83;color:white">
+                <th style="text-align:center">DAY</th>
+                <th style="text-align:center">STARTINT TIME</th>
+                <th style="text-align:center">ENDING TIME</th>
+                <th style="text-align:center">DATE</th>
+                <th style="text-align:center">FEE</th>
+                <th style="text-align:center">PATIRNT NAME</th>
+            </tr>
+            @foreach (var item in db.TBL_APPOINTMENT)
+            {
+                if (item.DOC_FID == (int)ViewData["ID"])
+                {
+                    <tr>
+                        <td>@item.TBL_SCH_DAY.SCH_DAY</td>
+                        <td><input type="time" disabled value="@item.START_TIME" /> </td>
+                        <td><input type="time" disabled value="@item.END_TIME" /></td>
+
+                        <form action="@Url.Action("Add_Appointment","Appointment",new {id=item.SCH_ID })">
+                        <td>
+                            <input type="date" required placeholder="Select Date" name="Date" />
+                            <input type="hidden" required />
+                        </td>
+                        <td>@item.FEE</td>
+                        <td><input type="submit" class="btn btn-success" style="height:40px" value="Book Appointment"></td>
+                        </form>
+                    </tr>
+                }
+
+            }
+
+        </table>
+    </div>
+</section>
+

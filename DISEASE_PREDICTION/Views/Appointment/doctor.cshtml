@@ -5,11 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     Model1 db = new Model1();
 }
-@if (TempData["Alreadyappoint"] != null)
-{
-    <div class="alert alert-dismissable"></div>
-    <h3> @Html.Raw(TempData["Alreadyappoint"])</h3>
-}
+
 
 <section id="inner-headline">
     <div class="container">
@@ -44,12 +40,12 @@
                     <a href="@Url.Action("Doctor","appointment",new { id=s.SP_ID })" class=" list-group-item list-group-item-action">@s.SPECIALIZATION<small class="text-muted">(@s.TBL_DOCTOR.Count())</small></a>
                 }
 
-                <a href="@Url.Action("Doctor","appointment")" class=" list-group-item list-group-item-action">All Specialist<small class="text-muted">(@db.TBL_DOCTOR.Count())</small></a>
+                <a href="@Url.Action("Doctor","appointment",new { id="null"})" class=" list-group-item list-group-item-action">All Specialist<small class="text-muted">(@db.TBL_DOCTOR.Count())</small></a>
                 <h3 class="wow zoomIn">Doctors by Gender</h3>
                 <div class="list-group list-group-sm wow slideInLeft">
 
-                    <a href="@Url.Action("Doctor","appointment",new { gender="1"})" class=" list-group-item list-group-item-action">Male</a>
-                    <a href="@Url.Action("Doctor","appointment",new { gender="2"})" class=" list-group-item list-group-item-action">Female</a>
+                    <a href="@Url.Action("Doctor","appointment",new { gender="Male"})" class=" list-group-item list-group-item-action">Male</a>
+                    <a href="@Url.Action("Doctor","appointment",new { gender="Female"})" class=" list-group-item list-group-item-action">Female</a>
 
                 </div>
             </div>
@@ -73,6 +69,26 @@
                     </div>
                 </div>
             }
+
+            else if (ViewData["gender"] != null && ViewData["spID"] != null)
+            {
+                if (item.DOC_GENDER == (string)ViewData["gender"] && item.SP_FID == (int)ViewData["spID"])
+                {
+                    <div class="col-md-2 design md-margin-bottom-40">
+                        <img style="width:100%;height:200px;" class="btn btn-primary img-responsive img-fluid" src="@Url.Content(item.DOC_PIC)" alt="">
+                        <div class="mask-icon">
+
+                            <div class="special-content">
+                                <h4 style="text-align:center">@item.DOC_NAME</h4>
+                                <p style="text-align:center">@item.TBL_SPECIALIZATION.SPECIALIZATION</p>
+
+                                <a href="@Url.Action("doctor_detail", "appointment", new { ID = item.DOC_ID })"><p style="color:darkcyan;font:300px;text-align:center"><strong>View profile</strong></p></a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
             else if (ViewData["spID"] != null && item.SP_FID == (int)ViewData["spID"])
             {
                 <div class="col-md-2 design md-margin-bottom-40">
@@ -89,24 +105,24 @@
                 </div>
             }
 
-            else if (ViewData["gender"] != null)
+            else if (ViewData["gender"] != null && item.DOC_GENDER == (string)ViewData["gender"])
             {
-                if ((ViewData["gender1"] != null && item.DOC_GENDER == "Male") || (ViewData["gender2"] != null) && item.DOC_GENDER == "Female")
-                {
-                    <div class="col-md-2 design md-margin-bottom-40">
-                        <img style="width:100%;height:200px;" class="btn btn-primary img-responsive img-fluid" src="@Url.Content(item.DOC_PIC)" alt="">
-                        <div class="mask-icon">
-                            <a href="@Url.Action("doctor_detail", "appointment", new { id = item.DOC_ID })"><p style="color:aqua;font:300px;text-align:center">View profile</p></a>
 
-                            <div class="special-content">
-                                <h4 style="text-align:center">@item.DOC_NAME</h4>
-                                <p style="text-align:center">@item.TBL_SPECIALIZATION.SPECIALIZATION</p>
-                            </div>
+                <div class="col-md-2 design md-margin-bottom-40">
+                    <img style="width:100%;height:200px;" class="btn btn-primary img-responsive img-fluid" src="@Url.Content(item.DOC_PIC)" alt="">
+                    <div class="mask-icon">
+                        <a href="@Url.Action("doctor_detail", "appointment", new { id = item.DOC_ID })"><p style="color:aqua;font:300px;text-align:center">View profile</p></a>
+
+                        <div class="special-content">
+                            <h4 style="text-align:center">@item.DOC_NAME</h4>
+                            <p style="text-align:center">@item.TBL_SPECIALIZATION.SPECIALIZATION</p>
                         </div>
                     </div>
+                </div>
 
-                }
+
             }
+
         }
     </div>
 </section>

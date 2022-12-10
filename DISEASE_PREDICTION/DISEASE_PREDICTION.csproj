@@ -566,6 +566,9 @@
     <Content Include="Views\Appointment\doctor.cshtml" />
     <Content Include="Views\Appointment\doctor_detail.cshtml" />
     <Content Include="Views\Appointment\book_Appointment.cshtml" />
+    <Content Include="Views\Appointment\MyAppointment.cshtml" />
+    <Content Include="Views\Appointment\DocLogin.cshtml" />
+    <Content Include="Views\Appointment\docprofile.cshtml" />
     <None Include="Views\Home\index.cshtml" />
     <None Include="Views\Home\about.cshtml" />
     <None Include="Views\Home\customerlogin.cshtml" />

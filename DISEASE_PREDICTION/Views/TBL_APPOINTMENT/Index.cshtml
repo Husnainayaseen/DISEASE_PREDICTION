@@ -11,9 +11,9 @@
 </p>
 <table class="table">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.TBL_SCHEDULE.SCH_DAY)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.APP_DATE)
         </th>
@@ -31,9 +31,9 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.TBL_SCHEDULE.SCH_DAY)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.APP_DATE)
         </td>

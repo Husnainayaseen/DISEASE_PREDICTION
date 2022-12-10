@@ -184,9 +184,9 @@ namespace DISEASE_PREDICTION.Controllers
                 db.SaveChanges();
                 ViewBag.msg = "<script> alert('Account Is Created Successfully')</script>";
             }
-            if (Session["cart"] == null)
+            if (Session["Schlist"] != null)
             {
-                return View("index");
+                return RedirectToAction("book_Appointment","Appointment");
             }
             return View();
         }

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<DISEASE_PREDICTION.Models.TBL_APPOINTMENT>
+@using DISEASE_PREDICTION.Models
+@using DISEASE_PREDICTION.Utills
+@{
+    ViewBag.Title = "MyAppointment";
+    Model1 db = new Model1();
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<center><h2>MyAppointment</h2></center>
+<br /><br />
+<div class="container">
+    <table class="table">
+        <tr class="table">
+            <th>Doctor</th>
+            <th>
+                @Html.DisplayNameFor(model => model.TBL_SCHEDULE.FEE)
+            </th>
+            <th>
+              Date
+            </th>
+            <th> Timming</th>
+            <th>
+               Status
+            </th>
+            <th>
+               Fee_Status
+            </th>
+            <th>
+            Pat_Name
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in db.TBL_APPOINTMENT)
+        {
+
+
+            if (item.PATIENT_FID == current_user.currentpatient.PATIENT_ID)
+            {
+                <tr>
+                    <td>@item.TBL_SCHEDULE.TBL_DOCTOR.DOC_NAME</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TBL_SCHEDULE.FEE)
+                    </td>
+                    <td>
+                       @*<input type="date" value="*@ @Html.DisplayFor(modelItem => item.APP_DATE) @*name="Date" />*@ 
+                    </td>
+                    <td>@item.TBL_SCHEDULE.START_TIME TO @item.TBL_SCHEDULE.END_TIME</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.APP_STATUS)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.APP_FEE_STATUS)
+                    </td>
+                    <td>
+                        @current_user.currentpatient.PATIENT_NAME
+                    </td>
+                    <td>
+                        <a class="btn btn-success fa fa-edit" href="@Url.Action("Reschedule", "Appointment", new { id = item.APP_ID })"> </a> |
+                        <a class="btn btn-danger fa fa-trash-o" href="@Url.Action("RemoveApp", "Appointment", new { id = item.APP_ID })"> </a> 
+                       
+                    </td>
+                </tr>
+            }
+        }
+
+    </table>
+</div>

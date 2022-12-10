@@ -46,7 +46,7 @@
 
                         <a href="@Url.Action("services","home",new { id=md.DISEASE_ID })" class=" list-group-item list-group-item-action">@md.DISEASE_DESCRIPTION<small class="text-muted">(@md.TBL_MEDICINE.Count())</small></a>
                     }
-                    <a href="@Url.Action("services","home")" class=" list-group-item list-group-item-action">All Medicines<small class="text-muted">(@db.TBL_MEDICINE.Count())</small></a>
+                    <a href="@Url.Action("services","home" new {id="null" })" class=" list-group-item list-group-item-action">All Medicines<small class="text-muted">(@db.TBL_MEDICINE.Count())</small></a>
 
 
                 </div>

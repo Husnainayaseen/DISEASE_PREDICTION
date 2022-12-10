@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DISEASE_PREDICTION.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -29,6 +30,11 @@ namespace DISEASE_PREDICTION.Utills
                 smtp.Send(message);
             }
             catch (Exception) { }
+        }
+
+        internal static void Email(TBL_PATIENT currentpatient, string v, string mailbody)
+        {
+            throw new NotImplementedException();
         }
     }
 }

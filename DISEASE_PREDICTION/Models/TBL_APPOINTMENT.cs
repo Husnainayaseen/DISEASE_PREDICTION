@@ -10,7 +10,7 @@ namespace DISEASE_PREDICTION.Models
     {
         [Key]
         public int APP_ID { get; set; }
-
+        [DataType(DataType.Date)]
         public DateTime? APP_DATE { get; set; }
 
         [StringLength(50)]

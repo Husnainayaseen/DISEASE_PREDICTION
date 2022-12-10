@@ -6,6 +6,11 @@
     {
         cartlist = (List<TBL_MEDICINE>)Session["cart"];
     }
+    //List <TBL_APPOINTMENT> applist= new List <TBL_APPOINTMENT>();
+    //if (Session["App_List"] != null)
+    //{
+    //    applist = (List<TBL_APPOINTMENT>)Session["App_List"];
+    //}
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -55,7 +60,7 @@
                         
                             @if (current_user.currentpatient != null)
                             {
-                                <li ><a href="#">@current_user.currentpatient.PATIENT_NAME</a> </li>
+                                <li style="font-style:italic;font:bold"><a href="#">@current_user.currentpatient.PATIENT_NAME</a> </li>
                             }
                         
                         <li class="active"><a href="@Url.Action("index","Home")">Home</a></li>
@@ -72,12 +77,21 @@
                         {
                         <li class="search"><a href="/home/customerlogin"><i class="fa fa-sign-in"></i></a></li>
                         }
-                        <li class="side-menu">
+
+
+                        <li class="submenu">
                             <a href="/cart/displaycart">
-                                <i class="fa fa-shopping-cart"></i>
-                                <span class="badge">@cartlist.Count()</span>
+                                <i class="fa fa-shopping-cart fa-expand"></i>
+                                <span class="badge">@cartlist.Count() </span>
+                                <span class="menu-arrow"></span>
                             </a>
+                            <ul @*class="dropdown-menu"*@ style="display:none;">
+                                <li><a href="@Url.Action("displaycart","cart")">OrderCart</a></li>
+                                <li><a href="@Url.Action("MyAppointment","Appointment")">AppointmentCart</a></li>
+                            </ul>
                         </li>
+
+
 
                     </ul>
                 </div>

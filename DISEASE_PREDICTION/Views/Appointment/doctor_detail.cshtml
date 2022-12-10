@@ -1,11 +1,23 @@
 ﻿@model IEnumerable<DISEASE_PREDICTION.Models.TBL_DOCTOR>
-    @using DISEASE_PREDICTION.Models
+@using DISEASE_PREDICTION.Models
 
 @{
     ViewBag.Title = "doctor_detail";
     Layout = "~/Views/Shared/_Layout.cshtml";
     Model1 db = new Model1();
 }
+@if (TempData["Alreadyappoint"] != null)
+{
+    <div class="alert alert-dismissable">
+        <h3> @Html.Raw(TempData["Alreadyappoint"])</h3>
+    </div>
+}
+@if (TempData["FilledAppointment"] != null)
+            {
+                <div class="alert alert-dismissable">
+                   <h3> @Html.Raw(TempData["FilledAppointment"])</h3>
+                </div>
+            }
 
 <section id="inner-headline">
     <div class="container">
@@ -15,7 +27,9 @@
             </div>
         </div>
     </div>
-</section><br /><br />
+</section>
+<br />
+<br />
 <section>
     <div class="container">
 
@@ -37,25 +51,25 @@
                     <div class="row" style="white-space:nowrap">
                         <div class="col-lg-6">
                             @*<div class="doctor-title-content">*@
-                                <div class="dt-outer wow slideInUp">
-                                    <h2 style="text-align:center">DR @item.DOC_NAME</h2><hr /><br />
-                                    <ul style="list-style-type:none;text-align:center" @*class="col-md-8"*@>
-                                        <br />
-                                        <li><strong>SPECIALIZATION:@item.TBL_SPECIALIZATION.SPECIALIZATION</strong></li>
-                                        <br />
-                                        <li><strong>ADDRESS :    @item.DOC_ADDRESS</strong></li>
-                                        <br />
-                                        <li><strong>QUALIFICATION:@item.QUALIFICATION</strong></li>
-                                        <br />
-                                        <li><strong>GENDER :    @item.DOC_GENDER</strong></li>
-                                        <br />
-                                        <li><strong>EMAIL:@item.DOC_EMAIL</strong></li>
-                                        <br />
-                                    </ul>
-                                </div>
+                            <div class="dt-outer wow slideInUp">
+                                <h2 style="text-align:center">DR @item.DOC_NAME</h2><hr /><br />
+                                <ul style="list-style-type:none;text-align:center" @*class="col-md-8"*@>
+                                    <br />
+                                    <li><strong>SPECIALIZATION:@item.TBL_SPECIALIZATION.SPECIALIZATION</strong></li>
+                                    <br />
+                                    <li><strong>ADDRESS :    @item.DOC_ADDRESS</strong></li>
+                                    <br />
+                                    <li><strong>QUALIFICATION:@item.QUALIFICATION</strong></li>
+                                    <br />
+                                    <li><strong>GENDER :    @item.DOC_GENDER</strong></li>
+                                    <br />
+                                    <li><strong>EMAIL:@item.DOC_EMAIL</strong></li>
+                                    <br />
+                                </ul>
                             </div>
                         </div>
                     </div>
+                </div>
                 @*</div>*@
                 @*</div>*@
             }
@@ -64,48 +78,50 @@
 
     </div>
     @*</div>*@
-</section><br /><br />
+</section>
+<br />
+<br />
 
 <section>
     <div class="container">
-    @if (TempData["Alreadyappoint"] != null)
-    {
-        <div class="alert alert-dismissable"></div>
-        <h3> @TempData["Alreadyappoint"]</h3>
-    }
-
-    <h2> SCHEDULE</h2><br />
-    <table class="table table-bordered" style="text-align:center">
-        <tr style="text-align:center;background-color:#257f83;color:white">
-            <th style="text-align:center">DAY</th>
-            <th style="text-align:center">STARTINT TIME</th>
-            <th style="text-align:center">ENDING TIME</th>
-            <th style="text-align:center">DATE</th>
-            <th style="text-align:center">FEE</th>
-            <th style="text-align:center">BOOK APPOINTMENT</th>
-        </tr>
-        @foreach (var item in db.TBL_SCHEDULE)
+        @if (TempData["Alreadyappoint"] != null)
         {
-            if (item.DOC_FID == (int)ViewData["ID"])
-            {
-                <tr>
-                    <td>@item.TBL_SCH_DAY.SCH_DAY</td>
-                    <td>@item.START_TIME</td>
-                    <td>@item.END_TIME</td>
-
-                    <form action="@Url.Action("Add_Appointment","Appointment",new {id=item.SCH_ID })">
-                    <td>
-                        <input type="date" required placeholder="Select Date" name="Date" />
-                        <input type="hidden" required />
-                    </td>
-                    <td>@item.FEE</td>
-                    <td><input type="submit" class="btn btn-success" style="height:40px" value="Book Appointment"></td>
-                    </form>
-                </tr>
-            }
-
+            <div class="alert alert-dismissable"></div>
+            <h3> @TempData["Alreadyappoint"]</h3>
         }
 
-    </table>
-</div>
+        <h2> SCHEDULE</h2><br />
+        <table class="table table-bordered" style="text-align:center">
+            <tr style="text-align:center;background-color:#257f83;color:white">
+                <th style="text-align:center">DAY</th>
+                <th style="text-align:center">STARTINT TIME</th>
+                <th style="text-align:center">ENDING TIME</th>
+                <th style="text-align:center">DATE</th>
+                <th style="text-align:center">FEE</th>
+                <th style="text-align:center">BOOK APPOINTMENT</th>
+            </tr>
+            @foreach (var item in db.TBL_SCHEDULE)
+            {
+                if (item.DOC_FID == (int)ViewData["ID"])
+                {
+                    <tr>
+                        <td>@item.TBL_SCH_DAY.SCH_DAY</td>
+                        <td><input type="time" disabled value="@item.START_TIME" /> </td>
+                        <td><input type="time" disabled value="@item.END_TIME" /></td>
+
+                        <form action="@Url.Action("Add_Appointment","Appointment",new {id=item.SCH_ID })">
+                        <td>
+                            <input type="date" required placeholder="Select Date" name="Date" />
+                            <input type="hidden" required />
+                        </td>
+                        <td>@item.FEE</td>
+                        <td><input type="submit" class="btn btn-success" style="height:40px" value="Book Appointment"></td>
+                        </form>
+                    </tr>
+                }
+
+            }
+
+        </table>
+    </div>
 </section>

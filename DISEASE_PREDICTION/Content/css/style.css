@@ -15,7 +15,10 @@ body {
 	line-height:1.6em;
 	color:#656565;
 }
-
+.dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
+	background: 0 0;
+	outline: none
+}
 a:active {
 	outline:0;
 }
