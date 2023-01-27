@@ -134,12 +134,13 @@ namespace DISEASE_PREDICTION.Controllers
         {
             return View();
         }
-        public ActionResult Reschedule(int id, DateTime Date)
+        public ActionResult Reschedule(int id, DateTime date)
         {
             TBL_APPOINTMENT app = db.TBL_APPOINTMENT.Find(id);
-            app.APP_DATE = Date;
+            app.APP_DATE =  date;
             db.Entry(app).State = EntityState.Modified;
             db.SaveChanges();
+            TempData["msg"] = "<script>alert('Your Appointment has been Reschedule')</script>";
             return RedirectToAction("MyAppointment");
         }
         public ActionResult RemoveApp( int id)
@@ -148,7 +149,9 @@ namespace DISEASE_PREDICTION.Controllers
                 TBL_APPOINTMENT app = db.TBL_APPOINTMENT.Find(id);
                 db.TBL_APPOINTMENT.Remove(app);
                 db.SaveChanges();
-                return RedirectToAction("MyAppointment");                   
+            TempData["remove"] = "<script> alert('your Appointment has been Removed')</script>";
+
+            return RedirectToAction("MyAppointment");                   
        }
         public ActionResult DocLogin()
         {

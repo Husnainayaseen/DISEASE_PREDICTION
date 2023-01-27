@@ -1,0 +1,132 @@
+﻿@using DISEASE_PREDICTION.Models
+@model SympAndDisViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Model1 db = new Model1();
+}
+
+
+<section id="inner-headline">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="pageTitle">Prediction</h2>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container">
+    <br /><br />
+    <section>
+        <h3 style="color:red">Note</h3>
+
+        <p style="text-align: justify; font-size: 18px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+            This symptom checker does not give you a diagnosis.
+            It gives you a list of possible diagnoses based on the information you've entered.
+            Do not be alarmed by the results, as they're not listed in order of likelihood for you in particular.
+            It is the job of your doctor to work out with you, which diagnoses should be seriously considered.
+        </p>
+
+    </section>
+    <br />
+</div>
+<div class="container">
+    <div class="col-lg-2">
+    </div>
+    <div class="col-lg-4">
+        
+
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for symptoms.." title="Type in a name">
+
+        <div class="row">
+            <form method="post" id="subButt" action="@Url.Action("Index","predictin1")">
+                <ul id="myUL" class="symptomList">
+
+                    @foreach (var s in @Model.symp)
+                    {
+                        <li><a href="#"><input type="checkbox" name="symp" value=@s.SYMPTOM_ID style="background-color:#257f83">               @s.DISEASE_SYMPTOMS </a></li>
+
+                    }
+                </ul>
+
+                <input onclick="submit_form()" value="submit" class="btn btn-primary btn-block wow fadeInUp" style="font-size:20px;background-color:#257f83" />
+            </form>
+            
+        </div>
+
+    </div>
+    <div class="col-lg-4" style="color:black;">
+        @if (!Request["symp"].IsEmpty())
+        {
+            <h2 style="color:#257f83">Probability</h2><br>
+            if (ViewBag.data == null)
+            { <p>Congratulation!<br>Your Symptoms not match with more then  60% chances of any Disease</p> }
+            else
+            {
+                <ul style="overflow-y: scroll; color:black; background-color:white; height:380px; padding:10px;">
+                    <a href="/predictin1/Index" class="btn">Reset</a>
+                    <hr>
+
+                    @foreach (KeyValuePair<int, double> pair in ViewBag.data)
+                    {
+                        foreach (var d in @Model.dis)
+                        {
+                            if (@d.DISEASE_ID == @pair.Key)
+                            {
+                                <li>
+                                    <div class="span6">
+
+                                        <strong style="color:#257f83">@d.DISEASE_DESCRIPTION </strong><span class="pull-right">@Math.Ceiling(@pair.Value) %</span>
+
+                                        <div class="progress progress-danger active">
+                                            <div class="bar" style="width: @pair.Value%; height:20px; background-color:darkred;"></div>
+                                        </div>
+                                    </div>
+
+
+                                    <br>
+                                </li>
+
+                            }
+
+
+                        }
+
+
+
+
+                    }
+
+                </ul>
+            }
+
+        }
+
+
+    </div>
+</div>
+<script>
+    function myFunction() {
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("myUL");
+        li = ul.getElementsByTagName("li");
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+
+            }
+        }
+    }
+</script>
+<script>
+    function submit_form() {
+        var form = document.getElementById('subButt');
+        form.submit();
+    }
+</script>

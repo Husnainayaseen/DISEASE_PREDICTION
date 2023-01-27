@@ -1,36 +1,37 @@
-﻿@model DISEASE_PREDICTION.Models.TBL_SYMPTOMS
+﻿@model DISEASE_PREDICTION.Models.TBL_DISEASE_SYMPTOM
 
 @{
     ViewBag.Title = "Delete";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Delete</h2>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>TBL_SYMPTOMS</h4>
+    <h4>TBL_DISEASE_SYMPTOM</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.TBL_MEDICINE.MED_NAME)
+            @Html.DisplayNameFor(model => model.TBL_DISEASECATEGORY.DISEASE_DESCRIPTION)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TBL_MEDICINE.MED_NAME)
+            @Html.DisplayFor(model => model.TBL_DISEASECATEGORY.DISEASE_DESCRIPTION)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DISEASE_SYMPTOMS)
+            @Html.DisplayNameFor(model => model.TBL_SYMPTOMS.DISEASE_SYMPTOMS)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DISEASE_SYMPTOMS)
+            @Html.DisplayFor(model => model.TBL_SYMPTOMS.DISEASE_SYMPTOMS)
         </dd>
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">

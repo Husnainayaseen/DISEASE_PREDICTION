@@ -57,25 +57,26 @@
                 <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">
 
-                        
-                            @if (current_user.currentpatient != null)
-                            {
-                                <li style="font-style:italic;font:bold"><a href="#">@current_user.currentpatient.PATIENT_NAME</a> </li>
-                            }
-                        
+
+                        @if (current_user.currentpatient != null)
+                        {
+                            <li style="font-style:italic;font:bold"><a href="#">@current_user.currentpatient.PATIENT_NAME</a> </li>
+                        }
+
                         <li class="active"><a href="@Url.Action("index","Home")">Home</a></li>
                         <li><a href="@Url.Action("About","Home")">About Us</a></li>
                         <li><a href="@Url.Action("Services","Home")">Medicines</a></li>
                         <li><a href="@Url.Action("portfolio","Home")">First Aid</a></li>
+                        <li><a href="@Url.Action("index","predictin1")">Prediction</a></li>
                         <li><a href="@Url.Action("doctor","appointment")">Doctors</a></li>
                         <li><a href="@Url.Action("feedback","Home")">Feedback</a></li>
                         @if (current_user.currentpatient != null)
                         {
-                        <li class="search"><a href="/home/patientlogout"><i class="fa fa-sign-out"></i></a></li>
+                            <li class="search"><a href="/home/patientlogout"><i class="fa fa-sign-out"></i></a></li>
                         }
                         else
                         {
-                        <li class="search"><a href="/home/customerlogin"><i class="fa fa-sign-in"></i></a></li>
+                            <li class="search"><a href="/home/customerlogin"><i class="fa fa-sign-in"></i></a></li>
                         }
 
 
@@ -112,12 +113,12 @@
                         <h5 class="widgetheading">Our Contact</h5>
                         <address>
                             <strong>Bistro company Inc</strong><br>
-                            JC Main Road, Near Silnile tower<br>
-                            Pin-21542 NewYork US.
+                            JC Main Road, Near Satelite town<br>
+                            Pin-21542 Gujranwala Pakistan.
                         </address>
                         <p>
-                            <i class="icon-phone"></i> (123) 456-789 - 1255-12584 <br>
-                            <i class="icon-envelope-alt"></i> email@domainname.com
+                            <i class="icon-phone"></i> (+92) 789 - 1255-12584 <br>
+                            <i class="icon-envelope-alt"></i> email@SmartHealthDiseasePrediction.com
                         </p>
                     </div>
                 </div>
@@ -125,11 +126,11 @@
                     <div class="widget">
                         <h5 class="widgetheading">Quick Links</h5>
                         <ul class="link-list">
-                            <li><a href="#">Latest Events</a></li>
-                            <li><a href="#">Terms and conditions</a></li>
-                            <li><a href="#">Privacy policy</a></li>
-                            <li><a href="#">Career</a></li>
-                            <li><a href="#">Contact us</a></li>
+                            <li><a href="index/home">Home</a></li>
+                            <li><a href="@Url.Action("displaycart","cart")">Shop</a></li>
+                            <li><a href="doctor/appointment">Appointment</a></li>
+                            <li><a href="index/predictin1">Prediction</a></li>
+                            <li><a href="about/home">About us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -161,7 +162,7 @@
                     <div class="col-lg-6">
                         <div class="copyright">
                             <p>
-                                <span>&copy;SMART HEALTH DISEASE PREDICTION. All right reserved. By </span><a href="http://webthemez.com/" Bistro="_blank">WebThemez</a>
+                                <span>&copy;SMART HEALTH DISEASE PREDICTION. All right reserved. </span><a href="http://webthemez.com/" Bistro="_blank"></a>
                             </p>
                         </div>
                     </div>

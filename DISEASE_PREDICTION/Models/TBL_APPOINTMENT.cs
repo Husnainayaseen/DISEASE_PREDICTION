@@ -24,5 +24,7 @@ namespace DISEASE_PREDICTION.Models
         public int SCH_FID { get; set; }
 
         public virtual TBL_SCHEDULE TBL_SCHEDULE { get; set; }
+
+        public virtual TBL_PATIENT TBL_PATIENT { get; set; }
     }
 }

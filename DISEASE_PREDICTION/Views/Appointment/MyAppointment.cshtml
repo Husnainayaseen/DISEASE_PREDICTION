@@ -6,9 +6,20 @@
     Model1 db = new Model1();
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<section id="inner-headline">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="pageTitle">@current_user.currentpatient.PATIENT_NAME</h2>
+            </div>
+        </div>
+    </div>>
+</section>
 
+<br />
 <center><h2>MyAppointment</h2></center>
-<br /><br />
+<br />
+<br />
 <div class="container">
     <table class="table">
         <tr class="table">
@@ -17,17 +28,17 @@
                 @Html.DisplayNameFor(model => model.TBL_SCHEDULE.FEE)
             </th>
             <th>
-              Date
+                Date
             </th>
             <th> Timming</th>
             <th>
-               Status
+                Status
             </th>
             <th>
-               Fee_Status
+                Fee_Status
             </th>
             <th>
-            Pat_Name
+                Day
             </th>
             <th></th>
         </tr>
@@ -44,7 +55,7 @@
                         @Html.DisplayFor(modelItem => item.TBL_SCHEDULE.FEE)
                     </td>
                     <td>
-                       @*<input type="date" value="*@ @Html.DisplayFor(modelItem => item.APP_DATE) @*name="Date" />*@ 
+                        @*<input type="date" value="*@ @Html.DisplayFor(modelItem => item.APP_DATE) @*name="Date" />*@
                     </td>
                     <td>@item.TBL_SCHEDULE.START_TIME TO @item.TBL_SCHEDULE.END_TIME</td>
                     <td>
@@ -54,12 +65,12 @@
                         @Html.DisplayFor(modelItem => item.APP_FEE_STATUS)
                     </td>
                     <td>
-                        @current_user.currentpatient.PATIENT_NAME
+                        @item.TBL_SCHEDULE.TBL_SCH_DAY.SCH_DAY
                     </td>
                     <td>
-                        <a class="btn btn-success fa fa-edit" href="@Url.Action("Reschedule", "Appointment", new { id = item.APP_ID })"> </a> |
-                        <a class="btn btn-danger fa fa-trash-o" href="@Url.Action("RemoveApp", "Appointment", new { id = item.APP_ID })"> </a> 
-                       
+                        <a class="btn btn-success fa fa-edit" name="@item.APP_DATE" id=" @item.APP_ID" onclick="Reschedule(this)"> </a> |
+                        <a class="btn btn-danger fa fa-trash-o" href="@Url.Action("RemoveApp", "Appointment", new { id = item.APP_ID })"> </a>
+
                     </td>
                 </tr>
             }
@@ -67,3 +78,55 @@
 
     </table>
 </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close " data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+            </div>
+            <div class="modal-body">
+                <form action="/Appointment/Reschedule">
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label">Recipient:</label>
+                        <input type="text" readonly class="form-control" data-extra="" id="proname">
+                        <input type="hidden" name="id" class="form-control" id="proid">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">Message:</label>
+                        <input type="date" class="form-control" name="date">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send message</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    function Reschedule(obj) {
+        var id = obj.id;
+        var name = obj.name;
+        /* to get value except id and name in javascript we will use this code*/
+        /* alert($(obj).attr("data-extra"));*/
+        $("#proname").val(name);
+        $("#proid").val(id);
+        $("#exampleModal").modal();
+    }
+</script>
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-dismissable">
+        <h3>@Html.Raw(TempData["msg"])</h3> 
+    </div>
+}
+@if (TempData["remove"] != null)
+{
+    <div class="alert alert-dismissable">
+        <h3>@Html.Raw(TempData["remove"])</h3> 
+    </div>
+}

@@ -1,0 +1,80 @@
+﻿@model IEnumerable<DISEASE_PREDICTION.Models.TBL_APPOINTMENT>
+
+@{
+    ViewBag.Title = "APPOINTMENT REPORT";
+}
+
+<h2>Appointment Report</h2>
+<form action="/Report/SalesReport" method="post">
+    <table class="table">
+        <tr>
+            <td>Date From:</td>
+            <td><input type="datetime-local" class="form-control"value="@ViewBag.Datefrom " name="Datefrom" /></td>
+            <td>Date To:</td>
+            <td><input type="datetime-local" class="form-control" value="@ViewBag.Datetoname"name="Dateto" /></td>
+        </tr>
+        <tr>
+            <td> Doc Specialization:</td>
+            <td> @Html.DropDownList("SPECIALIZATION", null,"---------Select SPECIALIZATION--------", htmlAttributes: new { @class = "form-control" })</td>
+            <td>Doctor:</td>
+            <td> @Html.DropDownList("DOCTOR", null, "---------Select DOCTOR--------", htmlAttributes: new { @class = "form-control" })</td>
+        </tr>
+        
+        <tr>
+            <td colspan="4"><input type="submit"  class="btn btn-danger btn-block" /></td>
+        </tr>
+    </table>
+</form>
+<table class="table">
+    <tr>
+       
+        <th>
+           DATE
+        </th>
+        <th>
+           STATUS
+        </th>
+        <th>
+           FEE_STATUS
+        </th>
+        <th>
+       DOCTOR
+        </th>
+        <th>
+       PATIENT
+        </th>
+        <th>
+           FEE
+        </th>
+        <th>
+            DAY
+        </th>
+        <th>
+           TIMMING
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @item.APP_DATE
+        </td>
+       <td>
+           @item.APP_STATUS
+       </td>
+        <td>@item.APP_FEE_STATUS</td>
+        <td>@item.TBL_SCHEDULE.TBL_DOCTOR.DOC_NAME</td>
+        <td>@item.TBL_PATIENT.PATIENT_NAME</td>
+        <td>@item.TBL_SCHEDULE.FEE</td>
+        <td>@item.TBL_SCHEDULE.TBL_SCH_DAY.SCH_DAY</td>
+        <td>@(item.TBL_SCHEDULE.START_TIME - item.TBL_SCHEDULE.END_TIME)</td>
+        <td>
+            <a href="@Url.Action("Appinvoice","Adminside",new{id=item.APP_ID})" class="btn btn-primary">Invoice </a>
+            
+        </td>
+    </tr>
+}
+
+</table>

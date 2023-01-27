@@ -21,6 +21,9 @@
             <div class="col-md-12">
 
             </div>
+            <div class="alert alert-dismissable">
+                @Html.Raw(TempData["error"])
+            </div>
         </div>
         <div class="row">
 
@@ -35,13 +38,14 @@
                         <i class="fa fa-envelope form-control-feedback"></i>
                     </div>
 
-                    
+
                     <input type="submit" value="Submit" id="submit" class="submit btn btn-primary">
                     <hr /><hr /><hr />
-                    
+
                 </form>
             </div>
-        </div></div></section>
+        </div>
+    </div>
+</section>
 
-        <br />
-       
+<br />

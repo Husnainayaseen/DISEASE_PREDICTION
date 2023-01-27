@@ -1,0 +1,35 @@
+﻿@model DISEASE_PREDICTION.Models.TBL_DISEASE_SYMPTOM
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TBL_DISEASE_SYMPTOM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TBL_DISEASECATEGORY.DISEASE_DESCRIPTION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBL_DISEASECATEGORY.DISEASE_DESCRIPTION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TBL_SYMPTOMS.DISEASE_SYMPTOMS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBL_SYMPTOMS.DISEASE_SYMPTOMS)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DIS_SYMP_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

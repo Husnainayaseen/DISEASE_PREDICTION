@@ -2,18 +2,17 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <h2>Index</h2>
 
 <p>
-    <a class="btn btn-primary glyphicon glyphicon-pencil" href="@Url.Action("Create","TBL_SYMPTOMS")">Create New</a>
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TBL_MEDICINE.MED_NAME)
-        </th>
+        
         <th>
             @Html.DisplayNameFor(model => model.DISEASE_SYMPTOMS)
         </th>
@@ -22,21 +21,14 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TBL_MEDICINE.MED_NAME)
-        </td>
+        
         <td>
             @Html.DisplayFor(modelItem => item.DISEASE_SYMPTOMS)
         </td>
         <td>
-            <a class="btn btn-primary glyphicon glyphicon-edit" href="@Url.Action("Edit","TBL_SYMPTOMS",new{ id=item.SYMPTOM_ID})">Edit</a>
-            <a class="btn btn-primary glyphicon glyphicon-expand" href="@Url.Action("Details","TBL_SYMPTOMS",new { id = item.SYMPTOM_ID })">Details</a>
-            <a class="btn btn-primary glyphicon glyphicon-trash" href="@Url.Action("Delete","TBL_SYMPTOMS",new{ id=item.SYMPTOM_ID})">Delete</a>
-
-
-            @*@Html.ActionLink("Edit", "Edit", new { id = item.SYMPTOM_ID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.SYMPTOM_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.SYMPTOM_ID })*@
+            @Html.ActionLink("Edit", "Edit", new { id=item.SYMPTOM_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SYMPTOM_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SYMPTOM_ID })
         </td>
     </tr>
 }

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<DISEASE_PREDICTION.Models.TBL_DISEASE_SYMPTOM>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<div class="container">
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TBL_DISEASECATEGORY.DISEASE_DESCRIPTION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TBL_SYMPTOMS.DISEASE_SYMPTOMS)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TBL_DISEASECATEGORY.DISEASE_DESCRIPTION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TBL_SYMPTOMS.DISEASE_SYMPTOMS)
+        </td>
+        @*<td>
+            <a class="btn btn-success  fa fa-edit " href="@Url.Action("Edit","TBL-DISEASE_SYMPTOM",new{ id=item.DIS_SYMP_ID})"></a>
+            <a class="btn btn-grey fa fa-book" href="@Url.Action("Details","TBL_DISEASE_SYMPTOM",new{ id=item.DIS_SYMP_ID})"></a>
+            <a class="btn btn-danger fa fa-trash" href="@Url.Action("Delete","TBL_DISEASE_SYMPTOM",new{ id=item.DIS_SYMP_ID})"></a>
+
+        </td>*@
+
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.DIS_SYMP_ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.DIS_SYMP_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.DIS_SYMP_ID })
+        </td>
+    </tr>
+}
+
+</table>
+</div>

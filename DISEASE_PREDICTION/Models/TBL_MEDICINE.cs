@@ -12,7 +12,7 @@ namespace DISEASE_PREDICTION.Models
         public TBL_MEDICINE()
         {
             TBL_ORDERDETAIL = new HashSet<TBL_ORDERDETAIL>();
-            TBL_SYMPTOMS = new HashSet<TBL_SYMPTOMS>();
+            //TBL_SYMPTOMS = new HashSet<TBL_SYMPTOMS>();
         }
 
         [Key]
@@ -56,7 +56,6 @@ namespace DISEASE_PREDICTION.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBL_ORDERDETAIL> TBL_ORDERDETAIL { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TBL_SYMPTOMS> TBL_SYMPTOMS { get; set; }
+       
     }
 }

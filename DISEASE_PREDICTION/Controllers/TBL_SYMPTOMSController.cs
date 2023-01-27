@@ -17,7 +17,7 @@ namespace DISEASE_PREDICTION.Controllers
         // GET: TBL_SYMPTOMS
         public ActionResult Index()
         {
-            var tBL_SYMPTOMS = db.TBL_SYMPTOMS.Include(t => t.TBL_MEDICINE);
+            var tBL_SYMPTOMS = db.TBL_SYMPTOMS/*.Include(t => t.TBL_MEDICINE)*/;
             return View(tBL_SYMPTOMS.ToList());
         }
 
@@ -48,7 +48,7 @@ namespace DISEASE_PREDICTION.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SYMPTOM_ID,DISEASE_SYMPTOMS,MED_FID")] TBL_SYMPTOMS tBL_SYMPTOMS)
+        public ActionResult Create([Bind(Include = "SYMPTOM_ID,DISEASE_SYMPTOMS/*,MED_FID*/")] TBL_SYMPTOMS tBL_SYMPTOMS)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +57,7 @@ namespace DISEASE_PREDICTION.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MED_FID = new SelectList(db.TBL_MEDICINE, "MED_ID", "MED_NAME", tBL_SYMPTOMS.MED_FID);
+            //ViewBag.MED_FID = new SelectList(db.TBL_MEDICINE, "MED_ID", "MED_NAME", tBL_SYMPTOMS.MED_FID);
             return View(tBL_SYMPTOMS);
         }
 
@@ -73,7 +73,7 @@ namespace DISEASE_PREDICTION.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.MED_FID = new SelectList(db.TBL_MEDICINE, "MED_ID", "MED_NAME", tBL_SYMPTOMS.MED_FID);
+            //ViewBag.MED_FID = new SelectList(db.TBL_MEDICINE, "MED_ID", "MED_NAME", tBL_SYMPTOMS.MED_FID);
             return View(tBL_SYMPTOMS);
         }
 
@@ -90,7 +90,7 @@ namespace DISEASE_PREDICTION.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MED_FID = new SelectList(db.TBL_MEDICINE, "MED_ID", "MED_NAME", tBL_SYMPTOMS.MED_FID);
+            //ViewBag.MED_FID = new SelectList(db.TBL_MEDICINE, "MED_ID", "MED_NAME", tBL_SYMPTOMS.MED_FID);
             return View(tBL_SYMPTOMS);
         }
 

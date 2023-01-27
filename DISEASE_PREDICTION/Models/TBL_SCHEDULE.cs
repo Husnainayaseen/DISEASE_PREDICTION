@@ -5,7 +5,7 @@ namespace DISEASE_PREDICTION.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
-
+   
     public partial class TBL_SCHEDULE
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -37,5 +37,10 @@ namespace DISEASE_PREDICTION.Models
         public virtual TBL_DOCTOR TBL_DOCTOR { get; set; }
 
         public virtual TBL_SCH_DAY TBL_SCH_DAY { get; set; }
+
+        //internal bool Any(Func<object, bool> value)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

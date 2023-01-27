@@ -1,7 +1,7 @@
-
+@using DISEASE_PREDICTION.Models;
 @{ Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    Model1 db = new Model1();
 }
-
 
 
 
@@ -190,72 +190,22 @@
                     </div>
                     <div class="card-body">
                         <ul class="contact-list">
-                            <li>
-                                <div class="contact-cont">
-                                    <div class="float-left user-img m-r-10">
-                                        <a href="profile.html" title="John Doe"><img src="~/content/admin/assets/img/user.jpg" alt="" class="w-40 rounded-circle"><span class="status online"></span></a>
+                            @foreach (var item in db.TBL_DOCTOR)
+                            {
+                                <li>
+                                    <div class="contact-cont">
+                                        <div class="float-left user-img m-r-10">
+                                            <a href="profile.html" title="@item.DOC_NAME"><img src="@Url.Content(item.DOC_PIC)" alt="" class="w-40 rounded-circle"><span class="status online"></span></a>
+                                        </div>
+                                        <div class="contact-info">
+                                            <span class="contact-name text-ellipsis">@item.DOC_NAME</span>
+                                            <span class="contact-date">@item.QUALIFICATION</span>
+                                        </div>
                                     </div>
-                                    <div class="contact-info">
-                                        <span class="contact-name text-ellipsis">John Doe</span>
-                                        <span class="contact-date">MBBS, MD</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="contact-cont">
-                                    <div class="float-left user- m-r-10">
-                                        <a href="profile.html" title="Richard Miles"><img src="~/content/admin/assets/img/user.jpg" alt="" class="w-40 rounded-circle"><span class="status offline"></span></a>
-                                    </div>
-                                    <div class="contact-info">
-                                        <span class="contact-name text-ellipsis">Richard Miles</span>
-                                        <span class="contact-date">MD</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="contact-cont">
-                                    <div class="float-left user-img m-r-10">
-                                        <a href="profile.html" title="John Doe"><img src="~/content/admin/assets/img/user.jpg" alt="" class="w-40 rounded-circle"><span class="status away"></span></a>
-                                    </div>
-                                    <div class="contact-info">
-                                        <span class="contact-name text-ellipsis">John Doe</span>
-                                        <span class="contact-date">BMBS</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="contact-cont">
-                                    <div class="float-left user-img m-r-10">
-                                        <a href="profile.html" title="Richard Miles"><img src="~/content/admin/assets/img/user.jpg" alt="" class="w-40 rounded-circle"><span class="status online"></span></a>
-                                    </div>
-                                    <div class="contact-info">
-                                        <span class="contact-name text-ellipsis">Richard Miles</span>
-                                        <span class="contact-date">MS, MD</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="contact-cont">
-                                    <div class="float-left user-img m-r-10">
-                                        <a href="profile.html" title="John Doe"><img src="~/content/admin/assets/img/user.jpg" alt="" class="w-40 rounded-circle"><span class="status offline"></span></a>
-                                    </div>
-                                    <div class="contact-info">
-                                        <span class="contact-name text-ellipsis">John Doe</span>
-                                        <span class="contact-date">MBBS</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="contact-cont">
-                                    <div class="float-left user-img m-r-10">
-                                        <a href="profile.html" title="Richard Miles"><img src="~/content/admin/assets/img/img/user.jpg" alt="" class="w-40 rounded-circle"><span class="status away"></span></a>
-                                    </div>
-                                    <div class="contact-info">
-                                        <span class="contact-name text-ellipsis">Richard Miles</span>
-                                        <span class="contact-date">MBBS, MD</span>
-                                    </div>
-                                </div>
-                            </li>
+                                </li>
+
+                            }
+
                         </ul>
                     </div>
                     <div class="card-footer text-center bg-white">

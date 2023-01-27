@@ -99,7 +99,7 @@ namespace DISEASE_PREDICTION.Controllers
             {
                 return RedirectToAction("Newpassword");
             }
-            TempData["error"] = "invalid code";
+          TempData["error"] = "<script>alert('invalid code')</script>";
             return View();
 
         } public ActionResult ForgetPassword(string email)
@@ -110,7 +110,7 @@ namespace DISEASE_PREDICTION.Controllers
                 TempData["error"] = "Invalid Email";
                 return RedirectToAction("customerlogin");
             }
-            string receiverEmail = "mazeenbilla0@gmail.com";
+            string receiverEmail = email/*"mazeenbilla0@gmail.com"*/;
             Random random = new Random();
             int code = random.Next(1001, 9990);
             string Emailsubject = "subject";

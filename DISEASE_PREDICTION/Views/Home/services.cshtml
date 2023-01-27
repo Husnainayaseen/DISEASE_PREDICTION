@@ -25,67 +25,87 @@
 
 <section id="content">
     @*<div class="container content">*@
-        <!-- Service Blcoks -->
+    <!-- Service Blcoks -->
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="about-logo">
-                    <h3>Our Services</h3>
-                    <p>Sed ut perspiciaatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas</p>
-                    <p>Sed ut perspiciaatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas</p>
+                    <h3>Medicines at your doorstep</h3>
+                    <p style="font-family:sans-serif;">
+                        The Smart Health Disease Prediction is one of the best online Medicine website in Pakistan which promises to provide the ‘BEST’ quality medicines at affordable price (up to 30-40% lesser cost). It enthusiastically works in compliance with the Government of Pakistan where people can purchase medications at lowest costs.It is a promising name in the field of providing top quality health care products  ever since 2020.
+                        <br />
+                        In a strive to provide quality medicines to the general public,Smart Health Disease Prediction follow the state-of-the-art laboratory, certification and manufacturing procedures- GMP/ cGMP WHO certified that guarantee persisted high-quality outcomes. A group of dedicated professionals belonging to Research & Development (R&D), Quality Control (QC) and Quality Assurance (QA) works to improve the quality and bring about innovations.
+                    </p>
                 </div>
                 <a href="#" class="btn btn-color">Read more</a>
             </div>
-        </div></div><br /><br />
-        <div class="col-xs-3">
-            <div class="sidebar-title " style="float:left;width:300px ">
-                <h3 class="wow zoomIn">Our Medicines</h3>
-                <div class="list-group list-group-sm wow slideInLeft">
-                    @foreach (var md in db.TBL_DISEASECATEGORY)
-                    {
-
-                        <a href="@Url.Action("services","home",new { id=md.DISEASE_ID })" class=" list-group-item list-group-item-action">@md.DISEASE_DESCRIPTION<small class="text-muted">(@md.TBL_MEDICINE.Count())</small></a>
-                    }
-                    <a href="@Url.Action("services","home" new {id="null" })" class=" list-group-item list-group-item-action">All Medicines<small class="text-muted">(@db.TBL_MEDICINE.Count())</small></a>
-
-
-                </div>
-
-            </div>
         </div>
-        <div class="row service-v1 margin-bottom-40">
-
-            @foreach (var item in db.TBL_MEDICINE)
-            {
-                if (catid == null || item.DISEASECATEGORY_FID == catid)
+    </div><br /><br />
+    <div class="col-xs-3">
+        <div class="sidebar-title " style="float:left;width:300px ">
+            <h3 class="wow zoomIn">Our Medicines</h3>
+            <div class="list-group list-group-sm wow slideInLeft">
+                @foreach (var md in db.TBL_DISEASECATEGORY)
                 {
 
-
-                    <div class="col-md-2 design md-margin-bottom-40">
-                        <img style="width:100%;height:200px;" class="btn btn-primary img-responsive img-fluid" src="@Url.Content(item.MED_IMAGE)" alt="">
-                        <div class="mask-icon">
-                            @*<ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="view"><i class="fa fa-eye"></i></a></li>
-                                <li>
-                                    <a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fa fa-asterisk"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#" data-toggle="tooltip" data-placement="right" title="Add to wishlist"><i class="fa fa-heart"></i></a>
-                                </li>
-                            </ul>*@
-                            <a class="fa-opencart btn btn-primary" href="@Url.Action("addtocart", "cart", new { id = item.MED_ID })">Add to Cart</a>
-                        </div>
-
-                        <h4>@item.MED_NAME</h4>
-
-                        <div class="pricing-heading">
-                            <h3><span>RS:</span>@item.MED_SALE_PRICE</h3>
-                        </div>
-
-                    </div>
-
-
+                    <a href="@Url.Action("services","home",new { id=md.DISEASE_ID })" class=" list-group-item list-group-item-action">@md.DISEASE_DESCRIPTION<small class="text-muted">(@md.TBL_MEDICINE.Count())</small></a>
                 }
-            }
-        @*</div>*@
+                <a href="@Url.Action("services","home", new {id="null" })" class=" list-group-item list-group-item-action">All Medicines<small class="text-muted">(@db.TBL_MEDICINE.Count())</small></a>
+
+
+            </div>
+
+        </div>
+    </div>
 </section>
+        @*<div class="row service-v1 margin-bottom-40">*@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="clearfix">
+            </div>
+            <section id="projects">
+                <ul id="thumbs" class="portfolio">
+                    @foreach (var item in db.TBL_MEDICINE)
+                    {
+                        if (catid == null || item.DISEASECATEGORY_FID == catid)
+                        {
+                            <div class="col-md-2 design md-margin-bottom-40">
+                                
+
+                            <li class="item-thumbs col-lg-12 design">
+                                <!-- Fancybox - Gallery Enabled - Title - Full Image -->
+                                <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="AddToCart" href="@Url.Action("addtocart", "cart", new { id = item.MED_ID })">
+                                    <span class="overlay-img"></span>
+                                    @*<img style="width:100%;height:200px;" class="btn btn-primary img-responsive img-fluid" src="@Url.Content(item.MED_IMAGE)" alt="">*@
+
+                                    <span class="overlay-img-thumb"><i class="icon-info-blocks fa fa-search"></i></span>
+                                </a>
+                                <!-- Thumb Image and Description -->
+                                <img style="width:100%;height:130px;" src="@Url.Content(item.MED_IMAGE)" alt="">
+                            </li>
+
+
+                            @*</div>*@
+
+                            @*<div class="mask-icon">
+
+                    <a class="fa-opencart btn btn-primary" href="@Url.Action("addtocart", "cart", new { id = item.MED_ID })">Add to Cart</a>
+                </div>*@
+
+                            <h5 style="color:darkcyan">@item.MED_NAME</h5>
+
+                            <div class="pricing-heading">
+                                <h4><span>RS:</span>@item.MED_SALE_PRICE</h4>
+                            </div>
+
+                            </div>
+
+
+                        }
+                    }
+                </ul>
+                </section>
+        </div>
+    </div>
+</div>

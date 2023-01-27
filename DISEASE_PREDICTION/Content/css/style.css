@@ -8,6 +8,7 @@ Licence under Creative Commons Attribution 3.0
 @import url('font-awesome.css');  
 @import url('animate.css');
 
+
 body {
 	font-family:'Open Sans', Arial, sans-serif;
 	font-size:14px;
@@ -15,6 +16,121 @@ body {
 	line-height:1.6em;
 	color:#656565;
 }
+
+#homePageBg {
+	background: white;
+}
+
+.pic img {
+	margin-left: 20px;
+	box-shadow: 0 4px 8px;
+	width: 40%;
+	height: 160px;
+	float: left;
+}
+
+.symptoms {
+	margin-top: 30px;
+	font-size: 20px;
+	overflow: hidden;
+	display: inline-block;
+	height: 450px;
+	margin: 10px;
+	padding: 5px;
+}
+
+#symptoms {
+	display: none;
+}
+
+#symptoms2 {
+	display: none;
+}
+
+#symptoms3 {
+	display: none;
+}
+
+.selected_symptoms {
+	width: 300px;
+	margin-top: 30px;
+	font-size: 20px;
+	display: inline-block;
+}
+
+.body_pic {
+	margin-top: 20px;
+	display: inline-block;
+	width: 300px;
+	height: 400px;
+	padding: 5px;
+}
+
+	.body_pic img {
+		width: 250px;
+	}
+
+#body1:hover img {
+	margin-bottom: 6px;
+	width: 400px;
+}
+
+#body2:hover img {
+	margin-top: 6px;
+	width: 400px;
+}
+
+
+#myInput {
+	background-image: url('/css/searchicon.png');
+	background-position: 10px 12px;
+	background-repeat: no-repeat;
+	width: 100%;
+	font-size: 16px;
+	padding: 12px 20px 12px 40px;
+	border: 1px solid #ddd;
+	margin-bottom: 12px;
+}
+
+#myUL {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	max-height: 350px;
+	overflow-y: scroll;
+}
+
+	#myUL li a {
+		border: 1px solid #ddd;
+		margin-top: 1px; /* Prevent double borders */
+		background-color: #f6f6f6;
+		padding: 12px;
+		text-decoration: none;
+		font-size: 18px;
+		color: black;
+		display: block
+	}
+
+		#myUL li a.header {
+			background-color: #e2e2e2;
+			cursor: default;
+		}
+
+		#myUL li a:hover:not(.header) {
+			background-color: #eee;
+		}
+
+input[type="checkbox"] {
+	background-color: #257f83;
+	/*border: #7f83a2 1px solid;*/
+}
+
+
+
+
+
+
+
 .dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
 	background: 0 0;
 	outline: none

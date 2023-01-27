@@ -1,4 +1,5 @@
 ﻿@using DISEASE_PREDICTION.Utills;
+@using DISEASE_PREDICTION.Models;
 @{
     ViewBag.Title = "docprofile";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -17,9 +18,10 @@
 </section>
 <br />
 <br />
-<h3>Welcome DR @current_user.currentdoctor.DOC_NAME</h3>
+<center><h3>Welcome DR @current_user.currentdoctor.DOC_NAME</h3></center><br />
 <section>
     <div class="container">
+        <a class="btn btn-success" style="text-align:right;float:right" href=" @Url.Action("index","Tbl_symptoms")" style="text-align:left;">Add symptoms </a>
 
         @if (current_user.currentdoctor != null)
         {
@@ -41,24 +43,26 @@
                             <h2 style="text-align:center">DR @current_user.currentdoctor.DOC_NAME</h2><hr /><br />
                             <ul style="list-style-type:none;text-align:center" @*class="col-md-8"*@>
                                 <br />
-                                <li><strong>SPECIALIZATION:@current_user.currentdoctor.TBL_SPECIALIZATION.SPECIALIZATION</strong></li>
+                                <li><strong>SPECIALIZATION: &nbsp;@current_user.currentdoctor.TBL_SPECIALIZATION.SPECIALIZATION</strong></li>
                                 <br />
-                                <li><strong>ADDRESS :    @current_user.currentdoctor.DOC_ADDRESS</strong></li>
+                                <li><strong>ADDRESS : &nbsp;   @current_user.currentdoctor.DOC_ADDRESS</strong></li>
                                 <br />
-                                <li><strong>QUALIFICATION:@current_user.currentdoctor.QUALIFICATION</strong></li>
+                                <li><strong>QUALIFICATION: &nbsp;@current_user.currentdoctor.QUALIFICATION</strong></li>
                                 <br />
-                                <li><strong>GENDER :    @current_user.currentdoctor.DOC_GENDER</strong></li>
+                                <li><strong>GENDER :&nbsp;    @current_user.currentdoctor.DOC_GENDER</strong></li>
                                 <br />
-                                <li><strong>EMAIL:@current_user.currentdoctor.DOC_EMAIL</strong></li>
+                                <li><strong>EMAIL:&nbsp;@current_user.currentdoctor.DOC_EMAIL</strong></li>
                                 <br />
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-            }
+        }
+    </div>
         </section>
 <section>
+    <div class="container">
         <h2> My Appointments Record</h2><br />
         <table class="table table-bordered" style="text-align:center">
             <tr style="text-align:center;background-color:#257f83;color:white">
@@ -66,26 +70,22 @@
                 <th style="text-align:center">STARTINT TIME</th>
                 <th style="text-align:center">ENDING TIME</th>
                 <th style="text-align:center">DATE</th>
-                <th style="text-align:center">FEE</th>
-                <th style="text-align:center">PATIRNT NAME</th>
+                <th style="text-align:center">STATUS</th>
+
             </tr>
             @foreach (var item in db.TBL_APPOINTMENT)
             {
-                if (item.DOC_FID == (int)ViewData["ID"])
+                if (current_user.currentdoctor.DOC_ID == item.TBL_SCHEDULE.DOC_FID)
                 {
                     <tr>
-                        <td>@item.TBL_SCH_DAY.SCH_DAY</td>
-                        <td><input type="time" disabled value="@item.START_TIME" /> </td>
-                        <td><input type="time" disabled value="@item.END_TIME" /></td>
-
-                        <form action="@Url.Action("Add_Appointment","Appointment",new {id=item.SCH_ID })">
+                        <td>@item.TBL_SCHEDULE.TBL_SCH_DAY.SCH_DAY</td>
+                        <td><input type="time" disabled value="@item.TBL_SCHEDULE.START_TIME" /> </td>
+                        <td><input type="time" disabled value="@item.TBL_SCHEDULE.END_TIME" /></td>
                         <td>
-                            <input type="date" required placeholder="Select Date" name="Date" />
-                            <input type="hidden" required />
+                            @item.APP_DATE
                         </td>
-                        <td>@item.FEE</td>
-                        <td><input type="submit" class="btn btn-success" style="height:40px" value="Book Appointment"></td>
-                        </form>
+                        <td>@item.APP_STATUS</td>
+
                     </tr>
                 }
 

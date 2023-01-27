@@ -67,11 +67,11 @@ namespace DISEASE_PREDICTION.Models
                 .HasForeignKey(e => e.MEDICINE_FID)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<TBL_MEDICINE>()
-                .HasMany(e => e.TBL_SYMPTOMS)
-                .WithRequired(e => e.TBL_MEDICINE)
-                .HasForeignKey(e => e.MED_FID)
-                .WillCascadeOnDelete(false);
+            //modelBuilder.Entity<TBL_MEDICINE>()
+            //    .HasMany(e => e.TBL_SYMPTOMS)
+            //    .WithRequired(e => e.TBL_MEDICINE)
+            //    .HasForeignKey(e => e.MED_FID)
+            //    .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TBL_MEDICINECOMPANY>()
                 .HasMany(e => e.TBL_MEDICINE)
