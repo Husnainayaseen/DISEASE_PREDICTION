@@ -40,9 +40,9 @@
                 <a href="#" class="btn btn-color">Read more</a>
             </div>
         </div>
-    </div><br /><br />
+    </div>
     <div class="col-xs-3">
-        <div class="sidebar-title " style="float:left;width:300px ">
+        <div class="sidebar-title " style="float:left;width:250px ">
             <h3 class="wow zoomIn">Our Medicines</h3>
             <div class="list-group list-group-sm wow slideInLeft">
                 @foreach (var md in db.TBL_DISEASECATEGORY)
@@ -70,7 +70,7 @@
                     {
                         if (catid == null || item.DISEASECATEGORY_FID == catid)
                         {
-                            <div class="col-md-2 design md-margin-bottom-40">
+                            <div class="col-md-3 design md-margin-bottom-40">
                                 
 
                             <li class="item-thumbs col-lg-12 design">
@@ -84,24 +84,14 @@
                                 <!-- Thumb Image and Description -->
                                 <img style="width:100%;height:130px;" src="@Url.Content(item.MED_IMAGE)" alt="">
                             </li>
+                            <center>
+                                <h4 style="color:darkcyan;text-transform:capitalize">@item.MED_NAME</h4>
 
-
-                            @*</div>*@
-
-                            @*<div class="mask-icon">
-
-                    <a class="fa-opencart btn btn-primary" href="@Url.Action("addtocart", "cart", new { id = item.MED_ID })">Add to Cart</a>
-                </div>*@
-
-                            <h5 style="color:darkcyan">@item.MED_NAME</h5>
-
-                            <div class="pricing-heading">
-                                <h4><span>RS:</span>@item.MED_SALE_PRICE</h4>
+                                <div class="pricing-heading">
+                                    <h4><span>RS:</span>@item.MED_SALE_PRICE</h4>
+                                </div>
+                            </center>
                             </div>
-
-                            </div>
-
-
                         }
                     }
                 </ul>

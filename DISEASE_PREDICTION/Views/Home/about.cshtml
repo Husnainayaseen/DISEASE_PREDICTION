@@ -1,9 +1,10 @@
 
-
+@using DISEASE_PREDICTION.Models
 
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    Model1 db = new Model1();
 }
 
 
@@ -90,11 +91,11 @@
 
 
 
-                    <br>
+                    
                     <!-- Our Team starts -->
                     <!-- Heading -->
                     <div class="block-heading-six">
-                        <h4 class="bg-color">Our Team</h4>
+                        <h2 class="bg-color"style="text-align:center" >Our Team</h2>
                     </div>
                     <br>
 
@@ -102,50 +103,22 @@
 
                     <div>
                         <div class="row">
-                            <div class="col-md-3 col-sm-6">
-                                <!-- Team Member -->
-                                <div class="team-member">
-                                    <!-- Image -->
-                                    <img class="img-responsive" src="~/content/img/team1.jpg" alt="">
-                                    <!-- Name -->
-                                    <h4>Johne Doe</h4>
-                                    <span class="deg"><strong>Sr.Doctor</strong></span>
-                                    <p>Perspiciaatis unde omnis iste natus error sit voluptatem accusantium.</p>
+                            @foreach (var item in db.TBL_DOCTOR)
+                            {
+                                <div class="col-md-2 @*col-sm-6*@">
+                                    <!-- Team Member -->
+                                    <div class="team-member">
+                                        <!-- Image -->
+                                        <img class="img-responsive" src="@Url.Content(item.DOC_PIC)" style="height: 100px;width:150px " alt="">
+                                        <!-- Name -->
+                                        <h4>@item.DOC_NAME</h4>
+                                        <span class="deg"><strong>@item.TBL_SPECIALIZATION.SPECIALIZATION</strong></span>
+                                   <p>@item.QUALIFICATION</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <!-- Team Member -->
-                                <div class="team-member">
-                                    <!-- Image -->
-                                    <img class="img-responsive" src="~/content/img/team2.jpg" alt="">
-                                    <!-- Name -->
-                                    <h4>Jennifer</h4>
-                                    <span class="deg"><strong>Sr.Surgeon</strong></span>
-                                    <p>Perspiciaatis unde omnis iste natus error sit voluptatem accusantium.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <!-- Team Member -->
-                                <div class="team-member">
-                                    <!-- Image -->
-                                    <img class="img-responsive" src="~/content/img/team3.jpg" alt="">
-                                    <!-- Name -->
-                                    <h4>Christean</h4>
-                                    <span class="deg"><strong>Manager</strong></span>
-                                    <p>Perspiciaatis unde omnis iste natus error sit voluptatem accusantium.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <!-- Team Member -->
-                                <div class="team-member">
-                                    <!-- Image -->
-                                    <img class="img-responsive" src="~/content/img/team4.jpg" alt="">
-                                    <!-- Name -->
-                                    <h4>Kerinele rase</h4>
-                                    <span class="deg"><strong>Chairman</strong></span>
-                                    <p>Perspiciaatis unde omnis iste natus error sit voluptatem accusantium.</p>
-                                </div>
-                            </div>
+
+                            }
+
                         </div>
                     </div>
 

@@ -21,11 +21,7 @@ namespace DISEASE_PREDICTION.Models
         [StringLength(200)]
         public string DISEASE_SYMPTOMS { get; set; }
 
-       
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBL_DISEASE_SYMPTOM> TBL_DISEASE_SYMPTOM { get; set; }
-
-    
     }
 }

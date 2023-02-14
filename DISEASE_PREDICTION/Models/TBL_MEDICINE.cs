@@ -12,7 +12,6 @@ namespace DISEASE_PREDICTION.Models
         public TBL_MEDICINE()
         {
             TBL_ORDERDETAIL = new HashSet<TBL_ORDERDETAIL>();
-            //TBL_SYMPTOMS = new HashSet<TBL_SYMPTOMS>();
         }
 
         [Key]
@@ -29,12 +28,12 @@ namespace DISEASE_PREDICTION.Models
         public DateTime MED_EXPIRY_DATE { get; set; }
 
         public int MED_SALE_PRICE { get; set; }
-        [NotMapped]
-        public int Quantity{ get; set; }
 
         [Required]
         [StringLength(100)]
         public string MED_USAGE { get; set; }
+        [NotMapped]
+        public int Quantity { get; set; }
 
         public int MED_PURCHASE_PRICE { get; set; }
 
@@ -55,7 +54,5 @@ namespace DISEASE_PREDICTION.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBL_ORDERDETAIL> TBL_ORDERDETAIL { get; set; }
-
-       
     }
 }

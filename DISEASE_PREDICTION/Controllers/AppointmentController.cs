@@ -19,19 +19,6 @@ namespace DISEASE_PREDICTION.Controllers
 
             if (id != null || gender != null)
             {
-                //if (gender == 1)
-                //{
-
-                //    var v = db.TBL_DOCTOR.Where(x => x.DOC_GENDER == "Male").ToList();
-                //    ViewData["gender1"] = v;
-
-
-                //}
-                //else if (gender == 2)
-                //{
-                //    var v = db.TBL_DOCTOR.Where(x => x.DOC_GENDER == "Female").ToList();
-                //    ViewData["gender2"] = v;
-                //}
                 ViewData["gender"] = gender;
                 ViewData["spID"] = id;
             }
@@ -63,10 +50,10 @@ namespace DISEASE_PREDICTION.Controllers
             //if (v > 0)
             //{
             //    TempData["Alreadyappoint"] = "<script>alert('You have already an appointment of same date with same doctor')</script>";
-            //return RedirectToAction("doctor_detail", new { id = ap.TBL_SCHEDULE.DOC_FID });
+            //    return RedirectToAction("doctor_detail", new { id = ap.TBL_SCHEDULE.DOC_FID });
 
-
-            return View();
+            //}
+               return View();
         }
         public ActionResult Add_Appointment(int id, DateTime Date)
         {
@@ -88,14 +75,14 @@ namespace DISEASE_PREDICTION.Controllers
             if (db.TBL_APPOINTMENT.Any(x => DbFunctions.TruncateTime(x.APP_DATE.Value) == Date.Date && x.SCH_FID == id))
             {
                 TempData["Alreadyappoint"] = "<script>alert('You have already an appointment of same date with same doctor')</script>";
-                return RedirectToAction("doctor_detail");
+                return RedirectToAction("doctor_detail",new { id =id});
             }
             Schlist.Add(sch);
 
             Session["AppDate"] = Date;
             Session["schlist"] = Schlist;
             TBL_APPOINTMENT ap = new TBL_APPOINTMENT();
-            //int v = db.TBL_APPOINTMENT.Where(x => x.SCH_FID == id && x.APP_DATE ==Date && x.APP_STATUS == "Confirmed").Count();
+            //int v = db.TBL_APPOINTMENT.Where(x => x.SCH_FID == id && x.APP_DATE == Date && x.APP_STATUS == "Confirmed").Count();
             //if (v > Int32.Parse(ap.TBL_SCHEDULE.MAX_APP.ToString()))
             //{
             //    TempData["FilledAppointment"] = "<script> alert('Each doctor have limited No of Appointment on ech day so we are sorry you cannot book this appointment because schedule is already full')</script>";
@@ -121,8 +108,8 @@ namespace DISEASE_PREDICTION.Controllers
                 db.SaveChanges();
                 TempData["msg"] = "<script> alert('your Appointment has been booked')</script>";
             }
-            //string mailbody = "Dear user your appointment has been confirmed with our doctor at your selected date and day";
-            //EmailProvider.Email(current_user.currentpatient,"Appointment Confirmation",mailbody);    
+            string mailbody = "Dear user your appointment has been confirmed with our doctor at your selected date and day";
+            EmailProvider.Email(current_user.currentpatient.PATIENT_Email, "Appointment Confirmation", mailbody);
             Session["Appointment"] = ap;
             List<TBL_SCHEDULE> list = new List<TBL_SCHEDULE>();
             list.Add(db.TBL_SCHEDULE.Where(x => x.SCH_ID == ap.SCH_FID).FirstOrDefault());

@@ -55,7 +55,7 @@
                         @Html.DisplayFor(modelItem => item.TBL_SCHEDULE.FEE)
                     </td>
                     <td>
-                        @*<input type="date" value="*@ @Html.DisplayFor(modelItem => item.APP_DATE) @*name="Date" />*@
+                         @item.APP_DATE.Value.ToString("d")
                     </td>
                     <td>@item.TBL_SCHEDULE.START_TIME TO @item.TBL_SCHEDULE.END_TIME</td>
                     <td>

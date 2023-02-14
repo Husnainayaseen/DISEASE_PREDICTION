@@ -33,15 +33,16 @@ namespace DISEASE_PREDICTION.Controllers
         {
             TBL_FEEDBACK feedback = new TBL_FEEDBACK(); 
             if (current_user.currentpatient != null)
-            {
-                
-                feedback.FEEDBACK_DETAIL = comment;
-                
+            {               
+                feedback.FEEDBACK_DETAIL = comment;              
                 feedback.PATIENT_FID = current_user.currentpatient.PATIENT_ID;
+                feedback.FEEDBACK_NAME = FEEDBACK_NAME;
+                feedback.FEEDBACK_EMAIL = FEEDBACK_EMAIL;
                 ViewBag.msg1 = "<script>alert('Thanks For Giving Your Feedback')</script>";
             }
             else
             {
+                feedback.FEEDBACK_DETAIL = comment;
                 feedback.FEEDBACK_EMAIL = FEEDBACK_EMAIL;
                 feedback.PATIENT_FID =null;
                 feedback.FEEDBACK_NAME = FEEDBACK_NAME;
@@ -81,8 +82,9 @@ namespace DISEASE_PREDICTION.Controllers
      public ActionResult Newpassword(string password)
         {
             var user = (TBL_PATIENT)Session["userforgetpassword"];
-            user.PATIENT_EmailPassword = password;
-            db.Entry(user).State =EntityState.Modified;
+            var update = db.TBL_PATIENT.Where(x => x.PATIENT_Email == user.PATIENT_Email).FirstOrDefault();
+            update.PATIENT_EmailPassword = password;
+            db.Entry(update).State =EntityState.Modified;
             db.SaveChanges();
             TempData["msg"] = "Password Updated successfully";
             return RedirectToAction("customerlogin");
@@ -110,10 +112,10 @@ namespace DISEASE_PREDICTION.Controllers
                 TempData["error"] = "Invalid Email";
                 return RedirectToAction("customerlogin");
             }
-            string receiverEmail = email/*"mazeenbilla0@gmail.com"*/;
+            string receiverEmail = email;
             Random random = new Random();
             int code = random.Next(1001, 9990);
-            string Emailsubject = "subject";
+            string Emailsubject = "Recover Password";
             string Emailbody = "your code is" +code;         
             Session["code"] = code;
             Session["userforgetpassword"] = patient;
@@ -144,22 +146,24 @@ namespace DISEASE_PREDICTION.Controllers
         {
             return View();
         }
-        [HttpPost] 
-        public ActionResult customerlogin(string PATIENT_NAME,string PATIENT_PhoneNo, string PATIENT_Email, string PATIENT_EmailPassword,string PATIENT_LOCATION)
+        [HttpPost]
+        public ActionResult customerlogin(TBL_PATIENT patient)
         {
             TBL_PATIENT p=new TBL_PATIENT();
-            p.PATIENT_NAME = PATIENT_NAME;
-            p.PATIENT_PhoneNo = PATIENT_PhoneNo;
-            p.PATIENT_Email = PATIENT_Email;
-            p.PATIENT_EmailPassword = PATIENT_EmailPassword;
-            p.PATIENT_LOCATION = PATIENT_LOCATION;
+            p.PATIENT_NAME = patient.PATIENT_NAME;
+            p.PATIENT_PhoneNo = patient.PATIENT_PhoneNo;
+            p.PATIENT_Email = patient.PATIENT_Email;
+            p.PATIENT_EmailPassword = patient.PATIENT_EmailPassword;
+            p.PATIENT_LOCATION = patient.PATIENT_LOCATION;
+           
+                          
             if (p.PATIENT_NAME == null || p.PATIENT_LOCATION == null || p.PATIENT_PhoneNo == null)
             {
-                TBL_PATIENT patient = db.TBL_PATIENT.Where(x => x.PATIENT_Email == p.PATIENT_Email && x.PATIENT_EmailPassword == p.PATIENT_EmailPassword).FirstOrDefault();
+                TBL_PATIENT pat = db.TBL_PATIENT.Where(x => x.PATIENT_Email == p.PATIENT_Email && x.PATIENT_EmailPassword == p.PATIENT_EmailPassword).FirstOrDefault();
 
-                if (patient != null)
+                if (pat != null)
                 {
-                    current_user.currentpatient = patient;
+                    current_user.currentpatient = pat;
                     if (Session["cart"] != null)
                     {
                         return RedirectToAction("displaycart", "cart");
@@ -168,13 +172,20 @@ namespace DISEASE_PREDICTION.Controllers
                     {
                         return RedirectToAction("Index");
                     }
-                    else{
+                    else if (Session["Schlist"] != null)
+                    {
+                        return RedirectToAction("book_Appointment", "Appointment");
+                    }
+                    else
+                    {
                         return RedirectToAction("checkout");
                     }
                 }
+
+
                 else
                 {
-                    ViewBag.msg = "<script> alert('Invalid Email And Password')</script>";
+                    ViewBag.msg1 = "<script> alert('Invalid Email And Password')</script>";
                 }
             }
 
@@ -183,10 +194,6 @@ namespace DISEASE_PREDICTION.Controllers
                 db.TBL_PATIENT.Add(p);
                 db.SaveChanges();
                 ViewBag.msg = "<script> alert('Account Is Created Successfully')</script>";
-            }
-            if (Session["Schlist"] != null)
-            {
-                return RedirectToAction("book_Appointment","Appointment");
             }
             return View();
         }

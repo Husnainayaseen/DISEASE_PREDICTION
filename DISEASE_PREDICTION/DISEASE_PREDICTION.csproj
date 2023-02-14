@@ -448,12 +448,15 @@
     <Content Include="Content\img\slides\1.jpg" />
     <Content Include="Content\img\slides\2.jpg" />
     <Content Include="Content\img\slides\aid5.jpg" />
+    <Content Include="Content\img\works\app icon.png" />
+    <Content Include="Content\img\works\app.jpg" />
     <Content Include="Content\img\works\bleed ex.jpg" />
     <Content Include="Content\img\works\bleed.jpg" />
     <Content Include="Content\img\works\burnss.jpg" />
     <Content Include="Content\img\works\burnsss.png" />
     <Content Include="Content\img\works\d3.jpg" />
     <Content Include="Content\img\works\dr.jpg" />
+    <Content Include="Content\img\works\firstaid logo.jpg" />
     <Content Include="Content\img\works\fracture.jpg" />
     <Content Include="Content\img\works\infect.png" />
     <Content Include="Content\img\works\jaw thurst.jpg" />
@@ -481,7 +484,9 @@
     <Content Include="Content\img\works\infection.jpg" />
     <Content Include="Content\img\works\jaw tech.jpg" />
     <Content Include="Content\img\works\main.jpg" />
+    <Content Include="Content\img\works\medicon.png" />
     <Content Include="Content\img\works\moving victim.jpg" />
+    <Content Include="Content\img\works\prediction.png" />
     <Content Include="Content\img\works\scald.jpg" />
     <Content Include="Content\img\works\scald3.jpg" />
     <Content Include="Content\img\works\scalds.jpg" />
@@ -583,7 +588,6 @@
     <None Include="Views\cart\displaycart.cshtml" />
     <None Include="Views\Home\services.cshtml" />
     <None Include="Views\Home\indexadmin.cshtml" />
-    <None Include="Views\Home\add_expense.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

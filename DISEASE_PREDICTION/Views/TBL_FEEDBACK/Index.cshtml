@@ -2,47 +2,49 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <h2>Index</h2>
 
 <p>
-    <a class="btn btn-primary glyphicon glyphicon-pencil" href="@Url.Action("Create","TBL_FEEDBACK")">Create New</a>
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-           PATIENT_GENDER
+            @Html.DisplayNameFor(model => model.TBL_PATIENT.PATIENT_GENDER)
         </th>
         <th>
-        FEEDBACK_DETAIL
+            @Html.DisplayNameFor(model => model.FEEDBACK_DETAIL)
         </th>
         <th>
-         FEEDBACK_EMAIL
+            @Html.DisplayNameFor(model => model.FEEDBACK_EMAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FEEDBACK_NAME)
         </th>
         <th></th>
     </tr>
 
-@foreach (var feedback in Model) {
+@foreach (var item in Model) {
     <tr>
         <td>
-            @feedback.PATIENT_FID
+            @Html.DisplayFor(modelItem => item.TBL_PATIENT.PATIENT_GENDER)
         </td>
         <td>
-            @feedback.FEEDBACK_DETAIL
+            @Html.DisplayFor(modelItem => item.FEEDBACK_DETAIL)
         </td>
         <td>
-            @feedback.FEEDBACK_EMAIL
+            @Html.DisplayFor(modelItem => item.FEEDBACK_EMAIL)
         </td>
         <td>
-            <a class="btn btn-primary glyphicon glyphicon-edit" href="@Url.Action("Edit","TBL_FEEDBACK",new{ id=feedback.FEEDBACK_ID})">Edit</a>
-            <a class="btn btn-primary glyphicon glyphicon-expand" href="@Url.Action("Details","TBL_FEEDBACK",new{ id=feedback.FEEDBACK_ID})">Details</a>
-            <a class="btn btn-primary glyphicon glyphicon-trash" href="@Url.Action("Delete","TBL_FEEDBACK",new{ id=feedback.FEEDBACK_ID})">Delete</a>
-
-
-            @*@Html.ActionLink("Edit", "Edit", new { id = item.FEEDBACK_ID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.FEEDBACK_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.FEEDBACK_ID })*@
+            @Html.DisplayFor(modelItem => item.FEEDBACK_NAME)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FEEDBACK_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FEEDBACK_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FEEDBACK_ID })
         </td>
     </tr>
 }

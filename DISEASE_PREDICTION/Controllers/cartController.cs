@@ -11,7 +11,7 @@ namespace DISEASE_PREDICTION.Controllers
     public class cartController : Controller
     {
         Model1 db = new Model1();
-        int Quantity;
+        //int Quantity;
         // GET: cart
         public ActionResult addtocart(int id)
         {
@@ -37,18 +37,25 @@ namespace DISEASE_PREDICTION.Controllers
         } public ActionResult displaycart()
         {
             return View();
-        }  public ActionResult orderbooked(TBL_ORDER order)
+        }
+        [HttpPost]
+        public ActionResult orderbooked(TBL_ORDER order)
         {
-            order.ORDER_DATE = System.DateTime.Now;
-            order.ORDER_STATUS = "booked";
-            order.ORDER_TYPE = "Sale";
-            order.PAYMENTMODE = "COD";
-            order.PATIENT_FID = current_user.currentpatient.PATIENT_ID;         
+            if (Session["cart"] != null)
+            {
+                order.ORDER_DATE = System.DateTime.Now;
+                order.ORDER_STATUS = "booked";
+                order.ORDER_TYPE = "Sale";
+                order.PAYMENTMODE = "COD";
+                order.PATIENT_FID = current_user.currentpatient.PATIENT_ID;
                 db.TBL_ORDER.Add(order);
                 db.SaveChanges();
-             
+            }
+            
 
-            foreach (var item in (List<TBL_MEDICINE>)Session["cart"])
+            List<TBL_MEDICINE> ol = new List<TBL_MEDICINE>();
+            ol= (List<TBL_MEDICINE>)Session["cart"];
+            foreach (var item in ol)
             {
                 TBL_ORDERDETAIL od = new TBL_ORDERDETAIL();
                 od.MEDICINE_FID = item.MED_ID;
@@ -62,9 +69,14 @@ namespace DISEASE_PREDICTION.Controllers
             string mailBody = "Your order has been confirmend.Your order will be delivered in 3 days.";
             EmailProvider.Email(order.ORDER_EMAIL, "order Conformation",mailBody);
             TempData["order"] = Session["cart"];
-            Session["cart"] = null;
-            return RedirectToAction("orderbooked");
-        } public ActionResult removefromcart(int id)
+            Session["cart"] =null;
+            return View();
+        }
+        public ActionResult orderbooked()
+        {
+            return View();
+        }
+        public ActionResult removefromcart(int id)
         {
             List<TBL_MEDICINE> list = new List<TBL_MEDICINE>();
             list =(List<TBL_MEDICINE>) Session["cart"];

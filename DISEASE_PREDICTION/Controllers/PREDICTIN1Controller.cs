@@ -21,11 +21,7 @@ namespace DISEASE_PREDICTION.Controllers
                 dis = db.TBL_DISEASECATEGORY.ToList()
             };
             return View(data);
-            //if (prediction != null)
-            //{
-            //    ViewBag.data = prediction;
-            //}
-            //return View();
+            
         }
         [HttpPost]
         public ActionResult Index(FormCollection collection)

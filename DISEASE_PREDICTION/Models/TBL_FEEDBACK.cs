@@ -11,16 +11,16 @@ namespace DISEASE_PREDICTION.Models
         [Key]
         public int FEEDBACK_ID { get; set; }
 
-        public int? PATIENT_FID { get; set; }
-
-        [StringLength(10)]
-        public string FEEDBACK_DETAIL { get; set; }
-
-        [StringLength(100)]
-        public string FEEDBACK_EMAIL { get; set; }
-
         [StringLength(50)]
         public string FEEDBACK_NAME { get; set; }
+
+        [StringLength(100)]
+        public string FEEDBACK_DETAIL { get; set; }
+
+        [StringLength(50)]
+        public string FEEDBACK_EMAIL { get; set; }
+
+        public int? PATIENT_FID { get; set; }
 
         public virtual TBL_PATIENT TBL_PATIENT { get; set; }
     }

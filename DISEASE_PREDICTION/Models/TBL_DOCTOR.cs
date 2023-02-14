@@ -19,10 +19,8 @@ namespace DISEASE_PREDICTION.Models
 
         [Required]
         [StringLength(50)]
-        public string DOC_NAME { get; set; } 
-        [StringLength(50)]
-        public string QUALIFICATION { get; set; }
-       
+        public string DOC_NAME { get; set; }
+
         [Required]
         [StringLength(50)]
         public string DOC_EMAIL { get; set; }
@@ -34,19 +32,22 @@ namespace DISEASE_PREDICTION.Models
         public int SP_FID { get; set; }
 
         [Required]
-        [StringLength(10)]
+        [StringLength(50)]
         public string DOC_GENDER { get; set; }
 
         [Required]
         [StringLength(50)]
         public string DOC_ADDRESS { get; set; }
 
-      
+        [Required]
         [StringLength(50)]
         public string DOC_PIC { get; set; }
 
         [StringLength(50)]
         public string AVAILABLE_STATUS { get; set; }
+
+        [StringLength(50)]
+        public string QUALIFICATION { get; set; }
 
         public virtual TBL_SPECIALIZATION TBL_SPECIALIZATION { get; set; }
 

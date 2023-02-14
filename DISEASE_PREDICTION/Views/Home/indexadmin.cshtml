@@ -12,7 +12,7 @@
                 <div class="dash-widget">
                     <span class="dash-widget-bg1"><i class="fa fa-stethoscope" aria-hidden="true"></i></span>
                     <div class="dash-widget-info text-right">
-                        <h3>98</h3>
+                        <h3>@db.TBL_DOCTOR.Count()</h3>
                         <span class="widget-title1">Doctors <i class="fa fa-check" aria-hidden="true"></i></span>
                     </div>
                 </div>
@@ -21,7 +21,7 @@
                 <div class="dash-widget">
                     <span class="dash-widget-bg2"><i class="fa fa-user-o"></i></span>
                     <div class="dash-widget-info text-right">
-                        <h3>1072</h3>
+                        <h3>@db.TBL_PATIENT.Count()</h3>
                         <span class="widget-title2">Patients <i class="fa fa-check" aria-hidden="true"></i></span>
                     </div>
                 </div>
@@ -30,8 +30,8 @@
                 <div class="dash-widget">
                     <span class="dash-widget-bg3"><i class="fa fa-user-md" aria-hidden="true"></i></span>
                     <div class="dash-widget-info text-right">
-                        <h3>72</h3>
-                        <span class="widget-title3">Attend <i class="fa fa-check" aria-hidden="true"></i></span>
+                        <h3>@db.TBL_APPOINTMENT.Count()</h3>
+                        <span class="widget-title3">Appoint<i class="fa fa-check" aria-hidden="true"></i></span>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                 <div class="dash-widget">
                     <span class="dash-widget-bg4"><i class="fa fa-heartbeat" aria-hidden="true"></i></span>
                     <div class="dash-widget-info text-right">
-                        <h3>618</h3>
+                        <h3>3</h3>
                         <span class="widget-title4">Pending <i class="fa fa-check" aria-hidden="true"></i></span>
                     </div>
                 </div>
@@ -92,91 +92,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td style="min-width: 200px;">
-                                            <a class="avatar" href="profile.html">B</a>
-                                            <h2><a href="profile.html">Bernardo Galaviz <span>New York, USA</span></a></h2>
-                                        </td>
-                                        <td>
-                                            <h5 class="time-title p-0">Appointment With</h5>
-                                            <p>Dr. Cristina Groves</p>
-                                        </td>
-                                        <td>
-                                            <h5 class="time-title p-0">Timing</h5>
-                                            <p>7.00 PM</p>
-                                        </td>
-                                        <td class="text-right">
-                                            <a href="appointments.html" class="btn btn-outline-primary take-btn">Take up</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="min-width: 200px;">
-                                            <a class="avatar" href="profile.html">B</a>
-                                            <h2><a href="profile.html">Bernardo Galaviz <span>New York, USA</span></a></h2>
-                                        </td>
-                                        <td>
-                                            <h5 class="time-title p-0">Appointment With</h5>
-                                            <p>Dr. Cristina Groves</p>
-                                        </td>
-                                        <td>
-                                            <h5 class="time-title p-0">Timing</h5>
-                                            <p>7.00 PM</p>
-                                        </td>
-                                        <td class="text-right">
-                                            <a href="appointments.html" class="btn btn-outline-primary take-btn">Take up</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="min-width: 200px;">
-                                            <a class="avatar" href="profile.html">B</a>
-                                            <h2><a href="profile.html">Bernardo Galaviz <span>New York, USA</span></a></h2>
-                                        </td>
-                                        <td>
-                                            <h5 class="time-title p-0">Appointment With</h5>
-                                            <p>Dr. Cristina Groves</p>
-                                        </td>
-                                        <td>
-                                            <h5 class="time-title p-0">Timing</h5>
-                                            <p>7.00 PM</p>
-                                        </td>
-                                        <td class="text-right">
-                                            <a href="appointments.html" class="btn btn-outline-primary take-btn">Take up</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="min-width: 200px;">
-                                            <a class="avatar" href="profile.html">B</a>
-                                            <h2><a href="profile.html">Bernardo Galaviz <span>New York, USA</span></a></h2>
-                                        </td>
-                                        <td>
-                                            <h5 class="time-title p-0">Appointment With</h5>
-                                            <p>Dr. Cristina Groves</p>
-                                        </td>
-                                        <td>
-                                            <h5 class="time-title p-0">Timing</h5>
-                                            <p>7.00 PM</p>
-                                        </td>
-                                        <td class="text-right">
-                                            <a href="appointments.html" class="btn btn-outline-primary take-btn">Take up</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="min-width: 200px;">
-                                            <a class="avatar" href="profile.html">B</a>
-                                            <h2><a href="profile.html">Bernardo Galaviz <span>New York, USA</span></a></h2>
-                                        </td>
-                                        <td>
-                                            <h5 class="time-title p-0">Appointment With</h5>
-                                            <p>Dr. Cristina Groves</p>
-                                        </td>
-                                        <td>
-                                            <h5 class="time-title p-0">Timing</h5>
-                                            <p>7.00 PM</p>
-                                        </td>
-                                        <td class="text-right">
-                                            <a href="appointments.html" class="btn btn-outline-primary take-btn">Take up</a>
-                                        </td>
-                                    </tr>
+                                    @foreach(var app in db.TBL_APPOINTMENT)
+            {
+<tr>
+    <td style="min-width: 200px;">
+        <a class="avatar" href="profile.html">B</a>
+        <h2><a href="profile.html">@app.TBL_PATIENT.PATIENT_NAME <span>@app.TBL_PATIENT.PATIENT_LOCATION</span></a></h2>
+    </td>
+    <td>
+        <h5 class="time-title p-0">Appointment With</h5>
+        <p>Dr.@app.TBL_SCHEDULE.TBL_DOCTOR.DOC_NAME</p>
+    </td>
+    <td>
+        <h5 class="time-title p-0">Date</h5>
+        <p> @app.APP_DATE.Value.ToString("d")</p>
+    </td>
+    <td class="text-right">
+        <a href="appointments.html" class="btn btn-outline-primary take-btn">@app.APP_STATUS</a>
+    </td>
+</tr>
+            }
+                                    
+                                   
                                 </tbody>
                             </table>
                         </div>
@@ -224,42 +161,20 @@
                         <div class="table-responsive">
                             <table class="table mb-0 new-patient-table">
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <img width="28" height="28" class="rounded-circle" src="~/content/admin/assets/img/user.jpg" alt="">
-                                            <h2>John Doe</h2>
-                                        </td>
-                                        <td>Johndoe21@gmail.com</td>
-                                        <td>+1-202-555-0125</td>
-                                        <td><button class="btn btn-primary btn-primary-one float-right">Fever</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img width="28" height="28" class="rounded-circle" src="~/content/admin/assets/img/user.jpg" alt="">
-                                            <h2>Richard</h2>
-                                        </td>
-                                        <td>Richard123@yahoo.com</td>
-                                        <td>202-555-0127</td>
-                                        <td><button class="btn btn-primary btn-primary-two float-right">Cancer</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img width="28" height="28" class="rounded-circle" src="~/content/admin/assets/img/user.jpg" alt="">
-                                            <h2>Villiam</h2>
-                                        </td>
-                                        <td>Richard123@yahoo.com</td>
-                                        <td>+1-202-555-0106</td>
-                                        <td><button class="btn btn-primary btn-primary-three float-right">Eye</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img width="28" height="28" class="rounded-circle" src="~/content/admin/assets/img/user.jpg" alt="">
-                                            <h2>Martin</h2>
-                                        </td>
-                                        <td>Richard123@yahoo.com</td>
-                                        <td>776-2323 89562015</td>
-                                        <td><button class="btn btn-primary btn-primary-four float-right">Fever</button></td>
-                                    </tr>
+                                    @foreach (var item in db.TBL_PATIENT)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <img width="28" height="28" class="rounded-circle" src="~/content/admin/assets/img/user.jpg" alt="">
+                                                <h2>@item.PATIENT_NAME</h2>
+                                            </td>
+                                            <td>@item.PATIENT_Email</td>
+                                            <td>@item.PATIENT_PhoneNo</td>
+                                            <td><button class="btn btn-primary btn-primary-one float-right">@item.PATIENT_DISEASE</button></td>
+                                        </tr>
+                                    }
+
+
                                 </tbody>
                             </table>
                         </div>
@@ -289,9 +204,9 @@
                     <div class="chart clearfix">
                         <div class="item">
                             <div class="bar">
-                                <span class="percent">16%</span>
-                                <div class="item-progress" data-percent="16">
-                                    <span class="title">OPD Patient</span>
+                                <span class="percent">56%</span>
+                                <div class="item-progress" data-percent="56">
+                                    <span class="title">Medicine Delivery</span>
                                 </div>
                             </div>
                         </div>
@@ -307,7 +222,7 @@
                             <div class="bar">
                                 <span class="percent">82%</span>
                                 <div class="item-progress" data-percent="82">
-                                    <span class="title">Laboratory Test</span>
+                                    <span class="title">New Appointment</span>
                                 </div>
                             </div>
                         </div>

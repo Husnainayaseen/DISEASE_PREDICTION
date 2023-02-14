@@ -60,7 +60,7 @@
 
                         @if (current_user.currentpatient != null)
                         {
-                            <li style="font-style:italic;font:bold"><a href="#">@current_user.currentpatient.PATIENT_NAME</a> </li>
+                            <li style="font-style:italic;font:bold"><a href="@Url.Action("MyAppointment","Appointment")">@current_user.currentpatient.PATIENT_NAME</a> </li>
                         }
 
                         <li class="active"><a href="@Url.Action("index","Home")">Home</a></li>
@@ -136,21 +136,24 @@
                 </div>
                 <div class="col-lg-3">
                     <div class="widget">
-                        <h5 class="widgetheading">Latest posts</h5>
+                        <h5 class="widgetheading">About Us</h5>
                         <ul class="link-list">
-                            <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
-                            <li><a href="#">Pellentesque et pulvinar enim. Quisque at tempor ligula</a></li>
-                            <li><a href="#">Natus error sit voluptatem accusantium doloremque</a></li>
+                            <li><a href="#">Get Online Doctor Appointment </a></li>
+                            <li><a href="#">Get Prediction of your Disease by entering symptoms.</a></li>
+                            <li><a href="#">Get Knowledge about First Aid</a></li>
+                            <li><a href="#">Get Online Medicines Delivery</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="widget">
-                        <h5 class="widgetheading">Recent News</h5>
+                        <h5 class="widgetheading">Terms of Services</h5>
                         <ul class="link-list">
-                            <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
-                            <li><a href="#">Pellentesque et pulvinar enim. Quisque at tempor ligula</a></li>
-                            <li><a href="#">Natus error sit voluptatem accusantium doloremque</a></li>
+                            <li><a href="#">&copy;Copyright.</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Press</a></li>
+                            <li><a href="#">Events</a></li>
+                            <li><a href="#">Recent News</a></li>
                         </ul>
                     </div>
                 </div>

@@ -8,7 +8,7 @@ namespace DISEASE_PREDICTION.Models
     public partial class Model1 : DbContext
     {
         public Model1()
-            : base("name=Model13")
+            : base("name=Model15")
         {
         }
 
@@ -48,30 +48,16 @@ namespace DISEASE_PREDICTION.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TBL_DOCTOR>()
-                .Property(e => e.DOC_GENDER)
-                .IsFixedLength();
-
-            modelBuilder.Entity<TBL_DOCTOR>()
                 .HasMany(e => e.TBL_SCHEDULE)
                 .WithRequired(e => e.TBL_DOCTOR)
                 .HasForeignKey(e => e.DOC_FID)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<TBL_FEEDBACK>()
-                .Property(e => e.FEEDBACK_DETAIL)
-                .IsFixedLength();
 
             modelBuilder.Entity<TBL_MEDICINE>()
                 .HasMany(e => e.TBL_ORDERDETAIL)
                 .WithRequired(e => e.TBL_MEDICINE)
                 .HasForeignKey(e => e.MEDICINE_FID)
                 .WillCascadeOnDelete(false);
-
-            //modelBuilder.Entity<TBL_MEDICINE>()
-            //    .HasMany(e => e.TBL_SYMPTOMS)
-            //    .WithRequired(e => e.TBL_MEDICINE)
-            //    .HasForeignKey(e => e.MED_FID)
-            //    .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TBL_MEDICINECOMPANY>()
                 .HasMany(e => e.TBL_MEDICINE)
@@ -83,6 +69,12 @@ namespace DISEASE_PREDICTION.Models
                 .HasMany(e => e.TBL_ORDERDETAIL)
                 .WithRequired(e => e.TBL_ORDER)
                 .HasForeignKey(e => e.ORDER_FID)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<TBL_PATIENT>()
+                .HasMany(e => e.TBL_APPOINTMENT)
+                .WithRequired(e => e.TBL_PATIENT)
+                .HasForeignKey(e => e.PATIENT_FID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TBL_PATIENT>()

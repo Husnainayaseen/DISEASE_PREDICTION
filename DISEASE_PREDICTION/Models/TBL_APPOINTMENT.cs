@@ -10,7 +10,7 @@ namespace DISEASE_PREDICTION.Models
     {
         [Key]
         public int APP_ID { get; set; }
-        [DataType(DataType.Date)]
+
         public DateTime? APP_DATE { get; set; }
 
         [StringLength(50)]
@@ -23,8 +23,8 @@ namespace DISEASE_PREDICTION.Models
 
         public int SCH_FID { get; set; }
 
-        public virtual TBL_SCHEDULE TBL_SCHEDULE { get; set; }
-
         public virtual TBL_PATIENT TBL_PATIENT { get; set; }
+
+        public virtual TBL_SCHEDULE TBL_SCHEDULE { get; set; }
     }
 }

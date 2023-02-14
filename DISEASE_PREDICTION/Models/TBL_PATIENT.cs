@@ -11,6 +11,7 @@ namespace DISEASE_PREDICTION.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TBL_PATIENT()
         {
+            TBL_APPOINTMENT = new HashSet<TBL_APPOINTMENT>();
             TBL_FEEDBACK = new HashSet<TBL_FEEDBACK>();
             TBL_ORDER = new HashSet<TBL_ORDER>();
         }
@@ -48,6 +49,9 @@ namespace DISEASE_PREDICTION.Models
 
         [Column(TypeName = "date")]
         public DateTime? PATIENT_APPOINTMENTDATE { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TBL_APPOINTMENT> TBL_APPOINTMENT { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBL_FEEDBACK> TBL_FEEDBACK { get; set; }

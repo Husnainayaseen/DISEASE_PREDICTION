@@ -141,7 +141,7 @@
                     <ul>
                         <li class="menu-title">Main</li>
                         <li class="active">
-                            <a href="index-2.html"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
+                            <a href="@Url.Action("Indexadmin","home")"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
                         </li>
                         <li>
                             <a href="@Url.Action("Index","TBL_DISEASECATEGORY")"><i class="fa fa-hospital-o"></i> <span> Manage Disease Category</span></a>
@@ -158,9 +158,7 @@
                         <li><li>
                             <a href="@Url.Action("Index","TBL_SCHEDULE")"><i class="fa fa-pencil"></i>Manage Schedule <span></span></a>
                         </li>
-                        <li>
-                            <a href="@Url.Action("Index","TBL_DISEASE_SYMPTOM")"><i class="fa fa-pencil"></i> <span>Manage DSymptoms</span></a>
-                        </li> @*<li>
+                         @*<li>
             <a href="@Url.Action("Index","TBL_")"><i class="fa fa-question"></i> <span>Manage Diseasecode</span></a>
         </li>*@
                         <li>
@@ -176,7 +174,10 @@
                         <li>
                             <a href="@Url.Action("profit","report")"><i class="fa fa-money"></i> <span>Profit & Loss</span></a>
                         </li>
-                        
+                        <li>
+                            <a href="@Url.Action("Index","TBL_FEEDBACK")"><i class="fa fa-list-alt"></i> <span>View Feedback</span> <span class=""></span></a>
+
+                        </li>
                         <li class="submenu">
                           
                             <a href="#"><i class="fa fa-expand"></i> <span> Reports </span> <span class="menu-arrow"></span></a>
@@ -198,7 +199,6 @@
                                 @*<li><a href="expenses.html">postpone</a></li>*@
                            
                             </ul>
-                            <a href="@Url.Action("Index","TBL_FEEDBACK")"><i class="fa fa-list-alt"></i> <span>View Feedback</span> <span class=""></span></a>
                         </li>
                         
                         @*<li class="submenu">

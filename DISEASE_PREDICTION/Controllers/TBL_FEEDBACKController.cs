@@ -48,7 +48,7 @@ namespace DISEASE_PREDICTION.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "FEEDBACK_ID,PATIENT_FID,FEEDBACK_DETAIL,FEEDBACK_EMAIL")] TBL_FEEDBACK tBL_FEEDBACK)
+        public ActionResult Create([Bind(Include = "FEEDBACK_ID,PATIENT_FID,FEEDBACK_DETAIL,FEEDBACK_EMAIL,FEEDBACK_NAME")] TBL_FEEDBACK tBL_FEEDBACK)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace DISEASE_PREDICTION.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "FEEDBACK_ID,PATIENT_FID,FEEDBACK_DETAIL,FEEDBACK_EMAIL")] TBL_FEEDBACK tBL_FEEDBACK)
+        public ActionResult Edit([Bind(Include = "FEEDBACK_ID,PATIENT_FID,FEEDBACK_DETAIL,FEEDBACK_EMAIL,FEEDBACK_NAME")] TBL_FEEDBACK tBL_FEEDBACK)
         {
             if (ModelState.IsValid)
             {
